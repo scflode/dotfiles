@@ -1,0 +1,113 @@
+#!/usr/bin/env sh
+
+# Set the containing directory for later use
+dot_dir="${HOME}/.dotfiles"
+
+# Detect and normalize the OS type
+function detect_os {
+  case "${OSTYPE}" in
+    linux-gnu) echo "linux"; break;;
+    darwin*) echo "macos"; break;;
+    freebsd*) echo "freebsd"; break;;
+    cygwin|msys|win32) echo "windows"; break;;
+    *) echo "unkown"; break;;
+  esac
+}
+
+function display_info_macos {
+  cat << EOF
+
+******************************************************************************
+*                                                                            *
+* The following things will be done for macOS:                               *
+*                                                                            *
+* - set the computer name                                                    *
+* - tweak macOS settings                                                     *
+* - install xcode CLI if not already done                                    *
+* - install Homebrew                                                         *
+* - install Homebrew based tools                                             *
+* - linking dotfiles                                                         *
+* - set zsh as default shell                                                 *
+* - install brew casks                                                       *
+*                                                                            *
+* You need to authorize via your administrator password for some actions     *
+* to take place.                                                             *
+*                                                                            *
+******************************************************************************
+
+EOF
+  # Ask for the administrator password upfront
+  sudo -v
+}
+
+function display_info {
+  os=${1}  
+  case "${os}" in
+    macos) display_info_macos; break;;
+    *) echo "Nothing as of now"; break;;
+  esac
+}
+
+# Ask for the computer name to set
+function prompt_for_computer_name {
+  read -p "Computer name: " computer_name
+
+  echo ${computer_name}
+}
+
+function setup_macos {
+  ${dot_dir}"/installer/common" ${computer_name}
+  ${dot_dir}"/installer/macos" ${computer_name}
+  ${dot_dir}"/installer/safari"
+  ${dot_dir}"/installer/apple_mail"
+  ${dot_dir}"/installer/apple_terminal"
+  ${dot_dir}"/installer/brew_base"
+  ${dot_dir}"/installer/brew_tools"
+  ${dot_dir}"/installer/cask_apps"
+  ${dot_dir}"/installer/iterm"
+  ${dot_dir}"/installer/link"
+  ${dot_dir}"/installer/nodejs"
+  ${dot_dir}"/installer/elixir"
+  ${dot_dir}"/installer/python"
+  ${dot_dir}"/installer/ruby"
+  ${dot_dir}"/installer/tmux"
+  ${dot_dir}"/installer/vim"
+}
+
+os=$(detect_os)
+
+case ${os} in
+  unknown) echo "OS detection failed."; exit 1; break;;
+  linux|windows) echo "${os} is not supported by these dotfiles ATM."; exit 1; break;;
+  *) break;;
+esac
+
+cat << EOF 
+
+We detected ${os} is running on this machine
+
+Starting setup for ${computer_name}
+
+EOF
+display_info ${os}
+
+computer_name=$(hostname -s)
+
+read -r -p "Do you want to change the computer name currently set to ${computer_name}? " choice
+case "${choice}" in
+  y|Y) computer_name=$(prompt_for_computer_name); break;;
+  n|N) break;;
+esac
+
+echo
+
+read -r -p "We are ready. Run the setup for ${computer_name} now? " choice
+case "${choice}" in
+  y|Y) break;;
+  n|N) echo "Aborting"; exit 1; break;;
+esac
+
+case ${os} in
+  macos) setup_macos; break;;
+  *) echo "Not yet implemented"; break;;
+esac

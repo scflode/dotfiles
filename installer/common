@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+echo "Applying common settings"
+
+computer_name=${1}
+
+# Ask for sudo password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Set the hostname
+echo -e "\tSetting the hostname to ${computer_name}"
+sudo hostname -s "${computer_name}"

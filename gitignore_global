@@ -1,0 +1,36 @@
+*~
+.DS_Store
+._.DS_Store
+
+# Jetbrains
+.idea
+
+# ant
+.ant-targets-build.xml
+
+# Vim
+.phpcd
+.phpactor.yml
+.phpactor/
+.phpcd.vim
+.projections.json
+.undo/
+# CoC
+.vim/
+
+# vscode
+.vscode/
+*.code-workspace
+
+# ctags
+GPATH                        
+GRTAGS                       
+GTAGS  
+
+# Elixir
+.elixir_ls/
+.tool-versions
+.projectile
+.tern-port
+.dir-locals.el
+

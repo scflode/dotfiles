@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+# Personal aliases like Git users; those will not be versioned
+#alias git_config_personal='git config user.name "My Name" && git config user.email "my@example.com"'

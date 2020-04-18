@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+dot_dir="${HOME}/.dotfiles"
+
+echo -e "Applying setting to iTerm2"
+
+echo -e "\tImporting color presets (check the popups)"
+open "${dot_dir}/themes/iterm/foshizzle dark.itermcolors"
+open "${dot_dir}/themes/iterm/foshizzle light.itermcolors"
+
+cat << EOF
+
+******************************************************************************
+* You need to create or import the profiles manually for now.                *
+******************************************************************************
+
+EOF

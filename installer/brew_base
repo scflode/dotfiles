@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+echo -e "Checking Xcode CLI tools"
+xcode-select --install >/dev/null 2>&1
+
+# Install brew
+echo -e "Checking Homebrew installation"
+command -v brew >/dev/null 2>&1 && echo -e "\tFound installed Homebrew" || {
+  echo -e >&2 "\tInstalling Homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+}
+

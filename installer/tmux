@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+echo -e "Installing tmux utilities"
+
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+  echo -e "\tInstalling tmux plugin manager"
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm >/dev/null 2>&1
+else
+  echo -e "\tUpdating tmux plugin manager"
+  cd ~/.tmux/plugins/tpm && git pull >/dev/null 2>&1 && cd -
+fi
+
+
+if [ ! -d ~/.tmux/themes/powerline ]; then
+  echo -e "\tInstalling powerline theme"
+  git clone https://github.com/erikw/tmux-powerline.git ~/.tmux/themes/powerline >/dev/null 2>&1
+  ln -s ~/.dotfiles/themes/tmux/tmux-powerlinerc ~/.tmux-powerlinerc
+else
+  echo -e "\tUpdating powerline theme"
+  cd ~/.tmux/themes/powerline && git pull >/dev/null 2>&1; cd -
+fi

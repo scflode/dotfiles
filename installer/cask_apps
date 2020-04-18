@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+echo -e "Checking required taps"
+brew tap homebrew/cask-drivers >/dev/null 2>&1 # Needed for sonos
+brew tap homebrew/cask-fonts >/dev/null 2>&1 # Needed for fonts
+
+echo -e "Updating Homebrew"
+brew update >/dev/null
+
+echo -e "Installing common apps"
+
+cat << EOF 
+
+******************************************************************************
+* Note that some apps like Virtualbox will need further authorization and    *
+* the run might not work the first time. Please fix and run again.           *
+******************************************************************************
+
+EOF
+
+# Set the containing directory for later use
+apps_dir="${HOME}/.dotfiles/installer/apps"
+
+# Read given file line by line
+function read_file {
+  local file_path="${apps_dir}/${1}"
+  while read -r line
+  do
+    echo -e "${line}"
+  done < "${file_path}"
+}
+
+# Install list of apps one by one
+function install_apps {
+  local file_name=${1}
+  local app_list=$(read_file ${file_name})
+  for app in ${app_list}; do
+    echo -e "\t\tInstalling ${app}"
+    cask_install ${app}
+  done
+}
+
+# Do quiet install and error handling without the verbose information of Homebrew
+function cask_install {
+  local args=$@
+  brew cask install ${args} >/dev/null 2>&1
+  local status=$?
+  if [ ${status} -ne "0" ]; then
+    echo "Last exit code was ${status} for 'brew cask install ${args}'. Please run manually. Aborting."
+    exit 1
+  fi
+}
+
+echo -e "\tInstalling essential tools"
+install_apps "essentials"
+
+echo -e "\tInstalling misc tools"
+install_apps "misc"
+
+echo -e "\tInstalling fonts"
+install_apps "fonts"
+
+echo -e "\tInstalling browsers"
+install_apps "browsers"
+
+echo -e "\tInstalling development tools"
+install_apps "development"
+
+echo -e "\tInstalling communication tools"
+install_apps "communication"
+
+cat << EOF 
+
+******************************************************************************
+* Note that you need to setup and add licenses to the installed apps.        *
+******************************************************************************
+
+EOF

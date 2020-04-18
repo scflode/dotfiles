@@ -1,0 +1,61 @@
+#!/usr/bin/env sh
+
+dot_dir="$( cd "$( dirname "$0" )/.." && pwd )"
+
+if [ -f ${dot_dir}/shell/.exports ]; then
+    source ${dot_dir}/shell/.exports
+fi
+
+# Make nvim the default editor.
+export EDITOR='nvim';
+export GIT_EDITOR='nvim'
+
+# Set the shell.
+export SHELL='/bin/zsh'
+
+# term colors
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
+
+# Increase Bash history size. Allow 32³ entries; the default is 500.
+export HISTSIZE='32768';
+export HISTFILESIZE="${HISTSIZE}";
+# Omit duplicates and commands that begin with a space from history.
+export HISTCONTROL='ignoreboth';
+
+# Prefer US English and use UTF-8.
+export LANG='en_US.UTF-8';
+export LC_ALL='en_US.UTF-8';
+
+# Highlight section titles in manual pages.
+export LESS_TERMCAP_md="${yellow}";
+
+# Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X';
+
+# Always enable colored `grep` output.
+export GREP_OPTIONS='--color=auto';
+
+# User configuration
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin:/usr/local/MacGPG2/bin:/opt/local/bin"
+export MANPATH="/usr/local/man:$MANPATH"
+
+# TODO Extract this?
+# Go
+export GOPATH=$HOME/Workspaces/Go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+
+# Elixir
+
+# Enable iEx history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# Dart language server
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+# Fastlane
+export PATH="$HOME/.fastlane/bin:$PATH"
+export PATH="/usr/local/opt/bison/bin:$PATH"
+

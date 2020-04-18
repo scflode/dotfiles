@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+dot_dir="${HOME}/.dotfiles"
+
+echo -e "Linking dotfiles"
+
+echo -e "\tLinking Vim config"
+mkdir -p ~/.vim
+mkdir -p ~/.config/nvim
+ln -nfs ${dot_dir}/vimrc ~/.vimrc
+ln -nfs ${dot_dir}/vimrc ~/.config/nvim/init.vim
+
+echo -e "\tLinking tmux config"
+ln -nfs ${dot_dir}/tmux.conf ~/.tmux.conf
+
+echo -e "\tLinking Git config"
+ln -nfs ${dot_dir}/gitconfig ~/.gitconfig
+ln -nfs ${dot_dir}/gitignore_global ~/.gitignore_global
+
