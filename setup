@@ -111,3 +111,15 @@ case ${os} in
   macos) setup_macos; break;;
   *) echo "Not yet implemented"; break;;
 esac
+
+cat << EOF
+
+******************************************************************************
+*                                                                            *
+* Setup done. Your system should be prepared from the installation side.     *
+*                                                                            * 
+* It's recommended to restart the computer for all changes to take effect.   *
+*                                                                            *
+******************************************************************************
+
+EOF
