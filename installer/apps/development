@@ -4,3 +4,5 @@ virtualbox
 virtualbox-extension-pack
 vagrant
 docker
+postman
+tableplus
