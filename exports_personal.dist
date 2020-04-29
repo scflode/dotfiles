@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# custom exports
+#export GOPATH="${HOME}/my_go_path"

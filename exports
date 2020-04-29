@@ -2,10 +2,6 @@
 
 dot_dir="$( cd "$( dirname "$0" )/.." && pwd )"
 
-if [ -f ${dot_dir}/shell/.exports ]; then
-    source ${dot_dir}/shell/.exports
-fi
-
 # Make nvim the default editor.
 export EDITOR='nvim';
 export GIT_EDITOR='nvim'
@@ -41,15 +37,7 @@ export GREP_OPTIONS='--color=auto';
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin:/usr/local/MacGPG2/bin:/opt/local/bin"
 export MANPATH="/usr/local/man:$MANPATH"
 
-# Elixir
-
-# Enable iEx history
-export ERL_AFLAGS="-kernel shell_history enabled"
-
-# Dart language server
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-# Fastlane
-export PATH="$HOME/.fastlane/bin:$PATH"
-export PATH="/usr/local/opt/bison/bin:$PATH"
+if [ -f "${dot_dir}/exports_personal" ]; then
+    source "${dot_dir}/exports_personal"
+fi
 
