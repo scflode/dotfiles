@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-dot_dir="$( cd "$( dirname "$0" )/.." && pwd )"
+dot_dir="$( cd "$( dirname "$0" )" && pwd )"
 
 # Make nvim the default editor.
 export EDITOR='nvim';
@@ -38,6 +38,6 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/loca
 export MANPATH="/usr/local/man:$MANPATH"
 
 if [ -f "${dot_dir}/exports_personal" ]; then
-    source "${dot_dir}/exports_personal"
+  source "${dot_dir}/exports_personal"
 fi
 
