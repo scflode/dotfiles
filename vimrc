@@ -100,7 +100,8 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 
 colorscheme one
-set background=light
+set background=dark
+"set background=light
 let g:one_allow_italics = 1
 
 " Custom colors for one colorscheme
