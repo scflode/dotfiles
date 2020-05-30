@@ -9,6 +9,7 @@ mkdir -p ~/.vim
 mkdir -p ~/.config/nvim
 ln -nfs ${dot_dir}/vimrc ~/.vimrc
 ln -nfs ${dot_dir}/vimrc ~/.config/nvim/init.vim
+ln -nfs ${dot_dir}/coc-settings.json ~/.config/nvim/coc-settings.json
 
 echo -e "\tLinking tmux config"
 ln -nfs ${dot_dir}/tmux.conf ~/.tmux.conf

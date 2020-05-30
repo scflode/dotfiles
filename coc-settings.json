@@ -1,0 +1,6 @@
+{
+  "suggest.autoTrigger": "none",
+  "javascript.suggestionActions.enabled": false,
+  "html.filetypes": ["html", "eelixir"]
+}
+
