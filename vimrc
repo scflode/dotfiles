@@ -60,6 +60,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'janko-m/vim-test'               " Testing plugin for various languages
 
 Plug 'othree/html5.vim'               " HTML 5 support
+Plug 'mattn/emmet-vim'                " Emmet support
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " CoC
 
@@ -346,5 +347,9 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Coc Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
+" }}}
+
+" Emmet settings {{{
+let g:user_emmet_leader_key='<C-x>'
 " }}}
 
