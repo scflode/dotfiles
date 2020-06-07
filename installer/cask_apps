@@ -9,6 +9,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 echo -e "Checking required taps"
 brew tap homebrew/cask-drivers >/dev/null 2>&1 # Needed for sonos
 brew tap homebrew/cask-fonts >/dev/null 2>&1 # Needed for fonts
+brew tap dwarvesf/homebrew-tap >/dev/null 2>&1 # Needed for vimmotion
 
 echo -e "Updating Homebrew"
 brew update >/dev/null
