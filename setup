@@ -70,7 +70,9 @@ function setup_macos {
   ${dot_dir}"/installer/elixir"
   ${dot_dir}"/installer/python"
   ${dot_dir}"/installer/ruby"
+  ${dot_dir}"/installer/php"
   ${dot_dir}"/installer/go"
+  ${dot_dir}"/installer/flutter"
   ${dot_dir}"/installer/tmux"
   ${dot_dir}"/installer/vim"
 }
