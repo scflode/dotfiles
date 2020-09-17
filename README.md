@@ -2,7 +2,7 @@
 
 This repository provides my dotfiles and system setup.
 
-> Note: Some things are still a bit weird. Check the issue tracker for know issues.
+> Note: Some things are still a bit weird. Check the issue tracker for known issues.
 
 ## Installation
 
