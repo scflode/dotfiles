@@ -24,13 +24,13 @@
   df = diff
   ready = rebase -i @{u}
   lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-  standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday --author "Flo Schuessel"
+  standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday
   purr = pull --rebase
   tree = log --all --graph --decorate --oneline
 [core]
   excludesfile = ~/.gitignore_global
   autocrlf = input
-  editor = vim
+  editor = nvim
 [push]
   default = simple
 [filter "lfs"]

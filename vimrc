@@ -128,6 +128,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " FZF setup {{{
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>h :History<CR>
 let g:fzf_action = {
       \ 'ctrl-d': 'wall | bdelete',
       \ 'ctrl-t': 'tab split',
@@ -303,6 +304,8 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
+
+imap <c-s>       <Plug>(coc-snippets-expand)
 
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)

@@ -1,6 +1,11 @@
 {
   "suggest.autoTrigger": "none",
+  "css.customData": ["~/.dotfiles/css_custom_data.json"],
   "javascript.suggestionActions.enabled": false,
-  "html.filetypes": ["html", "eelixir"]
+  "java.home": "~/.asdf/installs/java/adopt-openjdk-14.0.1+7/bin/java",
+  "html.filetypes": ["html", "eelixir"],
+  "coc.preferences.formatOnSaveFiletypes": ["dart"],
+  "flutter.lsp.initialization.closingLabels": true,
+  "flutter.sdk.flutter-lookup": "asdf which flutter",
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
 }
-
