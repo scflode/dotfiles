@@ -1,8 +1,9 @@
 {
+  "diagnostic.maxWindowHeight": 30,
   "suggest.autoTrigger": "none",
   "css.customData": ["~/.dotfiles/css_custom_data.json"],
   "javascript.suggestionActions.enabled": false,
-  "java.home": "~/.asdf/installs/java/adopt-openjdk-14.0.1+7/bin/java",
+  "java.home": "~/.asdf/installs/java/adopt-openjdk-14.0.1+7",
   "html.filetypes": ["html", "eelixir"],
   "coc.preferences.formatOnSaveFiletypes": ["dart"],
   "flutter.lsp.initialization.closingLabels": true,

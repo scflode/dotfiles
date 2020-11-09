@@ -79,7 +79,7 @@ set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set fillchars+=vert:\
 set number
 set relativenumber
-set ignorecase
+" set ignorecase
 set noswapfile
 set hidden " Hidden buffers
 
@@ -94,6 +94,8 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>cc :set colorcolumn=<C-R>=&colorcolumn != 0 ? 0 : 80<CR><CR>
 nnoremap <leader><CR> :nohl<CR>
 
+inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 " }}}
 
 " Colorschemes {{{
@@ -238,6 +240,13 @@ noremap <leader>z :call ToggleRolodexTab()<CR>
 " }}}
 
 " CoC setup {{{
+
+" Scroll floating window
+nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
+nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
+
+" Fix back flipping when scrolling
+"autocmd CursorHold * if ! coc#util#has_float() | call CocAction('doHover') | endif
 
 set completeopt=longest,menuone,preview,noinsert
 

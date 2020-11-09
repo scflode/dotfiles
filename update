@@ -9,4 +9,4 @@ echo -e "\tUpgrading brew installs"
 brew upgrade
 
 echo -e "\tUpgrading brew cask installs"
-brew cask upgrade
+brew upgrade --cask

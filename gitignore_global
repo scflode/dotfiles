@@ -29,8 +29,9 @@ GTAGS
 
 # Elixir
 .elixir_ls/
-.tool-versions
 .projectile
 .tern-port
 .dir-locals.el
 
+# asdf
+.tool-versions
