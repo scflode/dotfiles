@@ -129,12 +129,13 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " FZF setup {{{
 nnoremap <leader>f :Files<CR>
+nnoremap <leader>g :GFiles?<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>h :History<CR>
 let g:fzf_action = {
       \ 'ctrl-d': 'wall | bdelete',
       \ 'ctrl-t': 'tab split',
-      \ 'ctrl-x': 'split',
+      \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit' }
 " }}}
 
@@ -155,7 +156,8 @@ nnoremap <leader>ff :Autoformat<CR>
 " goyo setup {{{
 nnoremap <leader>za :Goyo 120x120<CR>
 nnoremap <leader>zd :Goyo<CR>
-" }}}
+autocmd! User GoyoLeave silent! source $HOME/.vimrc
+"}}}
 
 " projectionist setup {{{
 nnoremap <leader>aa :A<CR>
@@ -242,8 +244,8 @@ noremap <leader>z :call ToggleRolodexTab()<CR>
 " CoC setup {{{
 
 " Scroll floating window
-nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
-nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
+nnoremap <expr><C-f> coc#float#has_float() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <expr><C-b> coc#float#has_float() ? coc#float#scroll(0) : "\<C-b>"
 
 " Fix back flipping when scrolling
 "autocmd CursorHold * if ! coc#util#has_float() | call CocAction('doHover') | endif
