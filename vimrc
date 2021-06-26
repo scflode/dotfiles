@@ -22,7 +22,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'tpope/vim-sensible'             " Sane defaults
 
-Plug 'rakr/vim-one'
+Plug 'rakr/vim-one', {'commit': '3ef1d0e01b30efc9057250b47600182578bacc14'}
 
 Plug 'rainglow/vim'                   " Colorschemes
 Plug 'vim-airline/vim-airline'        " Status bar
@@ -93,6 +93,7 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>cc :set colorcolumn=<C-R>=&colorcolumn != 0 ? 0 : 80<CR><CR>
 nnoremap <leader><CR> :nohl<CR>
+nnoremap <leader>cl :%s/ *$//g <bar> :nohl<CR>
 
 inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
@@ -247,9 +248,6 @@ noremap <leader>z :call ToggleRolodexTab()<CR>
 nnoremap <expr><C-f> coc#float#has_float() ? coc#float#scroll(1) : "\<C-f>"
 nnoremap <expr><C-b> coc#float#has_float() ? coc#float#scroll(0) : "\<C-b>"
 
-" Fix back flipping when scrolling
-"autocmd CursorHold * if ! coc#util#has_float() | call CocAction('doHover') | endif
-
 set completeopt=longest,menuone,preview,noinsert
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -304,7 +302,7 @@ augroup mygroup
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-  autocmd! BufWritePre * Format
+  "autocmd! BufWritePre * Format
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
@@ -367,3 +365,8 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 let g:user_emmet_leader_key='<C-x>'
 " }}}
 
+" Custom filetypes {{{
+" Set the filetype based on the file's extension, overriding any
+" 'filetype' that has already been set
+au BufRead,BufNewFile *.sface set filetype=eelixir
+" }}}

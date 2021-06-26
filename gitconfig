@@ -34,7 +34,14 @@
 [push]
   default = simple
 [filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
   required = true
+	process = git-lfs filter-process
 
+[user]
+	signingkey = 636DA8D8D7B0EAA7
+	name = Flo Schuessel
+	email = mail@florian-schuessel.de
+[init]
+	defaultBranch = main

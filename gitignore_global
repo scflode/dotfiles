@@ -35,3 +35,11 @@ GTAGS
 
 # asdf
 .tool-versions
+
+# Java
+.classpath
+.project
+
+# Python
+
+.venv/

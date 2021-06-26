@@ -5,7 +5,7 @@ echo -e "Installing php"
 echo -e "\tSetting up asdf"
 asdf plugin-add php https://github.com/asdf-community/asdf-php.git >/dev/null 2>&1
 echo -e "\t\tInstalling prerequisites"
-brew install autoconf automake bison freetype gettext icu4c krb5 libedit libiconv libjpeg libpng libxml2 libzip pkg-config re2c zlib >/dev/null 2>&1
+brew install autoconf automake bison freetype gd gettext icu4c krb5 libedit libiconv libjpeg libpng libxml2 libzip pkg-config re2c zlib >/dev/null 2>&1
 export PKG_CONFIG_PATH=$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig
 export PATH=$(brew --prefix bison)/bin:${PATH}
 

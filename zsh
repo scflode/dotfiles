@@ -7,6 +7,10 @@ ZSH_THEME="spaceship"
 HIST_STAMPS="mm/dd/yyyy"
 plugins=(git docker docker-compose zsh-autosuggestions)
 
+#SPACESHIP_NODE_SYMBOL="Node "
+#SPACESHIP_ELIXIR_SYMBOL="Elixir "
+#SPACESHIP_DOCKER_SYMBOL="Docker "
+
 source ${ZSH}/oh-my-zsh.sh
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit

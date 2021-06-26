@@ -1,12 +1,18 @@
 {
-  "diagnostic.maxWindowHeight": 30,
   "suggest.autoTrigger": "none",
-  "css.customData": ["~/.dotfiles/css_custom_data.json"],
-  "javascript.suggestionActions.enabled": false,
-  "java.home": "~/.asdf/installs/java/adopt-openjdk-14.0.1+7",
-  "html.filetypes": ["html", "eelixir"],
-  "coc.preferences.formatOnSaveFiletypes": ["dart"],
+  "coc.preferences.formatOnSaveFiletypes": ["elixir", "dart", "css", "markdown", "json", "javascript", "typescript"],
+  "diagnostic.maxWindowHeight": 30,
+  "css.customData": ["/Users/fs/.dotfiles/css_custom_data.json"],
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
   "flutter.lsp.initialization.closingLabels": true,
   "flutter.sdk.flutter-lookup": "asdf which flutter",
-  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
+  "javascript.suggestionActions.enabled": false,
+  "prettier.eslintIntegration": true,
+  "html.filetypes": [
+    "html",
+    "eelixir",
+    "handlebars",
+    "htmldjango",
+    "blade"
+  ]
 }
