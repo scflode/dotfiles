@@ -41,7 +41,7 @@ EOF
 }
 
 function display_info {
-  os=${1}  
+  os=${1}
   case "${os}" in
     macos) display_info_macos; break;;
     *) echo "Nothing as of now"; break;;
@@ -74,7 +74,8 @@ function setup_macos {
   ${dot_dir}"/installer/go"
   ${dot_dir}"/installer/flutter"
   ${dot_dir}"/installer/tmux"
-  ${dot_dir}"/installer/vim"
+#  ${dot_dir}"/installer/vim"
+  ${dot_dir}"/installer/neovim"
 }
 
 os=$(detect_os)
@@ -85,7 +86,7 @@ case ${os} in
   *) break;;
 esac
 
-cat << EOF 
+cat << EOF
 
 We detected ${os} is running on this machine
 
@@ -120,7 +121,7 @@ cat << EOF
 ******************************************************************************
 *                                                                            *
 * Setup done. Your system should be prepared from the installation side.     *
-*                                                                            * 
+*                                                                            *
 * It's recommended to restart the computer for all changes to take effect.   *
 *                                                                            *
 ******************************************************************************

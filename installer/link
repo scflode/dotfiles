@@ -7,8 +7,9 @@ echo -e "Linking dotfiles"
 echo -e "\tLinking Vim config"
 mkdir -p ~/.vim
 mkdir -p ~/.config/nvim
-ln -nfs ${dot_dir}/vimrc ~/.vimrc
-ln -nfs ${dot_dir}/vimrc ~/.config/nvim/init.vim
+#ln -nfs ${dot_dir}/vimrc ~/.vimrc
+#ln -nfs ${dot_dir}/vimrc ~/.config/nvim/init.vim
+rcup config/nvim
 ln -nfs ${dot_dir}/coc-settings.json ~/.config/nvim/coc-settings.json
 ln -nfs ${dot_dir}/themes/alacritty ~/.config/alacritty
 
