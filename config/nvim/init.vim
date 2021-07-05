@@ -23,6 +23,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'             " Sane defaults
 
 Plug 'rakr/vim-one', {'commit': '3ef1d0e01b30efc9057250b47600182578bacc14'}
+Plug 'pgdouyon/vim-yin-yang'
 
 Plug 'rainglow/vim'                   " Colorschemes
 Plug 'vim-airline/vim-airline'        " Status bar
@@ -103,15 +104,18 @@ inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 
-colorscheme one
+set t_8b=[48;2;%lu;%lu;%lum
+set t_8f=[38;2;%lu;%lu;%lum
+
 set background=dark
 "set background=light
 let g:one_allow_italics = 1
+colorscheme yin
 
 " Custom colors for one colorscheme
-call one#highlight('Normal', '', 'none', 'none')
-call one#highlight('nonText', '', 'none', 'none')
-call one#highlight('Comment', '', 'none', 'italic')
+"call one#highlight('Normal', '', 'none', 'none')
+"call one#highlight('nonText', '', 'none', 'none')
+"call one#highlight('Comment', '', 'none', 'italic')
 " }}}
 
 " Airline setup {{{
@@ -133,6 +137,7 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :GFiles?<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>h :History<CR>
+nnoremap <leader>s :Rg<CR>
 let g:fzf_action = {
       \ 'ctrl-d': 'wall | bdelete',
       \ 'ctrl-t': 'tab split',

@@ -27,6 +27,7 @@ Quickly iterated the architecture consists of:
 - system setup scripts
 - the dotfiles
 - update functionality for all dependencies
+- setups are bundled by tools or language to switch and swap easily
 
 The basic architecture is pretty OS agnostic. Currently the macOS is
 the main system that is supported but a Linux version will come as well.
@@ -60,7 +61,7 @@ asdf is used to install:
 
 The setup contains configuration for
 
-- Vim
+- neovim
 - tmux
 - zsh
 

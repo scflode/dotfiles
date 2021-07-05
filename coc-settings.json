@@ -1,6 +1,14 @@
 {
   "suggest.autoTrigger": "none",
-  "coc.preferences.formatOnSaveFiletypes": ["elixir", "dart", "css", "markdown", "json", "javascript", "typescript"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "elixir",
+    "dart",
+    "css",
+    "markdown",
+    "json",
+    "javascript",
+    "typescript"
+  ],
   "diagnostic.maxWindowHeight": 30,
   "css.customData": ["/Users/fs/.dotfiles/css_custom_data.json"],
   "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
@@ -8,11 +16,5 @@
   "flutter.sdk.flutter-lookup": "asdf which flutter",
   "javascript.suggestionActions.enabled": false,
   "prettier.eslintIntegration": true,
-  "html.filetypes": [
-    "html",
-    "eelixir",
-    "handlebars",
-    "htmldjango",
-    "blade"
-  ]
+  "html.filetypes": ["html", "eelixir", "handlebars", "htmldjango", "blade"]
 }
