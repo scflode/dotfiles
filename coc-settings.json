@@ -1,16 +1,30 @@
 {
   "suggest.autoTrigger": "none",
-  "coc.preferences.formatOnSaveFiletypes": ["elixir", "dart", "css", "markdown", "json", "javascript", "typescript"],
-  "diagnostic.maxWindowHeight": 30,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "elixir",
+    "eelixir",
+    "heex",
+    "surface",
+    "dart",
+    "css",
+    "markdown",
+    "json",
+    "javascript",
+    "typescript"
+  ],
   "css.customData": ["/Users/fs/.dotfiles/css_custom_data.json"],
   "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
   "flutter.lsp.initialization.closingLabels": true,
   "flutter.sdk.flutter-lookup": "asdf which flutter",
   "javascript.suggestionActions.enabled": false,
   "prettier.eslintIntegration": true,
+  "tailwindCSS.trace.server": "verbose",
   "html.filetypes": [
     "html",
+    "elixir",
     "eelixir",
+    "heex",
+    "surface",
     "handlebars",
     "htmldjango",
     "blade"

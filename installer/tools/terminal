@@ -1,3 +1,4 @@
 screen
 tmux
 reattach-to-user-namespace
+alacritty

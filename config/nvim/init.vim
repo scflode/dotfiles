@@ -23,6 +23,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'             " Sane defaults
 
 Plug 'rakr/vim-one', {'commit': '3ef1d0e01b30efc9057250b47600182578bacc14'}
+Plug 'pgdouyon/vim-yin-yang'
 
 Plug 'rainglow/vim'                   " Colorschemes
 Plug 'vim-airline/vim-airline'        " Status bar
@@ -46,13 +47,7 @@ Plug 'junegunn/goyo.vim'              " Distraction free writing
 Plug 'tpope/vim-projectionist'        " Relate patterns of files together
 
 Plug 'tpope/vim-surround'
-Plug 'terryma/vim-expand-region'
-
-Plug 'sheerun/vim-polyglot'           " Language packs
-Plug 'Shougo/neosnippet.vim'          " Snippet manager
-Plug 'Shougo/neosnippet-snippets'     " Common snippets
-Plug 'Raimondi/delimitMate'           " Autocomplete parent, brackets etc.
-Plug 'Chiel92/vim-autoformat'         " Autoformatter
+"Plug 'terryma/vim-expand-region'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -63,6 +58,8 @@ Plug 'othree/html5.vim'               " HTML 5 support
 Plug 'mattn/emmet-vim'                " Emmet support
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " CoC
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter
 
 call plug#end()
 
@@ -91,9 +88,9 @@ set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <leader>cc :set colorcolumn=<C-R>=&colorcolumn != 0 ? 0 : 80<CR><CR>
-nnoremap <leader><CR> :nohl<CR>
-nnoremap <leader>cl :%s/ *$//g <bar> :nohl<CR>
+nnoremap <silent> <leader>cc :set colorcolumn=<C-R>=&colorcolumn != 0 ? 0 : 80<CR><CR>
+nnoremap <silent> <leader><CR> :nohl<CR>
+nnoremap <silent> <leader>cl :%s/ *$//g <bar> :nohl<CR>
 
 inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
@@ -103,15 +100,18 @@ inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 
-colorscheme one
+set t_8b=[48;2;%lu;%lu;%lum
+set t_8f=[38;2;%lu;%lu;%lum
+
 set background=dark
 "set background=light
 let g:one_allow_italics = 1
+colorscheme yin
 
 " Custom colors for one colorscheme
-call one#highlight('Normal', '', 'none', 'none')
-call one#highlight('nonText', '', 'none', 'none')
-call one#highlight('Comment', '', 'none', 'italic')
+"call one#highlight('Normal', '', 'none', 'none')
+"call one#highlight('nonText', '', 'none', 'none')
+"call one#highlight('Comment', '', 'none', 'italic')
 " }}}
 
 " Airline setup {{{
@@ -133,6 +133,7 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :GFiles?<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>h :History<CR>
+nnoremap <leader>s :Rg<CR>
 let g:fzf_action = {
       \ 'ctrl-d': 'wall | bdelete',
       \ 'ctrl-t': 'tab split',
@@ -243,6 +244,20 @@ noremap <leader>z :call ToggleRolodexTab()<CR>
 " }}}
 
 " CoC setup {{{
+
+let g:coc_global_extensions = [
+\ 'coc-ultisnips',
+\ 'coc-json',
+\ 'coc-tsserver',
+\ 'coc-html',
+\ 'coc-css',
+\ 'coc-yaml',
+\ 'coc-elixir',
+\ 'coc-prettier',
+\ 'coc-flutter',
+\ 'coc-phpls',
+\ 'coc-pyright',
+\ ]
 
 " Scroll floating window
 nnoremap <expr><C-f> coc#float#has_float() ? coc#float#scroll(1) : "\<C-f>"
@@ -362,11 +377,33 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " }}}
 
 " Emmet settings {{{
-let g:user_emmet_leader_key='<C-x>'
+let g:user_emmet_leader_key='<Leader>x'
 " }}}
 
 " Custom filetypes {{{
 " Set the filetype based on the file's extension, overriding any
 " 'filetype' that has already been set
 au BufRead,BufNewFile *.sface set filetype=eelixir
+" }}}
+
+" Treesitter {{{
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    additional_vim_regex_highlighting = true, -- Fix indentation for PHP
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "+",
+      scope_incremental = "grc",
+      node_decremental = "-",
+    },
+  },
+}
+EOF
 " }}}

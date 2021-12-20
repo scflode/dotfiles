@@ -1,8 +1,9 @@
 git
 vim
-neovim
 ffmpeg
 imagemagick
 dmg2img
 ctop
 android-studio
+mitmproxy
+
