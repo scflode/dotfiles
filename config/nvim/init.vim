@@ -22,10 +22,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'tpope/vim-sensible'             " Sane defaults
 
-Plug 'rakr/vim-one', {'commit': '3ef1d0e01b30efc9057250b47600182578bacc14'}
 Plug 'pgdouyon/vim-yin-yang'
-
-Plug 'rainglow/vim'                   " Colorschemes
 Plug 'vim-airline/vim-airline'        " Status bar
 Plug 'vim-airline/vim-airline-themes' " Themes for airline
 
@@ -43,6 +40,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'               " Fuzzy search
 
 Plug 'junegunn/goyo.vim'              " Distraction free writing
+Plug 'jeetsukumaran/vim-indentwise'
 
 Plug 'tpope/vim-projectionist'        " Relate patterns of files together
 
@@ -58,6 +56,7 @@ Plug 'othree/html5.vim'               " HTML 5 support
 Plug 'mattn/emmet-vim'                " Emmet support
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " CoC
+Plug 'yaegassy/coc-tailwindcss',  {'do': 'npm install && npm run build', 'branch': 'feat/support-v3-and-use-server-pkg'}
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter
 
@@ -105,7 +104,7 @@ set t_8f=[38;2;%lu;%lu;%lum
 
 set background=dark
 "set background=light
-let g:one_allow_italics = 1
+"let g:one_allow_italics = 1
 colorscheme yin
 
 " Custom colors for one colorscheme
@@ -115,7 +114,7 @@ colorscheme yin
 " }}}
 
 " Airline setup {{{
-let g:airline_theme = 'one'
+let g:airline_theme = 'minimalist'
 " }}}
 
 " NERDTree setup {{{
@@ -258,6 +257,11 @@ let g:coc_global_extensions = [
 \ 'coc-phpls',
 \ 'coc-pyright',
 \ ]
+
+let g:coc_filetype_map = {
+  \ 'twig': 'html',
+  \ }
+autocmd BufEnter *.html.twig :set ft=html
 
 " Scroll floating window
 nnoremap <expr><C-f> coc#float#has_float() ? coc#float#scroll(1) : "\<C-f>"

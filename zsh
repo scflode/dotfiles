@@ -23,3 +23,4 @@ zstyle ':completion:*:hosts' hosts $hosts
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
+source <(kubectl completion zsh)

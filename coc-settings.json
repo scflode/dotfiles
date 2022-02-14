@@ -18,7 +18,6 @@
   "flutter.sdk.flutter-lookup": "asdf which flutter",
   "javascript.suggestionActions.enabled": false,
   "prettier.eslintIntegration": true,
-  "tailwindCSS.trace.server": "verbose",
   "html.filetypes": [
     "html",
     "elixir",
@@ -28,5 +27,14 @@
     "handlebars",
     "htmldjango",
     "blade"
-  ]
+  ],
+  "tailwindCSS.trace.server": "verbose",
+  "tailwindCSS.includeLanguages": {
+    "eelixir": "html",
+    "elixir": "html",
+    "eruby": "html",
+    "htmldjango": "html",
+    "html.twig": "html",
+    "heex": "html"
+  }
 }
