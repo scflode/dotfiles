@@ -23,6 +23,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'             " Sane defaults
 
 Plug 'pgdouyon/vim-yin-yang'
+Plug 'mcchrish/zenbones.nvim'
+Plug 'rktjmp/lush.nvim'
 Plug 'vim-airline/vim-airline'        " Status bar
 Plug 'vim-airline/vim-airline-themes' " Themes for airline
 
@@ -45,6 +47,7 @@ Plug 'jeetsukumaran/vim-indentwise'
 Plug 'tpope/vim-projectionist'        " Relate patterns of files together
 
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 "Plug 'terryma/vim-expand-region'
 
 Plug 'godlygeek/tabular'
@@ -99,19 +102,21 @@ inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 
-set t_8b=[48;2;%lu;%lu;%lum
-set t_8f=[38;2;%lu;%lu;%lum
+"set t_8b=[48;2;%lu;%lu;%lum
+"set t_8f=[38;2;%lu;%lu;%lum
 
 set background=dark
 "set background=light
 "let g:one_allow_italics = 1
-colorscheme yin
+colorscheme zenbones
 
 " Custom colors for one colorscheme
 "call one#highlight('Normal', '', 'none', 'none')
 "call one#highlight('nonText', '', 'none', 'none')
 "call one#highlight('Comment', '', 'none', 'italic')
 " }}}
+"
+highlight Comment cterm=italic
 
 " Airline setup {{{
 let g:airline_theme = 'minimalist'

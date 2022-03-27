@@ -11,10 +11,10 @@ cmp.setup({
         end,
     },
     formatting = {
-        format = lspkind.cmp_format(),
+        formatformat = lspkind.cmp_format(),
     },
     completion = {
-        -- autocomplete = true,
+        autocomplete = true,
         keyword_length = 2,
     },
     mapping = {
@@ -33,7 +33,6 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "luasnip" },
-    }, {
         { name = "buffer" },
     }),
     experimental = {

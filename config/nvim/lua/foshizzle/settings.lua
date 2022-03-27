@@ -32,8 +32,8 @@ opt.smartindent = true
 
 -- Theme
 opt.background = "dark"
-vim.cmd[[colorscheme tokyonight]]
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_colors = {
-  bg_sidebar = '#1f1b26',
-}
+--vim.cmd[[colorscheme tokyonight]]
+--vim.g.tokyonight_style = "night"
+--vim.g.tokyonight_colors = {
+--  bg_sidebar = '#1f1b26',
+--}
