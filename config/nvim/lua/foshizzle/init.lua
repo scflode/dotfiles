@@ -7,7 +7,6 @@ require("foshizzle.telescope")
 require("foshizzle.lsp")
 require("foshizzle.cmp")
 require("foshizzle.treesitter")
-require("foshizzle.null-ls")
 require("foshizzle.autopairs")
 
 -- Common initializing

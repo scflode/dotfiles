@@ -1,8 +1,37 @@
 local cmp = require("cmp")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-local lspkind = require("lspkind")
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
+--   פּ ﯟ   some other good icons
+local kind_icons = {
+    Text = "",
+    Method = "m",
+    Function = "",
+    Constructor = "",
+    Field = "",
+    Variable = "",
+    Class = "",
+    Interface = "",
+    Module = "",
+    Property = "",
+    Unit = "",
+    Value = "",
+    Enum = "",
+    Keyword = "",
+    Snippet = "",
+    Color = "",
+    File = "",
+    Reference = "",
+    Folder = "",
+    EnumMember = "",
+    Constant = "",
+    Struct = "",
+    Event = "",
+    Operator = "",
+    TypeParameter = "",
+}
+-- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup({
     snippet = {
@@ -11,11 +40,22 @@ cmp.setup({
         end,
     },
     formatting = {
-        formatformat = lspkind.cmp_format(),
+        fields = { "kind", "abbr", "menu" },
+        format = function(entry, vim_item)
+            -- Kind icons
+            vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+            -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+            vim_item.menu = ({
+                nvim_lsp = "[LSP]",
+                luasnip = "[Snippet]",
+                buffer = "[Buffer]",
+                path = "[Path]",
+            })[entry.source.name]
+            return vim_item
+        end,
     },
     completion = {
-        autocomplete = true,
-        keyword_length = 2,
+        keyword_length = 3,
     },
     mapping = {
         ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
@@ -30,13 +70,15 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
     },
-    sources = cmp.config.sources({
+
+    sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "buffer" },
-    }),
+        { name = "path" },
+    },
     experimental = {
-        ghost_text = true,
+        ghost_text = false,
     },
 })
 
@@ -47,11 +89,11 @@ cmp.setup.cmdline("/", {
 })
 
 cmp.setup.cmdline(":", {
-    sources = cmp.config.sources({
+    sources = {
         { name = "path" },
     }, {
         { name = "cmdline" },
-    }),
+    },
 })
 
 -- nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
