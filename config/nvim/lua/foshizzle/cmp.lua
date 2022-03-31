@@ -1,7 +1,21 @@
-local cmp = require("cmp")
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
+local cmp_status_ok, cmp = pcall(require, "cmp")
+if not cmp_status_ok then
+  return
+end
 
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+local snip_status_ok, luasnip = pcall(require, "luasnip")
+if not snip_status_ok then
+  return
+end
+
+require("luasnip/loaders/from_vscode").lazy_load()
+
+local check_backspace = function()
+  local col = vim.fn.col "." - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+end
+
+vim.opt.completeopt = { "menuone", "noselect" }
 
 --   פּ ﯟ   some other good icons
 local kind_icons = {
@@ -36,7 +50,7 @@ local kind_icons = {
 cmp.setup({
     snippet = {
         expand = function(args)
-            require("luasnip").lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
         end,
     },
     formatting = {
@@ -66,9 +80,37 @@ cmp.setup({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         }),
-        ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+      -- Accept currently selected item. If none selected, `select` first item.
+      -- Set `select` to `false` to only confirm explicitly selected items.
+      ["<CR>"] = cmp.mapping.confirm { select = true },
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif luasnip.expandable() then
+          luasnip.expand()
+        elseif luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        elseif check_backspace() then
+          fallback()
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+      }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+      }),
     },
 
     sources = {
@@ -82,20 +124,3 @@ cmp.setup({
     },
 })
 
-cmp.setup.cmdline("/", {
-    sources = {
-        { name = "buffer" },
-    },
-})
-
-cmp.setup.cmdline(":", {
-    sources = {
-        { name = "path" },
-    }, {
-        { name = "cmdline" },
-    },
-})
-
--- nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
