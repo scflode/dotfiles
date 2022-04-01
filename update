@@ -2,6 +2,9 @@
 
 dot_dir="${HOME}/.dotfiles"
 
+echo -e "Updating macOS"
+sudo softwareupdate -i -a
+
 echo -e "Updating brew"
 brew update >/dev/null 2>&1
 
@@ -12,8 +15,9 @@ echo -e "\tUpgrading brew cask installs"
 brew upgrade --cask
 
 echo -e "Updating neovim"
-nvim +PlugUpdate +qall
-nvim +CocUpdateSync +qall
+# nvim +PlugUpdate +qall
+# nvim +CocUpdateSync +qall
+nvim +PackerUpdate +qall
 
 echo -e "Updating asdf"
 asdf plugin-update --all
