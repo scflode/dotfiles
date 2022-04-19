@@ -91,6 +91,8 @@ return require("packer").startup(function(use)
 
   -- programming language support
   use("gpanders/editorconfig.nvim")
+  use("tpope/vim-fugitive")
+
   -- Markdown
   use({ "preservim/vim-markdown", requires = { "godlygeek/tabular" } })
 
