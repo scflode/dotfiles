@@ -7,16 +7,17 @@ echo -e "Linking dotfiles"
 echo -e "\tLinking Vim config"
 mkdir -p ~/.vim
 mkdir -p ~/.config/nvim
-#ln -nfs ${dot_dir}/vimrc ~/.vimrc
-#ln -nfs ${dot_dir}/vimrc ~/.config/nvim/init.vim
 rcup config/nvim
-ln -nfs ${dot_dir}/coc-settings.json ~/.config/nvim/coc-settings.json
-ln -nfs ${dot_dir}/themes/alacritty ~/.config/alacritty
+
+echo -e "\tLinking Kitty config"
+rcup -v config/kitty/kitty.conf
 
 echo -e "\tLinking tmux config"
-ln -nfs ${dot_dir}/tmux.conf ~/.tmux.conf
+rcup tmux.conf
 
 echo -e "\tLinking Git config"
-ln -nfs ${dot_dir}/gitconfig ~/.gitconfig
-ln -nfs ${dot_dir}/gitignore_global ~/.gitignore_global
+rcup gitconfig
+rcup gitignore_global
 
+echo -e "\tLinking asdf config"
+rcup asdf
