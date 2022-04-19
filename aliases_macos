@@ -34,4 +34,4 @@ alias spoton="sudo mdutil -a -i on"
 alias plistbuddy="/usr/libexec/PlistBuddy"
 
 # Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias afk="osascript -e 'tell app \"System Events\" to key code 12 using {control down, command down}'"
