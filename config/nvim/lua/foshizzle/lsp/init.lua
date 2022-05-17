@@ -3,6 +3,6 @@ if not status_ok then
   return
 end
 
-require "foshizzle.lsp.lsp-installer"
+require("foshizzle.lsp.config")
 require("foshizzle.lsp.handlers").setup()
-require "foshizzle.lsp.null-ls"
+require("foshizzle.lsp.null-ls")

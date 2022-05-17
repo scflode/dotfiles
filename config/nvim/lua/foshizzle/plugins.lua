@@ -65,7 +65,7 @@ return require("packer").startup(function(use)
   use("williamboman/nvim-lsp-installer")
   use("neovim/nvim-lspconfig")
   use("ray-x/lsp_signature.nvim")
-  use "tamago324/nlsp-settings.nvim"
+  use("tamago324/nlsp-settings.nvim")
   use({
     "jose-elias-alvarez/null-ls.nvim",
     requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -92,6 +92,7 @@ return require("packer").startup(function(use)
   -- programming language support
   use("gpanders/editorconfig.nvim")
   use("tpope/vim-fugitive")
+  use("tpope/vim-projectionist")
 
   -- Markdown
   use({ "preservim/vim-markdown", requires = { "godlygeek/tabular" } })

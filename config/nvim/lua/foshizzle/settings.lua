@@ -37,3 +37,7 @@ opt.background = "dark"
 --vim.g.tokyonight_colors = {
 --  bg_sidebar = '#1f1b26',
 --}
+
+-- Status bar
+opt.laststatus = 3
+

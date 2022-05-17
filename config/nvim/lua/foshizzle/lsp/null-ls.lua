@@ -12,7 +12,9 @@ null_ls.setup({
   debug = false,
   sources = {
     formatting.stylua,
-    formatting.eslint,
+    formatting.eslint.with({
+      prefer_local = "node_modules/.bin",
+    }),
     diagnostics.eslint.with({
       prefer_local = "node_modules/.bin",
     }),
