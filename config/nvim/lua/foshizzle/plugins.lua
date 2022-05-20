@@ -82,7 +82,7 @@ return packer.startup(function(use)
       })
     end,
   })
-  use({ "kevinhwang91/nvim-bqf" })
+  use({ "kevinhwang91/nvim-bqf", filetype = { "qf" } })
 
   -- LSP
   use("williamboman/nvim-lsp-installer")
