@@ -17,7 +17,7 @@ opt.updatetime = 250 -- update interval for gitsigns
 -- File handling
 opt.swapfile = false
 opt.backup = false
-opt.undodir = "~/.config/nvim/undodir"
+opt.undodir = os.getenv( "HOME" ) .. '/.config/nvim/undodir'
 opt.undofile = true
 
 -- Line numbers
