@@ -1,9 +1,12 @@
-git
-vim
-ffmpeg
-imagemagick
-dmg2img
-ctop
-android-studio
-mitmproxy
+cask "1password-cli"
+brew "git"
+brew "vim"
+brew "ffmpeg"
+brew "imagemagick"
+brew "dmg2img"
+brew "ctop"
+brew "mitmproxy"
 
+tap "mutagen-io/mutagen"
+brew "mutagen-io/mutagen/mutagen"
+brew "mutagen-io/mutagen/mutagen-compose"

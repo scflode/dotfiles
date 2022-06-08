@@ -1,4 +1,5 @@
-sonos
-kindle
-calibre
-fliqlo
+cask "calibre"
+cask "fliqlo"
+cask "kindle"
+tap "homebrew/cask-drivers"
+cask "sonos"

@@ -1,7 +1,7 @@
-automake
-autoconf
-libyaml
-readline
-libxslt
-libtool
-unixodbc
+brew "automake"
+brew "autoconf"
+brew "libyaml"
+brew "readline"
+brew "libxslt"
+brew "libtool"
+brew "unixodbc"

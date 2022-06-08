@@ -1,6 +1,6 @@
-coreutils
-moreutils
-findutils
-gnu-sed
-gzip
-rcm
+brew "coreutils"
+brew "moreutils"
+brew "findutils"
+brew "gnu-sed"
+brew "gzip"
+brew "rcm"

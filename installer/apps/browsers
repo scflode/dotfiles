@@ -1,3 +1,4 @@
-firefox
-google-chrome
-microsoft-edge
+cask "firefox"
+cask "firefox-developer-edition"
+cask "google-chrome"
+cask "microsoft-edge"

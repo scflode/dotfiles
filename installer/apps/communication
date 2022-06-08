@@ -1,5 +1,7 @@
-mattermost
-slack
-microsoft-teams
-skype
-jitsi-meet
+cask "discord"
+cask "jitsi-meet"
+cask "mattermost"
+cask "microsoft-teams"
+cask "signal"
+cask "slack"
+cask "whatsapp"

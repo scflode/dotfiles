@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-cat << EOF
-
-******************************************************************************
-* Note: You need to have the Command Line Tools for Xcode in v11.3.1         *
-* installed, v11.4.0 does fail to build Erlang.                              *
-* See https://github.com/kerl/kerl/issues/335                                *
-******************************************************************************
-
-EOF
-
 echo -e "Installing Elixir"
 
 echo -e "\tSetting up asdf"

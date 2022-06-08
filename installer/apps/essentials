@@ -1,10 +1,12 @@
-1password
-enpass
-nextcloud
-bartender
-istat-menus
-gpg-suite
-appdelete
-tunnelblick
-daisydisk
-hyperdock
+cask "1password"
+cask "appdelete"
+cask "bartender"
+cask "daisydisk"
+cask "enpass"
+cask "gpg-suite"
+cask "hyperdock"
+cask "istat-menus"
+cask "lulu"
+cask "nextcloud"
+cask "raycast"
+cask "tunnelblick"

@@ -1,2 +1,4 @@
 aliases_personal
 exports_personal
+*.lock.json
+

@@ -1,2 +1,5 @@
-font-inter
-font-jetbrains-mono
+tap "homebrew/cask-fonts"
+cask "font-inter"
+cask "font-jetbrains-mono"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-pacifico"

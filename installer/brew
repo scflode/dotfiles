@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+set -eu
+shopt -s nullglob
+
+self=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
+function check_or_install_brew {
+  echo -e "Checking Xcode CLI tools"
+  xcode-select --install >/dev/null 2>&1 || echo "Xcode CLI tools are installed"
+
+  # Install brew
+  echo -e "Checking Homebrew installation"
+  command -v brew >/dev/null 2>&1 && echo -e "Homebrew is installed" || {
+    echo -e >&2 "Installing Homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  }
+
+  echo -e "Updating Homebrew installation"
+  brew update
+}
+
+function install {
+  source "${self}/helpers/sudo"
+  local type=${1}
+  echo -e "Installing or updating ${type} via Homebrew..."
+  find "${self}/${type}" -type f -not -name '*.lock.json' -print0 | while read -d $'\0' path; do
+    local sub_type=$(basename ${path})
+    echo -e "Installing or updating ${sub_type} tools..."
+    brew bundle install --file ${path}
+  done
+}
+
+check_or_install_brew
+install tools
+install apps
+
+cat << EOF 
+
+******************************************************************************
+* Note that you need to setup and add licenses to the installed apps.        *
+******************************************************************************
+
+EOF
+
