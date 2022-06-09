@@ -62,6 +62,7 @@ function setup_macos {
   "${installer}/safari"
   "${installer}/apple_mail"
   "${installer}/apple_terminal"
+  sudo xcodebuild -license
   "${installer}/brew"
   "${installer}/link"
   "${installer}/nodejs"
