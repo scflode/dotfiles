@@ -25,7 +25,7 @@ function install {
   source "${self}/helpers/sudo"
   local type=${1}
   echo -e "Installing or updating ${type} via Homebrew..."
-  find "${self}/${type}" -type f -not -name '*.lock.json' -print0 | while read -d $'\0' path; do
+  find "${self}/${type}" -type f -not -name '*.lock.json' -print0 | sort -z | while read -d $'\0' path; do
     local sub_type=$(basename ${path})
     echo -e "Installing or updating ${sub_type} ${type}..."
     brew bundle install --file ${path}
