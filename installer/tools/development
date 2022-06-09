@@ -1,3 +1,4 @@
+brew "asdf"
 cask "1password-cli"
 brew "git"
 brew "vim"
