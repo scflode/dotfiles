@@ -19,5 +19,5 @@ echo -e "\tLinking Git config"
 rcup gitconfig
 rcup gitignore_global
 
-echo -e "\tLinking asdf config"
-rcup asdf
+echo -e "\tCreating asdf config"
+mkdir -p ~/.asdf
