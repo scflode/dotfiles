@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+set -eu
+set -o pipefail
+
 # Set the containing directory for later use
 dot_dir="${HOME}/.dotfiles"
 
@@ -56,13 +59,13 @@ function prompt_for_computer_name {
 }
 
 function setup_macos {
+  sudo xcodebuild -license accept
   local installer="${dot_dir}/installer"
   "${installer}/common" ${computer_name}
   "${installer}/macos" ${computer_name}
   "${installer}/safari"
   "${installer}/apple_mail"
   "${installer}/apple_terminal"
-  sudo xcodebuild -license
   "${installer}/brew"
   "${installer}/link"
   "${installer}/nodejs"
