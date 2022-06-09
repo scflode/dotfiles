@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-echo -e "Installing Elixir"
+echo -e "Installing Java"
 
 echo -e "\tSetting up asdf"
-asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git >/dev/null 2>&1
-asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git >/dev/null 2>&1
+asdf plugin-add java https://github.com/halcyon/asdf-java.git >/dev/null 2>&1
 
 # Set the containing directory for later use
 versions_dir="${HOME}/.dotfiles/installer/versions"
@@ -43,8 +42,7 @@ function set_global {
 
 
 echo -e "\tInstalling versions"
-brew install autoconf wxmac openssl fop coreutils automake libyaml readline libxslt libtool unixodbc unzip curl >/dev/null 2>&1
-export CFLAGS="-O2 -g -fno-stack-check"
-export KERL_CONFIGURE_OPTIONS="--disable-hipe --with-ssl=$(brew --prefix openssl)"
-install_versions "erlang"
-install_versions "elixir"
+install_versions "java"
+source ~/.asdf/plugins/java/set-java-home.bash
+grep -q "source ~/.asdf/plugins/java/set-java-home.bash" ~/.zshrc || echo "source ~/.asdf/plugins/java/set-java-home.bash" >> ~/.zshrc
+

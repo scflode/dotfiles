@@ -68,6 +68,7 @@ function setup_macos {
   "${installer}/brew"
   "${installer}/link"
   "${installer}/nodejs"
+  "${installer}/java"
   "${installer}/elixir"
   "${installer}/python"
   "${installer}/ruby"
