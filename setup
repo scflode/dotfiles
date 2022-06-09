@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-set -e
 set -o pipefail
 
 # Set the containing directory for later use
