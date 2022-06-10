@@ -11,6 +11,13 @@ brew install autoconf automake bison freetype gd gettext icu4c krb5 libedit libi
 versions_dir="${HOME}/.dotfiles/installer/versions/php"
 
 # See https://github.com/asdf-community/asdf-php/blob/master/bin/install
+exit_if_homebrew_not_installed() {
+  if [ "$(brew --version 2>/dev/null)" = "" ]; then
+    echo "ERROR: Please install homebrew for macOS"
+    exit 1
+  fi
+}
+
 homebrew_package_path() {
   local package_name=$1
 
