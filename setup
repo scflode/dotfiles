@@ -66,6 +66,7 @@ function setup_macos {
   "${installer}/apple_mail"
   "${installer}/apple_terminal"
   "${installer}/brew"
+  "${installer}/zsh"
   "${installer}/link"
   "${installer}/postgres"
   "${installer}/nodejs"

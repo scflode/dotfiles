@@ -10,7 +10,7 @@ mkdir -p ~/.config/nvim
 rcup config/nvim
 
 echo -e "\tLinking Kitty config"
-rcup -v config/kitty/kitty.conf
+rcup config/kitty/kitty.conf
 
 echo -e "\tLinking tmux config"
 rcup tmux.conf
