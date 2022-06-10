@@ -7,7 +7,8 @@ echo -e "Linking dotfiles"
 echo -e "\tLinking Vim config"
 mkdir -p ~/.vim
 mkdir -p ~/.config/nvim
-rcup config/nvim
+rcup config/nvim/init.lua
+rcup config/nvim/lua
 
 echo -e "\tLinking Kitty config"
 rcup config/kitty/kitty.conf

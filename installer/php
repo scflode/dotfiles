@@ -9,7 +9,8 @@ brew install autoconf automake bison freetype gd gettext icu4c krb5 libedit libi
 export PKG_CONFIG_PATH=$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig
 export PATH=$(brew --prefix bison)/bin:${PATH}
 export PHP_WITHOUT_PDO_PGSQL=yes 
-export PGSQL_INCLUDE="${HOME}/.asdf/shims/pg_config" PHP_CONFIGURE_OPTIONS="--with-pdo-pgsql=${HOME}/.asdf/shims/pg_config --with-pgsql=${HOME}/.asdf/shims/pg_config"
+export PGSQL_INCLUDE="${HOME}/.asdf/shims/pg_config" 
+export PHP_CONFIGURE_OPTIONS="--with-pdo-pgsql=${HOME}/.asdf/shims/pg_config --with-pgsql=${HOME}/.asdf/shims/pg_config"
 
 # Set the containing directory for later use
 versions_dir="${HOME}/.dotfiles/installer/versions/php"

@@ -42,4 +42,5 @@ function set_global {
 
 echo -e "\tInstalling versions"
 install_versions 
-
+echo -e "\tInstalling plugins"
+nvim +PackerSync +qall -c "q"
