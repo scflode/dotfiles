@@ -51,7 +51,6 @@ _aliases_macos="${dot_dir}/aliases_macos"
 _aliases_personal="${dot_dir}/aliases_personal"
 _fzf="${dot_dir}/fzf"
 _zsh="${dot_dir}/zsh"
-_asdf="${dot_dir}/asdf"
 
 for file in \
   ${_functions} \
@@ -60,8 +59,7 @@ for file in \
   ${_aliases_macos} \
   ${_aliases_personal} \
   ${_fzf} \
-  ${_zsh} \
-  ${_asdf}; do
+  ${_zsh} ; do
   if [ -f "${file}" ]; then
     source ${file}
   fi

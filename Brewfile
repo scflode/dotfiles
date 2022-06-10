@@ -43,10 +43,6 @@ brew "wget"
 brew "httpie"
 brew "jq"
 
-tap "mutagen-io/mutagen"
-brew "mutagen-io/mutagen/mutagen"
-brew "mutagen-io/mutagen/mutagen-compose"
-
 # documentation tools
 brew "markdown"
 brew "graphviz"
@@ -95,8 +91,17 @@ cask "slack"
 cask "whatsapp"
 
 # Development
-cask "android-studio"
 cask "docker"
+
+tap "mutagen-io/mutagen"
+brew "mutagen-io/mutagen/mutagen"
+brew "mutagen-io/mutagen/mutagen-compose"
+
+brew "kubectl"
+brew "kustomize"
+brew "kubeseal"
+
+cask "android-studio"
 cask "drawio"
 cask "figma"
 cask "gas-mask"
