@@ -68,7 +68,6 @@ function setup_macos {
   "${installer}/brew"
   "${installer}/zsh"
   "${installer}/link"
-  "${installer}/postgres"
   "${installer}/nodejs"
   "${installer}/java"
   "${installer}/elixir"
