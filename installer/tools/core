@@ -1,6 +1,0 @@
-brew "coreutils"
-brew "moreutils"
-brew "findutils"
-brew "gnu-sed"
-brew "gzip"
-brew "rcm"
