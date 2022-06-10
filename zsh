@@ -5,7 +5,7 @@ export ZSH=${HOME}/.oh-my-zsh
 COMPLETION_WAITING_DOTS="true"
 ZSH_THEME="spaceship"
 HIST_STAMPS="mm/dd/yyyy"
-plugins=(git docker docker-compose zsh-autosuggestions)
+plugins=(asdf git docker docker-compose zsh-autosuggestions)
 
 #SPACESHIP_NODE_SYMBOL="Node "
 #SPACESHIP_ELIXIR_SYMBOL="Elixir "
