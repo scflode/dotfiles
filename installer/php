@@ -212,7 +212,7 @@ echo -e "\tInstalling versions"
 export PKG_CONFIG_PATH=$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig
 export PATH=$(brew --prefix bison)/bin:${PATH}
 export PHP_WITHOUT_PDO_PGSQL=yes 
-export PGSQL_INCLUDE=$(whereis pg_config) 
+export PGSQL_INCLUDE=$(which pg_config) 
 export PHP_CONFIGURE_OPTIONS="$(os_based_configure_options) \
   --with-pdo-pgsql=${PGSQL_INCLUDE} \
   --with-pgsql=${PGSQL_INCLUDE}"
