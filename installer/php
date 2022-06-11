@@ -26,7 +26,7 @@ function install_versions {
   local versions_list=$(read_file)
   for version in ${versions_list}; do
     echo -e "\t\tInstalling ${version}"
-    asdf install php ${version}
+    asdf install php ${version} > php.install.log
     local status=$?
     if [ ${status} -ne "0" ]; then
       echo "Last exit code was ${status} for 'asdf install php ${version}'. Please run manually. Aborting."
