@@ -10,7 +10,6 @@ else
   cd ~/.tmux/plugins/tpm && git pull >/dev/null 2>&1 && cd -
 fi
 
-
 if [ ! -d ~/.tmux/themes/powerline ]; then
   echo -e "\tInstalling powerline theme"
   git clone https://github.com/erikw/tmux-powerline.git ~/.tmux/themes/powerline >/dev/null 2>&1

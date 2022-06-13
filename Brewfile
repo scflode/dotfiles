@@ -122,6 +122,7 @@ tap "homebrew/cask-drivers"
 cask "sonos"
 
 # App Store apps
+mas "1Password for Safari", id: 1569813296
 mas "Color Picker", id: 641027709
 mas "Dark Reader for Safari", id: 1438243180
 mas "Keynote", id: 409183694
