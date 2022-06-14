@@ -42,6 +42,11 @@ brew "mitmproxy"
 brew "wget"
 brew "httpie"
 brew "jq"
+brew "dnsmasq"
+brew "mkcert"
+
+# vendor specific tools
+brew "doctl"
 
 # documentation tools
 brew "markdown"
