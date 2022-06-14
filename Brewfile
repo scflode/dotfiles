@@ -81,6 +81,11 @@ cask "nextcloud"
 cask "raycast"
 cask "tunnelblick"
 
+# Office
+cask "microsoft-excel"
+cask "microsoft-word"
+cask "microsoft-powerpoint"
+
 # Browsers
 cask "firefox"
 cask "google-chrome"
