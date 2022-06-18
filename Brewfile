@@ -144,6 +144,7 @@ mas "Save to Raindrop.io", id: 1549370672
 mas "Spark", id: 1176895641
 mas "Tyme", id: 1461456897
 mas "Vimari", id: 1480933944
+mas "virtualOS", id: 1614659226
 mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
 
