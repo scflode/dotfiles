@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
-echo -e "Installing neovim"
+echo -e "Installing ruby"
 
 echo -e "\tSetting up asdf"
-asdf plugin-add neovim >/dev/null 2>&1
-brew install cmake >/dev/null 2>&1
+asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git >/dev/null 2>&1
+brew install openssl readline >/dev/null 2>&1
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Set the containing directory for later use
-versions_dir="${HOME}/.dotfiles/installer/versions/neovim"
+versions_dir="${HOME}/.dotfiles/installer/versions/ruby"
 
 # Read given file line by line
 function read_file {
@@ -23,10 +24,10 @@ function install_versions {
   local versions_list=$(read_file)
   for version in ${versions_list}; do
     echo -e "\t\tInstalling ${version}"
-    asdf install ruby ${version} >/dev/null 2>&1
+    asdf install ruby ${version} > ruby.install.log
     local status=$?
     if [ ${status} -ne "0" ]; then
-      echo "Last exit code was ${status} for 'asdf install neovim ${version}'. Please run manually. Aborting."
+      echo "Last exit code was ${status} for 'asdf install ruby ${version}'. Please run manually. Aborting."
       exit 1
     fi
   done
@@ -43,3 +44,5 @@ function set_global {
 echo -e "\tInstalling versions"
 install_versions 
 
+echo -e "\tInstalling neovim bindings"
+gem install neovim >/dev/null 2>&1

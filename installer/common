@@ -13,3 +13,5 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Set the hostname
 echo -e "\tSetting the hostname to ${computer_name}"
 sudo hostname -s "${computer_name}"
+# Increase softlimit for max files
+sudo launchctl limit maxfiles 2048 unlimited

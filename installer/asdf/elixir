@@ -1,19 +1,8 @@
 #!/usr/bin/env bash
 
-cat << EOF
-
-******************************************************************************
-* Note: You need to have the Command Line Tools for Xcode in v11.3.1         *
-* installed, v11.4.0 does fail to build Erlang.                              *
-* See https://github.com/kerl/kerl/issues/335                                *
-******************************************************************************
-
-EOF
-
 echo -e "Installing Elixir"
 
 echo -e "\tSetting up asdf"
-asdf plugin-add java https://github.com/halcyon/asdf-java.git >/dev/null 2>&1
 asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git >/dev/null 2>&1
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git >/dev/null 2>&1
 
@@ -54,9 +43,6 @@ function set_global {
 
 
 echo -e "\tInstalling versions"
-install_versions "java"
-source ~/.asdf/plugins/java/set-java-home.bash
-grep -q "source ~/.asdf/plugins/java/set-java-home.bash" ~/.zshrc || echo "source ~/.asdf/plugins/java/set-java-home.bash" >> ~/.zshrc
 brew install autoconf wxmac openssl fop coreutils automake libyaml readline libxslt libtool unixodbc unzip curl >/dev/null 2>&1
 export CFLAGS="-O2 -g -fno-stack-check"
 export KERL_CONFIGURE_OPTIONS="--disable-hipe --with-ssl=$(brew --prefix openssl)"

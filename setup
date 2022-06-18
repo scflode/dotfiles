@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+set -o pipefail
+
 # Set the containing directory for later use
 dot_dir="${HOME}/.dotfiles"
 
@@ -56,26 +58,26 @@ function prompt_for_computer_name {
 }
 
 function setup_macos {
-  ${dot_dir}"/installer/common" ${computer_name}
-  ${dot_dir}"/installer/macos" ${computer_name}
-  ${dot_dir}"/installer/safari"
-  ${dot_dir}"/installer/apple_mail"
-  ${dot_dir}"/installer/apple_terminal"
-  ${dot_dir}"/installer/brew_base"
-  ${dot_dir}"/installer/brew_tools"
-  ${dot_dir}"/installer/cask_apps"
-  ${dot_dir}"/installer/iterm"
-  ${dot_dir}"/installer/link"
-  ${dot_dir}"/installer/nodejs"
-  ${dot_dir}"/installer/elixir"
-  ${dot_dir}"/installer/python"
-  ${dot_dir}"/installer/ruby"
-  ${dot_dir}"/installer/php"
-  ${dot_dir}"/installer/go"
-  ${dot_dir}"/installer/flutter"
-  ${dot_dir}"/installer/tmux"
-#  ${dot_dir}"/installer/vim"
-  ${dot_dir}"/installer/neovim"
+  sudo xcodebuild -license accept
+  local installer="${dot_dir}/installer"
+  "${installer}/common" ${computer_name}
+  "${installer}/macos" ${computer_name}
+  "${installer}/safari"
+  "${installer}/apple_mail"
+  "${installer}/apple_terminal"
+  "${installer}/brew"
+  "${installer}/zsh"
+  "${installer}/link"
+  "${installer}/tmux"
+  "${installer}/asdf/nodejs"
+  "${installer}/asdf/java"
+  "${installer}/asdf/elixir"
+  "${installer}/asdf/python"
+  "${installer}/asdf/ruby"
+  "${installer}/asdf/php"
+  "${installer}/asdf/go"
+  "${installer}/asdf/flutter"
+  "${installer}/asdf/neovim"
 }
 
 os=$(detect_os)

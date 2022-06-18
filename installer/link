@@ -7,10 +7,11 @@ echo -e "Linking dotfiles"
 echo -e "\tLinking Vim config"
 mkdir -p ~/.vim
 mkdir -p ~/.config/nvim
-rcup config/nvim
+rcup config/nvim/init.lua
+rcup config/nvim/lua
 
 echo -e "\tLinking Kitty config"
-rcup -v config/kitty/kitty.conf
+rcup config/kitty/kitty.conf
 
 echo -e "\tLinking tmux config"
 rcup tmux.conf
@@ -19,5 +20,5 @@ echo -e "\tLinking Git config"
 rcup gitconfig
 rcup gitignore_global
 
-echo -e "\tLinking asdf config"
-rcup asdf
+echo -e "\tCreating asdf config"
+mkdir -p ~/.asdf

@@ -371,8 +371,9 @@ echo -e "\tSetting AirDrop over Ethernet"
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Show the ~/Library folder
-echo -e "\tEnabling showing ~/Library folder"
-chflags nohidden ~/Library && xattr -p com.apple.FinderInfo || xattr -d com.apple.FinderInfo ~/Library
+# Does not work as of 2022-06-09
+#echo -e "\tEnabling showing ~/Library folder"
+#chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 
 # Show the /Volumes folder
 echo -e "\tEnabling showing /Volumes folder"

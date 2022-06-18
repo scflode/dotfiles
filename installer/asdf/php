@@ -5,7 +5,7 @@ echo -e "Installing php"
 echo -e "\tSetting up asdf"
 asdf plugin-add php https://github.com/asdf-community/asdf-php.git >/dev/null 2>&1
 echo -e "\t\tInstalling prerequisites"
-brew install autoconf automake bison freetype gd gettext icu4c krb5 libedit libiconv libjpeg libpng libxml2 libzip pkg-config re2c zlib >/dev/null 2>&1
+brew install autoconf automake bison freetype gd gettext icu4c krb5 libedit libiconv libjpeg libpng libxml2 libzip openssl@1.1 pkg-config re2c zlib postgres >/dev/null 2>&1
 export PKG_CONFIG_PATH=$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig
 export PATH=$(brew --prefix bison)/bin:${PATH}
 
@@ -26,7 +26,7 @@ function install_versions {
   local versions_list=$(read_file)
   for version in ${versions_list}; do
     echo -e "\t\tInstalling ${version}"
-    asdf install php ${version} >/dev/null 2>&1
+    asdf install php ${version} > php.install.log
     local status=$?
     if [ ${status} -ne "0" ]; then
       echo "Last exit code was ${status} for 'asdf install php ${version}'. Please run manually. Aborting."

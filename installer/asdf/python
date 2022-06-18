@@ -25,7 +25,7 @@ function install_versions {
   local versions_list=$(read_file "${versions_dir}/${language}")
   for version in ${versions_list}; do
     echo -e "\t\tInstalling ${version} for ${language}"
-    asdf install ${language} ${version} >/dev/null 2>&1
+    asdf install ${language} ${version} > python.install.log
     if [[ ${version} == 2* ]]; then
       version_2=${version}
     fi

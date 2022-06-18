@@ -23,7 +23,7 @@ function install_versions {
   local versions_list=$(read_file)
   for version in ${versions_list}; do
     echo -e "\t\tInstalling ${version}"
-    asdf install nodejs ${version} >/dev/null 2>&1
+    asdf install nodejs ${version} > nodejs.install.log
     local status=$?
     if [ ${status} -ne "0" ]; then
       echo "Last exit code was ${status} for 'asdf install nodejs ${version}'. Please run manually. Aborting."
@@ -49,11 +49,6 @@ npm install -g yarn >/dev/null 2>&1
 # Typescript
 echo -e "\tInstalling typescript"
 npm install -g typescript >/dev/null 2>&1
-
-# Vim dependencies
-echo -e "\tInstalling language servers"
-npm install -g javascript-typescript-langserver >/dev/null 2>&1
-npm install -g typescript-language-server >/dev/null 2>&1
 
 echo -e "\tInstalling neovim bindings"
 npm install -g neovim >/dev/null 2>&1
