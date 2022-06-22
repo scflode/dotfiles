@@ -80,6 +80,7 @@ cask "lulu"
 cask "nextcloud"
 cask "raycast"
 cask "tunnelblick"
+cask "rectangle"
 
 # Office
 cask "microsoft-excel"
