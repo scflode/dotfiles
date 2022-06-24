@@ -76,6 +76,7 @@ function setup_macos {
   "${installer}/asdf/ruby"
   "${installer}/asdf/php"
   "${installer}/asdf/go"
+  "${installer}/asdf/rust"
   "${installer}/asdf/flutter"
   "${installer}/asdf/neovim"
 }
