@@ -14,6 +14,9 @@ plugins=(asdf git docker docker-compose zsh-autosuggestions)
 #SPACESHIP_DOCKER_SYMBOL="Docker "
 
 source ${ZSH}/oh-my-zsh.sh
+
+fpath+=(~/.config/hcloud/completion/zsh)
+
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 
