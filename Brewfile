@@ -47,6 +47,7 @@ brew "mkcert"
 
 # vendor specific tools
 brew "doctl"
+brew "hcloud"
 
 # documentation tools
 brew "markdown"
