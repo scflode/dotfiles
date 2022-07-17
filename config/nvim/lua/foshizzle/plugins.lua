@@ -125,4 +125,7 @@ return packer.startup(function(use)
   use("famiu/bufdelete.nvim")
   use("tpope/vim-surround")
   use("tpope/vim-unimpaired")
+
+  -- Winbar
+  use { 'fgheng/winbar.nvim' }
 end)

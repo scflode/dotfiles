@@ -9,6 +9,7 @@ require("foshizzle.lsp")
 require("foshizzle.treesitter")
 require("foshizzle.autopairs")
 require("foshizzle.markdown")
+require("foshizzle.winbar")
 
 -- Common initializing
 require("colorizer").setup()
