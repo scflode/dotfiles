@@ -79,20 +79,20 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-  if client.server_capabilities.document_formatting then
+  if client.server_capabilities.documentFormattingProvider then
     vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
   end
   if client.name == "tsserver" then
-    client.server_capabilities.document_formatting = false
-    client.server_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
   end
   if client.name == "intelephense" then
-    client.server_capabilities.document_formatting = false
-    client.server_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
   end
   if client.name == "sumneko_lua" then
-    client.server_capabilities.document_formatting = false
-    client.server_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
   end
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
