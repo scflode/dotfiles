@@ -33,15 +33,22 @@ return packer.startup(function(use)
 
   -- UI
   use("nvim-lualine/lualine.nvim")
+  --  use({
+  --    "mcchrish/zenbones.nvim",
+  --    config = function()
+  --      vim.cmd("colorscheme zenbones")
+  --    end,
+  --    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+  --    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+  --    -- In Vim, compat mode is turned on as Lush only works in Neovim.
+  --    requires = "rktjmp/lush.nvim",
+  --  })
   use({
-    "mcchrish/zenbones.nvim",
+    "olimorris/onedarkpro.nvim",
     config = function()
-      vim.cmd("colorscheme zenbones")
+      require("onedarkpro").setup()
+      vim.cmd("colorscheme onedarkpro")
     end,
-    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
-    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-    -- In Vim, compat mode is turned on as Lush only works in Neovim.
-    requires = "rktjmp/lush.nvim",
   })
   -- use {
   --   "folke/tokyonight.nvim",
@@ -127,5 +134,5 @@ return packer.startup(function(use)
   use("tpope/vim-unimpaired")
 
   -- Winbar
-  use { 'fgheng/winbar.nvim' }
+  use({ "fgheng/winbar.nvim" })
 end)
