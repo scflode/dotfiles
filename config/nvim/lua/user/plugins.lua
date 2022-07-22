@@ -102,6 +102,11 @@ return packer.startup(function(use)
     "jose-elias-alvarez/null-ls.nvim",
     requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   })
+  use({
+    "filipdutescu/renamer.nvim",
+    branch = "master",
+    requires = { { "nvim-lua/plenary.nvim" } },
+  })
 
   -- Treesitter
   use({

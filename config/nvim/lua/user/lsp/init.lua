@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+require("renamer").setup()
+
 require("user.lsp.config")
 require("user.lsp.handlers").setup()
 require("user.lsp.null-ls")
