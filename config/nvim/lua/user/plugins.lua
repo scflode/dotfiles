@@ -43,13 +43,9 @@ return packer.startup(function(use)
   --    -- In Vim, compat mode is turned on as Lush only works in Neovim.
   --    requires = "rktjmp/lush.nvim",
   --  })
-  use({
-    "olimorris/onedarkpro.nvim",
-    config = function()
-      require("onedarkpro").setup()
-      vim.cmd("colorscheme onedarkpro")
-    end,
-  })
+
+  use("olimorris/onedarkpro.nvim")
+
   -- use {
   --   "folke/tokyonight.nvim",
   --   branch = "main",
@@ -70,8 +66,14 @@ return packer.startup(function(use)
   use("christoomey/vim-tmux-navigator")
 
   -- file navigation
-  use("preservim/nerdtree")
-  use("Xuyuanp/nerdtree-git-plugin")
+  --  use("preservim/nerdtree")
+  --  use("Xuyuanp/nerdtree-git-plugin")
+  use({
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+      "kyazdani42/nvim-web-devicons", -- optional, for file icons
+    },
+  })
   use("nvim-lua/plenary.nvim")
   use("nvim-telescope/telescope.nvim")
   use({

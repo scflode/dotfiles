@@ -20,5 +20,6 @@ require("winbar").setup({
   exclude_filetype = {
     "help",
     "nerdtree",
+    "NvimTree",
   },
 })
