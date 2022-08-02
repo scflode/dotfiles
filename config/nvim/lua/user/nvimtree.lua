@@ -8,7 +8,7 @@ local icons = require("user.icons")
 nvimtree.setup({
   disable_netrw = true,
   hijack_netrw = true,
-  update_cwd = true,
+  update_cwd = false,
   view = {
     adaptive_size = true,
     hide_root_folder = true,
