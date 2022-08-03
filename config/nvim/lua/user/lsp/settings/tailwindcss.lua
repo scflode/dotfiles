@@ -8,6 +8,8 @@ return {
     "edge",
     "elixir",
     "eelixir",
+    "heex",
+    "leex",
     "ejs",
     "erb",
     "eruby",
