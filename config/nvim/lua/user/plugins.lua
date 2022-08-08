@@ -66,8 +66,6 @@ return packer.startup(function(use)
   use("christoomey/vim-tmux-navigator")
 
   -- file navigation
-  --  use("preservim/nerdtree")
-  --  use("Xuyuanp/nerdtree-git-plugin")
   use({
     "kyazdani42/nvim-tree.lua",
     requires = {
@@ -83,15 +81,9 @@ return packer.startup(function(use)
   use({
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
-    end,
   })
   use({ "kevinhwang91/nvim-bqf", filetype = { "qf" } })
+  use("j-hui/fidget.nvim")
 
   -- LSP
   use("williamboman/nvim-lsp-installer")
@@ -140,7 +132,4 @@ return packer.startup(function(use)
   use("tpope/vim-surround")
   use("tpope/vim-unimpaired")
   use("lukas-reineke/indent-blankline.nvim")
-
-  -- Winbar
-  use({ "fgheng/winbar.nvim" })
 end)

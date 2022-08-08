@@ -30,14 +30,23 @@ local filetype = {
   icons_enabled = true,
 }
 
+local filename_with_path = {
+  "filename",
+  path = 1,
+}
+
 lualine.setup({
   options = {
-    fmt = string.lower,
+    fmt = nil,
     icons_enabled = true,
     theme = "auto",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    disabled_filetypes = {},
+    disabled_filetypes = {
+      winbar = {
+        "NvimTree",
+      },
+    },
     always_divide_middle = true,
     globalstatus = true,
   },
@@ -57,6 +66,22 @@ lualine.setup({
     lualine_y = {},
     lualine_z = {},
   },
+  winbar = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = { filename_with_path },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
+  },
+  inactive_winbar = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = { filename_with_path },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
+  },
   tabline = {},
-  extensions = {},
+  extensions = { "nvim-tree", "quickfix" },
 })
