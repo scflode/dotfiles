@@ -51,6 +51,8 @@ return {
     userLanguages = {
       eelixir = "html-eex",
       elixir = "html-eex",
+      heex = "html-eex",
+      leex = "html-eex",
       eruby = "erb",
     },
   },
