@@ -44,15 +44,10 @@ return packer.startup(function(use)
   --    requires = "rktjmp/lush.nvim",
   --  })
 
-  use("olimorris/onedarkpro.nvim")
+  -- use("olimorris/onedarkpro.nvim")
 
-  -- use {
-  --   "folke/tokyonight.nvim",
-  --   branch = "main",
-  --   config = function()
-  --      vim.cmd 'colorscheme tokyonight'
-  --   end
-  -- }
+  use("folke/tokyonight.nvim")
+
   use({
     "lewis6991/gitsigns.nvim",
     requires = {

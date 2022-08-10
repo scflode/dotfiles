@@ -9,8 +9,9 @@ require("user.lsp")
 require("user.treesitter")
 require("user.autopairs")
 require("user.markdown")
-require("user.onedark")
 require("user.trouble")
+require("user.onedark")
+require("user.tokyo_night")
 
 -- Common initializing
 require("colorizer").setup()
