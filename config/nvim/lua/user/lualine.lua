@@ -45,6 +45,7 @@ lualine.setup({
     disabled_filetypes = {
       winbar = {
         "NvimTree",
+        "qf",
       },
     },
     always_divide_middle = true,
