@@ -56,4 +56,9 @@ return {
       eruby = "erb",
     },
   },
+  settings = {
+    tailwindCss = {
+      classAttributes = { "class", "className", "ngClass" },
+    },
+  },
 }
