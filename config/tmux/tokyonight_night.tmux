@@ -22,7 +22,7 @@ set -g status-left-style NONE
 set -g status-right-style NONE
 
 set -g status-left "#[fg=#15161E,bg=#7aa2f7,bold] #S #[fg=#7aa2f7,bg=#1f2335,nobold,nounderscore,noitalics]"
-set -g status-right "#[fg=#1f2335,bg=#1f2335,nobold,nounderscore,noitalics]#[fg=#7aa2f7,bg=#1f2335] #{prefix_highlight} #(${HOME}/.dotfiles/scripts/battery.sh) #[fg=#3b4261,bg=#1f2335,nobold,nounderscore,noitalics]#[fg=#7aa2f7,bg=#3b4261] %Y-%m-%d #[fg=#15161E,bg=#7aa2f7,bold] %I:%M %p #[fg=#7aa2f7,bg=#3b4261,nobold,nounderscore,noitalics]"
+set -g status-right "#[fg=#1f2335,bg=#1f2335,nobold,nounderscore,noitalics]#[fg=#7aa2f7,bg=#1f2335] #{prefix_highlight} #(${HOME}/.dotfiles/scripts/ifstat.sh) | #(${HOME}/.dotfiles/scripts/load.sh) | #(${HOME}/.dotfiles/scripts/battery.sh) #[fg=#3b4261,bg=#1f2335,nobold,nounderscore,noitalics]#[fg=#7aa2f7,bg=#3b4261] %Y-%m-%d #[fg=#15161E,bg=#7aa2f7,bold] %I:%M %p #[fg=#7aa2f7,bg=#3b4261,nobold,nounderscore,noitalics]"
 
 setw -g window-status-activity-style "underscore,fg=#a9b1d6,bg=#1f2335"
 setw -g window-status-separator ""
