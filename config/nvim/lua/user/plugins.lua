@@ -68,10 +68,15 @@ return packer.startup(function(use)
     },
   })
   use("nvim-lua/plenary.nvim")
-  use("nvim-telescope/telescope.nvim")
   use({
-    "nvim-telescope/telescope-fzf-native.nvim",
-    run = "make",
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "make",
+      },
+    },
   })
   use({
     "folke/trouble.nvim",
@@ -88,11 +93,6 @@ return packer.startup(function(use)
   use({
     "jose-elias-alvarez/null-ls.nvim",
     requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-  })
-  use({
-    "filipdutescu/renamer.nvim",
-    branch = "master",
-    requires = { { "nvim-lua/plenary.nvim" } },
   })
 
   -- Treesitter
