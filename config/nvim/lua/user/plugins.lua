@@ -86,13 +86,11 @@ return packer.startup(function(use)
   use("j-hui/fidget.nvim")
 
   -- LSP
-  --  use("williamboman/nvim-lsp-installer")
   use({
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
   })
-  -- use("neovim/nvim-lspconfig")
   use("ray-x/lsp_signature.nvim")
   use("tamago324/nlsp-settings.nvim") -- For JSON and YAML autocomplete
   use({

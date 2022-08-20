@@ -12,6 +12,7 @@ require("user.markdown")
 require("user.trouble")
 require("user.onedark")
 require("user.tokyo_night")
+require("user.bqf")
 
 -- Common initializing
 require("colorizer").setup()
