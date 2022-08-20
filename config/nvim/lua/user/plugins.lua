@@ -86,10 +86,15 @@ return packer.startup(function(use)
   use("j-hui/fidget.nvim")
 
   -- LSP
-  use("williamboman/nvim-lsp-installer")
-  use("neovim/nvim-lspconfig")
+  --  use("williamboman/nvim-lsp-installer")
+  use({
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  })
+  -- use("neovim/nvim-lspconfig")
   use("ray-x/lsp_signature.nvim")
-  use("tamago324/nlsp-settings.nvim")
+  use("tamago324/nlsp-settings.nvim") -- For JSON and YAML autocomplete
   use({
     "jose-elias-alvarez/null-ls.nvim",
     requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },

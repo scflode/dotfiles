@@ -1,9 +1,9 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not status_ok then
-  return
-end
+local helper = require("functions")
 
-local lspconfig = require("lspconfig")
+local mason = helper.require_plugin("mason")
+local mason_lspconfig = helper.require_plugin("mason-lspconfig")
+local lsp_signature = helper.require_plugin("lsp_signature")
+local lspconfig = helper.require_plugin("lspconfig")
 
 local servers = {
   "bashls",
@@ -21,10 +21,12 @@ local servers = {
   "yamlls",
 }
 
-lsp_installer.setup({
+mason.setup()
+mason_lspconfig.setup({
   ensure_installed = servers,
-  log = vim.log.levels.DEBUG,
+  automatic_installation = false,
 })
+lsp_signature.setup()
 
 for _, server in pairs(servers) do
   local opts = {
