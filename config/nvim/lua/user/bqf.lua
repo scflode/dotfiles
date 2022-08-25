@@ -1,4 +1,4 @@
-local helpers = require("functions")
+local helpers = require("helpers")
 
 local bqf = helpers.require_plugin("bqf")
 

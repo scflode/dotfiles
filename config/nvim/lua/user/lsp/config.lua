@@ -1,4 +1,4 @@
-local helper = require("functions")
+local helper = require("helpers")
 
 local mason = helper.require_plugin("mason")
 local mason_lspconfig = helper.require_plugin("mason-lspconfig")
