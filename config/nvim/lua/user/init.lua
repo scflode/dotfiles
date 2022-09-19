@@ -13,6 +13,7 @@ require("user.trouble")
 require("user.onedark")
 require("user.tokyo_night")
 require("user.bqf")
+require("user.mason-null-ls")
 
 -- Common initializing
 require("colorizer").setup()

@@ -97,6 +97,14 @@ return packer.startup(function(use)
     "jose-elias-alvarez/null-ls.nvim",
     requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   })
+  use({
+    "jayp0521/mason-null-ls.nvim",
+    after = {
+      "null-ls.nvim",
+      "mason.nvim",
+    },
+    requires = { "WhoIsSethDaniel/mason-tool-installer.nvim" }
+  })
 
   -- Treesitter
   use({

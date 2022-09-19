@@ -1,11 +1,19 @@
-local status_ok, _tokyo_night = pcall(require, "tokyonight")
+local status_ok, tokyo_night = pcall(require, "tokyonight")
 
 if not status_ok then
   return
 end
 
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+tokyo_night.setup({
+  style = "night",
+  transparent = false,
+  terminal_colors = true,
+  hide_inactive_statusline = false,
+  dim_inactive = false,
+  lualine_bold = false,
+  on_colors = function(colors)
+    colors.bg_statusline = colors.bg
+  end,
+})
 
 vim.cmd("colorscheme tokyonight")

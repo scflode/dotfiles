@@ -15,8 +15,8 @@
 .phpcd.vim
 .projections.json
 .undo/
-# CoC
 .vim/
+.null-ls-root
 
 # vscode
 .vscode/
