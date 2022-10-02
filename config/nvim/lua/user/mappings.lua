@@ -18,3 +18,6 @@ map("n", "<Leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 map("n", "<Leader>ct", ":ColorizerToggle<CR>", { noremap = true, silent = true })
 
 map("n", "<Leader>dr", "<Cmd>lua ReloadConfig()<CR>", { silent = true, noremap = true })
+
+map("", "<Leader>+", "<Plug>(wildfire-fuel)", { silent = true, noremap = true })
+map("v", "<Leader>-", "<Plug>(wildfire-water)", { silent = true, noremap = true })

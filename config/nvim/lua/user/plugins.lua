@@ -103,7 +103,7 @@ return packer.startup(function(use)
       "null-ls.nvim",
       "mason.nvim",
     },
-    requires = { "WhoIsSethDaniel/mason-tool-installer.nvim" }
+    requires = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
   })
 
   -- Treesitter
@@ -138,4 +138,5 @@ return packer.startup(function(use)
   use("tpope/vim-surround")
   use("tpope/vim-unimpaired")
   use("lukas-reineke/indent-blankline.nvim")
+  use("gcmt/wildfire.vim")
 end)

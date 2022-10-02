@@ -15,4 +15,3 @@ mason_null_ls.setup({
   }
 })
 
-mason_null_ls.check_install(true)
