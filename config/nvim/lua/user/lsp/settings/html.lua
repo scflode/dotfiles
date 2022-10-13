@@ -2,5 +2,5 @@ return {
   filetypes = {
     "html",
     "eelixir",
-  }
+  },
 }
