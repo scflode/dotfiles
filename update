@@ -17,7 +17,7 @@ brew upgrade --cask
 echo -e "Updating neovim"
 # nvim +PlugUpdate +qall
 # nvim +CocUpdateSync +qall
-nvim +PackerUpdate +qall
+nvim +PackerSync +qall
 
 echo -e "Updating asdf"
 asdf plugin-update --all

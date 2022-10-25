@@ -8,7 +8,7 @@ opt.splitright = true
 opt.termguicolors = true
 opt.cul = true
 opt.signcolumn = "yes"
-opt.cmdheight = 1
+opt.cmdheight = 0
 --opt.clipboard = "unnamedplus"
 
 -- Specials
@@ -17,7 +17,7 @@ opt.updatetime = 250 -- update interval for gitsigns
 -- File handling
 opt.swapfile = false
 opt.backup = false
-opt.undodir = os.getenv( "HOME" ) .. '/.config/nvim/undodir'
+opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
 opt.undofile = true
 
 -- Line numbers
@@ -40,4 +40,3 @@ opt.background = "dark"
 
 -- Status bar
 opt.laststatus = 3
-
