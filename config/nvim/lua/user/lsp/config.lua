@@ -14,6 +14,7 @@ local servers = {
   "html",
   "intelephense",
   "jsonls",
+  "lemminx",
   "pyright",
   "sumneko_lua",
   "tailwindcss",
