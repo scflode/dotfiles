@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 -- basic setup
 local g = vim.g
@@ -19,7 +19,22 @@ map("n", "<Leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 map("n", "<Leader>ct", ":ColorizerToggle<CR>", { noremap = true, silent = true })
 
-map("n", "<Leader>dr", "<Cmd>lua ReloadConfig()<CR>", { silent = true, noremap = true })
+map("n", "<Leader>rc", "<Cmd>lua ReloadConfig()<CR>", { silent = true, noremap = true })
 
 map("", "<Leader>+", "<Plug>(wildfire-fuel)", { silent = true, noremap = true })
 map("v", "<Leader>-", "<Plug>(wildfire-water)", { silent = true, noremap = true })
+
+map("n", "<leader>nl", ":NoiceLast<CR>", { silent = true, noremap = true})
+
+map("n", "<leader>nh", ":NoiceHistory<CR>", { silent = true, noremap = true})
+map("n", "<c-f>", function()
+  if not require("noice.lsp").scroll(4) then
+    return "<c-f>"
+  end
+end, { silent = true, expr = true })
+
+map("n", "<c-b>", function()
+  if not require("noice.lsp").scroll(-4) then
+    return "<c-b>"
+  end
+end, { silent = true, expr = true })

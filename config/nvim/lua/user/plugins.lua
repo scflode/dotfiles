@@ -83,7 +83,12 @@ return packer.startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
   })
   use({ "kevinhwang91/nvim-bqf", filetype = { "qf" } })
-  use("j-hui/fidget.nvim")
+  use({
+    "folke/noice.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+    },
+  })
 
   -- LSP
   use({
@@ -91,7 +96,6 @@ return packer.startup(function(use)
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
   })
-  use("ray-x/lsp_signature.nvim")
   use("tamago324/nlsp-settings.nvim") -- For JSON and YAML autocomplete
   use({
     "jose-elias-alvarez/null-ls.nvim",

@@ -14,6 +14,7 @@ require("user.onedark")
 require("user.tokyo_night")
 require("user.bqf")
 require("user.mason-null-ls")
+require("user.noice")
 
 -- Common initializing
 require("colorizer").setup()

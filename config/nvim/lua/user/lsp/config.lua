@@ -2,7 +2,6 @@ local helper = require("helpers")
 
 local mason = helper.require_plugin("mason")
 local mason_lspconfig = helper.require_plugin("mason-lspconfig")
-local lsp_signature = helper.require_plugin("lsp_signature")
 local lspconfig = helper.require_plugin("lspconfig")
 
 local servers = {
@@ -27,7 +26,6 @@ mason_lspconfig.setup({
   ensure_installed = servers,
   automatic_installation = false,
 })
-lsp_signature.setup()
 
 for _, server in pairs(servers) do
   local opts = {
