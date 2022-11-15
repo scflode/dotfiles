@@ -1,3 +1,4 @@
+vim.lsp.set_log_level("debug")
 return {
   filetypes = {
     "aspnetcorerazor",
@@ -59,6 +60,9 @@ return {
   settings = {
     tailwindCss = {
       classAttributes = { "class", "className", "ngClass" },
+      experimental = {
+        configFile = "assets/tailwind.config.js",
+      },
     },
   },
 }
