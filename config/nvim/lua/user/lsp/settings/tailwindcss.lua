@@ -50,18 +50,31 @@ return {
   },
   init_options = {
     userLanguages = {
-      eelixir = "html-eex",
-      elixir = "html-eex",
-      heex = "html-eex",
-      leex = "html-eex",
+      elixir = "phoenix-eex",
+      heex = "phoenix-eex",
       eruby = "erb",
     },
   },
   settings = {
+    includeLanguages = {
+      typescript = "javascript",
+      typescriptreact = "javascript",
+      ["html-eex"] = "html",
+      ["phoenix-heex"] = "html",
+      heex = "html",
+      eelixir = "html",
+      elm = "html",
+      erb = "html",
+    },
     tailwindCss = {
       classAttributes = { "class", "className", "ngClass" },
       experimental = {
         configFile = "assets/tailwind.config.js",
+        classRegex = {
+          [[class= "([^"]*)]],
+          [[class: "([^"]*)]],
+          '~H""".*class="([^"]*)".*"""',
+        },
       },
     },
   },
