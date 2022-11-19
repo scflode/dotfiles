@@ -1,4 +1,4 @@
-vim.lsp.set_log_level("debug")
+--vim.lsp.set_log_level("debug")
 return {
   filetypes = {
     "aspnetcorerazor",
@@ -6,12 +6,9 @@ return {
     "astro-markdown",
     "blade",
     "django-html",
+    "htmldjango",
     "edge",
-    "elixir",
     "eelixir",
-    "heex",
-    "leex",
-    "html-eex",
     "ejs",
     "erb",
     "eruby",
@@ -20,6 +17,8 @@ return {
     "handlebars",
     "hbs",
     "html",
+    "html-eex",
+    "heex",
     "jade",
     "leaf",
     "liquid",
@@ -47,13 +46,23 @@ return {
     "typescriptreact",
     "vue",
     "svelte",
+    "elixir",
+    "surface",
   },
+
   init_options = {
     userLanguages = {
-      elixir = "phoenix-eex",
-      heex = "phoenix-eex",
+      elixir = "phoenix-heex",
       eruby = "erb",
+      heex = "phoenix-heex",
+      svelte = "html",
+      surface = "phoenix-heex",
     },
+  },
+  handlers = {
+    ["tailwindcss/getConfiguration"] = function(_, _, params, _, bufnr, _)
+      vim.lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", { _id = params._id })
+    end,
   },
   settings = {
     includeLanguages = {
@@ -63,19 +72,30 @@ return {
       ["phoenix-heex"] = "html",
       heex = "html",
       eelixir = "html",
+      elixir = "html",
       elm = "html",
       erb = "html",
+      svelte = "html",
+      surface = "html",
     },
-    tailwindCss = {
-      classAttributes = { "class", "className", "ngClass" },
+    tailwindCSS = {
+      lint = {
+        cssConflict = "warning",
+        invalidApply = "error",
+        invalidConfigPath = "error",
+        invalidScreen = "error",
+        invalidTailwindDirective = "error",
+        invalidVariant = "error",
+        recommendedVariantOrder = "warning",
+      },
       experimental = {
-        configFile = "assets/tailwind.config.js",
         classRegex = {
           [[class= "([^"]*)]],
           [[class: "([^"]*)]],
           '~H""".*class="([^"]*)".*"""',
         },
       },
+      validate = true,
     },
   },
 }

@@ -6,12 +6,11 @@ end
 mason_null_ls.setup({
   automatic_installation = true,
   ensure_installed = {
-    'stylua',
-    'shellcheck',
-    'editorconfig-checker',
-    'shfmt',
-    'pslam',
-    'phpcsfixer',
-  }
+    "stylua",
+    "shellcheck",
+    "editorconfig-checker",
+    "shfmt",
+    "pslam",
+    "phpcsfixer",
+  },
 })
-

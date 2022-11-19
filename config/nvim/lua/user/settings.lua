@@ -8,6 +8,7 @@ opt.splitright = true
 opt.termguicolors = true
 opt.cul = true
 opt.signcolumn = "yes"
+opt.cmdheight = 1
 --opt.clipboard = "unnamedplus"
 
 -- Specials
