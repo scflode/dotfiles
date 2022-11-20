@@ -32,8 +32,6 @@ telescope.setup({
   },
 })
 
-require("telescope.builtin").buffers({ sort_mru = true })
-
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 telescope.load_extension("fzf")
