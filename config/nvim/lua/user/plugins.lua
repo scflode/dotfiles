@@ -55,7 +55,6 @@ return packer.startup(function(use)
     },
   })
   use("norcalli/nvim-colorizer.lua")
-  use("markstory/vim-zoomwin")
 
   -- TMUX integration
   use("christoomey/vim-tmux-navigator")
