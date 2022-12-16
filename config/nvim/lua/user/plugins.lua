@@ -48,6 +48,8 @@ return packer.startup(function(use)
 
   use("folke/tokyonight.nvim")
 
+  use("f-person/auto-dark-mode.nvim")
+
   use({
     "lewis6991/gitsigns.nvim",
     requires = {
