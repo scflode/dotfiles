@@ -5,7 +5,7 @@ if not status_ok then
 end
 
 auto_dark_mode.setup({
-  update_interval = 500,
+  update_interval = 3000,
   set_dark_mode = function()
     vim.api.nvim_set_option("background", "dark")
   end,
