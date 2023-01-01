@@ -21,9 +21,11 @@ map("n", "<Leader>s", ":Telescope live_grep_args<CR>", { noremap = true, silent 
 map("n", "<Leader>g", ":Telescope git_status<CR>", { noremap = true, silent = true })
 map("n", "<Leader>d", ":Telescope lsp_document_symbols<CR>", { noremap = true, silent = true })
 map("n", "<Leader>t", ":Telescope treesitter<CR>", { noremap = true, silent = true })
+map("n", "<Leader>n", ":Telescope file_browser<CR>", { noremap = true })
+map("n", "<Leader>l", ":Telescope file_browser path=%:p:h<CR>", { noremap = true })
 
-map("n", "<Leader>l", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
-map("n", "<Leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+--map("n", "<Leader>l", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
+--map("n", "<Leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 map("n", "<Leader>ct", ":ColorizerToggle<CR>", { noremap = true, silent = true })
 

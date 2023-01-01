@@ -62,12 +62,6 @@ return packer.startup(function(use)
   use("christoomey/vim-tmux-navigator")
 
   -- file navigation
-  use({
-    "kyazdani42/nvim-tree.lua",
-    requires = {
-      "kyazdani42/nvim-web-devicons", -- optional, for file icons
-    },
-  })
   use("nvim-lua/plenary.nvim")
   use({
     "nvim-telescope/telescope.nvim",
@@ -76,6 +70,12 @@ return packer.startup(function(use)
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make",
+      },
+      {
+        "nvim-telescope/telescope-file-browser.nvim",
+        requires = {
+          "nvim-tree/nvim-web-devicons",
+        },
       },
     },
   })

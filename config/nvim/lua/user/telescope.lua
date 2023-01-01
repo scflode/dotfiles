@@ -30,9 +30,16 @@ telescope.setup({
       find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
     },
   },
+  extensions = {
+    file_browser = {
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+    },
+  },
 })
 
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 telescope.load_extension("fzf")
 telescope.load_extension("live_grep_args")
+telescope.load_extension("file_browser")
