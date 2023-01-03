@@ -90,8 +90,8 @@ return {
       },
       experimental = {
         classRegex = {
-          [[x-class= "([^"]*)]],
-          [[class= "([^"]*)]],
+          [[x-class="([^"]*)]],
+          [[class="([^"]*)]],
           [[class: "([^"]*)]],
           '~H""".*class="([^"]*)".*"""',
         },
