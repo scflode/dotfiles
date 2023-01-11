@@ -23,8 +23,8 @@ return {
 	line_height = 1.2,
 	enable_tab_bar = false,
 	window_padding = {
-		left = 0,
-		right = 0,
+		left = 5,
+		right = 5,
 		top = 0,
 		bottom = 0,
 	},
