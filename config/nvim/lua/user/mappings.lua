@@ -17,6 +17,7 @@ map(
   ":lua require('telescope.builtin').buffers({ sort_mru = true })<CR>",
   { noremap = true, silent = true }
 )
+map("n", "<Leader>r", ":lua require('telescope.builtin').resume()<CR>", { noremap = true, silent = true })
 map("n", "<Leader>s", ":Telescope live_grep_args<CR>", { noremap = true, silent = true })
 map("n", "<Leader>g", ":Telescope git_status<CR>", { noremap = true, silent = true })
 map("n", "<Leader>d", ":Telescope lsp_document_symbols<CR>", { noremap = true, silent = true })
