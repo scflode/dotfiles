@@ -2,44 +2,6 @@
 
 echo -e "Installing additional zsh tools"
 
-if [ ! -d ~/.oh-my-zsh ]; then
-  echo -e "\tInstalling oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended >/dev/null 2>&1
-  echo -e "\tRemoving default RC file"
-  rm "${HOME}/.zshrc"
-else
-  echo -e "\tUpdating oh-my-zsh"
-  cd ~/.oh-my-zsh && git pull >/dev/null 2>&1; cd -
-fi
-
-if [ "${ZSH_CUSTOM}" == "" ]; then
-  echo -e "\tSetting custom zsh folder"
-  ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
-fi
-
-if [ ! -d ${ZSH_CUSTOM} ]; then
-  echo "${ZSH_CUSTOM} is empty or not a directory. Exiting!"
-  exit 1
-fi
-
-if [ ! -d "${ZSH_CUSTOM}/themes/spaceship-prompt" ]; then
-  echo -e "\tInstalling theme"
-  git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" >/dev/null 2>&1
-  ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-else
-  echo -e "\tUpdating theme"
-  cd "$ZSH_CUSTOM/themes/spaceship-prompt" && git pull >/dev/null 2>&1; cd -
-fi
-
-# Install autosuggestions
-if [ ! -d "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" ]; then
-  echo -e "\tInstalling auto suggestions"
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions >/dev/null 2>&1
-else
-  echo -e "\tUpdating auto suggestions"
-  cd "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" && git pull >/dev/null 2>&1; cd -
-fi
-
 if [ ! -f "${HOME}/.zshrc" ]; then
   echo -e "\tBuilding RC file"
   cat <<-"EOF" > ${HOME}/.zshrc
@@ -51,6 +13,7 @@ _aliases_macos="${dot_dir}/aliases_macos"
 _aliases_personal="${dot_dir}/aliases_personal"
 _fzf="${dot_dir}/fzf"
 _zsh="${dot_dir}/zsh"
+_nvims="${dot_dir}/nvims"
 
 for file in \
   ${_functions} \
@@ -59,7 +22,8 @@ for file in \
   ${_aliases_macos} \
   ${_aliases_personal} \
   ${_fzf} \
-  ${_zsh} ; do
+  ${_zsh} \
+  ${_nvims} ; do
   if [ -f "${file}" ]; then
     source ${file}
   fi
