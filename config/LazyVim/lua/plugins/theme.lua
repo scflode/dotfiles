@@ -1,20 +1,21 @@
 -- https://github.com/jascha030/macos-nvim-dark-mode
-local os_is_dark = function()
-  return (vim.call(
-    "system",
-    [[echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')]]
-  )):find("dark") ~= nil
-end
-
 return {
   {
-    "folke/tokyonight.nvim",
-    opts = function(_, opts)
-      if os_is_dark() then
-        opts.style = "night"
-      else
-        opts.style = "day"
-      end
+    "f-person/auto-dark-mode.nvim",
+    init = function()
+      require("auto-dark-mode").init()
     end,
+    opts = {
+      update_interval = 1000,
+      set_dark_mode = function()
+        vim.cmd([[colorscheme tokyonight-night]])
+      end,
+      set_light_mode = function()
+        vim.cmd([[colorscheme tokyonight-day]])
+      end,
+    },
+  },
+  {
+    "folke/tokyonight.nvim",
   },
 }
