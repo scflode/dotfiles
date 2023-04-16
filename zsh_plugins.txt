@@ -10,7 +10,8 @@ ohmyzsh/ohmyzsh path:plugins/docker
 ohmyzsh/ohmyzsh path:plugins/docker-compose
 
 # theme
-romkatv/powerlevel10k
+# romkatv/powerlevel10k
+spaceship-prompt/spaceship-prompt
 
 # popular fish-like plugins
 mattmc3/zfunctions
