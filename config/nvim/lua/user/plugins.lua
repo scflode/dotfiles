@@ -33,20 +33,21 @@ return packer.startup(function(use)
 
   -- UI
   use("nvim-lualine/lualine.nvim")
-  --  use({
-  --    "mcchrish/zenbones.nvim",
-  --    config = function()
-  --      vim.cmd("colorscheme zenbones")
-  --    end,
-  --    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
-  --    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-  --    -- In Vim, compat mode is turned on as Lush only works in Neovim.
-  --    requires = "rktjmp/lush.nvim",
-  --  })
+  use({
+    "mcchrish/zenbones.nvim",
+    config = function()
+      vim.cmd("colorscheme zenbones")
+      --vim.g.zenbones_lightness = "bright"
+    end,
+    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+    -- In Vim, compat mode is turned on as Lush only works in Neovim.
+    requires = "rktjmp/lush.nvim",
+  })
 
   -- use("olimorris/onedarkpro.nvim")
 
-  use("folke/tokyonight.nvim")
+  -- use("folke/tokyonight.nvim")
 
   use("f-person/auto-dark-mode.nvim")
 
@@ -109,6 +110,12 @@ return packer.startup(function(use)
       "mason.nvim",
     },
     requires = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+  })
+  use({
+    "mhanberg/output-panel.nvim",
+    config = function()
+      require("output_panel").setup()
+    end,
   })
 
   -- Treesitter
