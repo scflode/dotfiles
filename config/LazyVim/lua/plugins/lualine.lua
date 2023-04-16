@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     opts = function(_, opts)
       opts.sections.lualine_y = {
-        { "%S" },
+        { "filetype" },
         { "progress", separator = " ", padding = { left = 1, right = 0 } },
         { "location", padding = { left = 0, right = 1 } },
       }

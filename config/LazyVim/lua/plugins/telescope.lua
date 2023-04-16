@@ -6,6 +6,14 @@ return {
     cmd = "Telescope",
     keys = {
       { "<leader>fR", Util.telescope("resume"), desc = "Resume" },
+      { "<leader>fg", ":Telescope git_status<CR>", desc = "Changed Files (Git)" },
+    },
+    opts = {
+      pickers = {
+        oldfiles = {
+          cwd_only = true,
+        },
+      },
     },
     dependencies = {
       "nvim-telescope/telescope-fzf-native.nvim",
