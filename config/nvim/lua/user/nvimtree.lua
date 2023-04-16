@@ -11,7 +11,6 @@ nvimtree.setup({
   update_cwd = false,
   view = {
     adaptive_size = true,
-    hide_root_folder = true,
     side = "right",
     mappings = {
       list = {
@@ -20,6 +19,7 @@ nvimtree.setup({
     },
   },
   renderer = {
+    root_folder_label = false,
     indent_markers = {
       enable = true,
     },
