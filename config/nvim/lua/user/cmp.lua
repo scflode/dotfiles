@@ -32,7 +32,7 @@ cmp.setup({
   formatting = {
     format = lspkind.cmp_format({
       mode = "symbol_text", -- show only symbol annotations
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      maxwidth = 100, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
       ellipsis_char = "...",
       before = function(entry, vim_item)
         vim_item.menu = ({
@@ -51,7 +51,7 @@ cmp.setup({
     }),
   },
   completion = {
-    keyword_length = 2,
+    keyword_length = 0,
   },
   mapping = {
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
@@ -94,7 +94,6 @@ cmp.setup({
       "s",
     }),
   },
-
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
@@ -102,6 +101,6 @@ cmp.setup({
     { name = "path" },
   },
   experimental = {
-    ghost_text = false,
+    ghost_text = true,
   },
 })
