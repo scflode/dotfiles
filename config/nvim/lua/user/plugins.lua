@@ -141,6 +141,9 @@ return packer.startup(function(use)
   use("tpope/vim-fugitive")
   use("tpope/vim-projectionist")
 
+  -- Elixir
+  use({ "elixir-tools/elixir-tools.nvim", requires = { "nvim-lua/plenary.nvim" } })
+
   -- Markdown
   use({ "preservim/vim-markdown", requires = { "godlygeek/tabular" } })
 

@@ -18,6 +18,7 @@ require("user.auto_dark_mode")
 require("user.bqf")
 require("user.mason-null-ls")
 require("user.noice")
+require("user.elixir-tools")
 
 -- Common initializing
 require("colorizer").setup()
