@@ -8,7 +8,6 @@ local servers = {
   "bashls",
   "cssls",
   "dockerls",
-  "elixirls",
   "gopls",
   "html",
   "intelephense",
