@@ -11,7 +11,7 @@ set -g pane-active-border-style "fg=#88507D"
 set -g status "on"
 set -g status-justify "left"
 
-set -g status-style "fg=#88507D,bg=#2C363C"
+set -g status-style "fg=#88507D,bg=#352F2D"
 
 set -g status-left-length "250"
 set -g status-right-length "250"
@@ -19,21 +19,21 @@ set -g status-right-length "250"
 set -g status-left-style NONE
 set -g status-right-style NONE
 
-set -g status-left "#[fg=#15161E,bg=#88507D,bold] #S #[fg=#88507D,bg=#2C363C,nobold,nounderscore,noitalics]"
-set -g status-right "#[fg=#2C363C,bg=#2C363C,nobold,nounderscore,noitalics]#[fg=#88507D,bg=#2C363C] #{prefix_highlight} #(${HOME}/.dotfiles/scripts/ifstat.sh) | #(${HOME}/.dotfiles/scripts/load.sh) | #(${HOME}/.dotfiles/scripts/battery.sh) #[fg=#F0EDEC,bg=#2C363C,nobold,nounderscore,noitalics]#[fg=#88507D,bg=#F0EDEC] %Y-%m-%d #[fg=#15161E,bg=#88507D,bold] %I:%M %p #[fg=#88507D,bg=#F0EDEC,nobold,nounderscore,noitalics]"
+set -g status-left "#[fg=#15161E,bg=#88507D,bold] #S #[fg=#88507D,bg=#352F2D,nobold,nounderscore,noitalics]"
+set -g status-right "#[fg=#352F2D,bg=#352F2D,nobold,nounderscore,noitalics]#[fg=#88507D,bg=#352F2D] #{prefix_highlight} #(${HOME}/.dotfiles/scripts/ifstat.sh) | #(${HOME}/.dotfiles/scripts/load.sh) | #(${HOME}/.dotfiles/scripts/battery.sh) #[fg=#F0EDEC,bg=#352F2D,nobold,nounderscore,noitalics]#[fg=#88507D,bg=#F0EDEC] %Y-%m-%d #[fg=#15161E,bg=#88507D,bold] %I:%M %p #[fg=#88507D,bg=#F0EDEC,nobold,nounderscore,noitalics]"
 
-setw -g window-status-activity-style "underscore,fg=#F0EDEC,bg=#2C363C"
+setw -g window-status-activity-style "underscore,fg=#F0EDEC,bg=#352F2D"
 setw -g window-status-separator ""
-setw -g window-status-style "NONE,fg=#F0EDEC,bg=#2C363C"
-setw -g window-status-format "#[fg=#2C363C,bg=#2C363C,nobold,nounderscore,noitalics]#[default] #I  #W #F #[fg=#2C363C,bg=#2C363C,nobold,nounderscore,noitalics]"
-setw -g window-status-current-format "#[fg=#2C363C,bg=#F0EDEC,nobold,nounderscore,noitalics]#[fg=#88507D,bg=#F0EDEC,bold] #I #W #F #[fg=#F0EDEC,bg=#2C363C,nobold,nounderscore,noitalics]"
-  
+setw -g window-status-style "NONE,fg=#F0EDEC,bg=#352F2D"
+setw -g window-status-format "#[fg=#352F2D,bg=#352F2D,nobold,nounderscore,noitalics]#[default] #I  #W #F #[fg=#352F2D,bg=#352F2D,nobold,nounderscore,noitalics]"
+setw -g window-status-current-format "#[fg=#352F2D,bg=#F0EDEC,nobold,nounderscore,noitalics]#[fg=#88507D,bg=#F0EDEC,bold] #I #W #F #[fg=#F0EDEC,bg=#352F2D,nobold,nounderscore,noitalics]"
+
 # REPLACE
 #set -g status-left ' #[fg=#88507D,bold]#{s/root//:client_key_table} '
 #set -g status-right '#[fg=#88507D,bold] [#S]#[fg=#88507D,bold] [%d/%m] #[fg=#88507D,bold][%I:%M%p] '
-#set -g status-style fg='#88507D',bg='#2C363C'
+#set -g status-style fg='#88507D',bg='#352F2D'
 #
-#set -g window-status-current-style fg='#88507D',bg='#2C363C',bold
+#set -g window-status-current-style fg='#88507D',bg='#352F2D',bold
 #
 #set -g pane-border-style fg='#88507D'
 #set -g pane-active-border-style fg='#88507D'
