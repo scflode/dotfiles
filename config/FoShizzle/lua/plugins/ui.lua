@@ -1,4 +1,7 @@
 return {
+  -- tmux integration
+  { "christoomey/vim-tmux-navigator" },
+
   -- Better `vim.notify()`
   {
     "rcarriga/nvim-notify",
