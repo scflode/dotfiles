@@ -1,3 +1,5 @@
+local Util = require("util")
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -18,13 +20,19 @@ return {
       local elixirls = require("elixir.elixirls")
 
       elixir.setup({
-        credo = {},
         elixirls = {
+          tag = "v0.14.3",
           enabled = true,
           settings = elixirls.settings({
             dialyzerEnabled = true,
+            fetchDeps = false,
             enableTestLenses = true,
+            suggestSpecs = true,
           }),
+          on_attach = Util.on_attach(function(client, buffer)
+            require("plugins.lsp.format").on_attach(client, buffer)
+            require("plugins.lsp.keymaps").on_attach(client, buffer)
+          end),
         },
       })
     end,
