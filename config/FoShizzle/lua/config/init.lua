@@ -1,5 +1,7 @@
 local M = {}
 
+M.colorscheme = "zenbones"
+
 M.icons = {
   dap = {
     Stopped = { " ", "DiagnosticWarn", "DapStoppedLine" },
@@ -61,6 +63,22 @@ M.icons = {
 M.renames = {
   ["windwp/nvim-spectre"] = "nvim-pack/nvim-spectre",
 }
+
+function M.setup()
+  require("lazy.core.util").try(function()
+    if type(M.colorscheme) == "function" then
+      M.colorscheme()
+    else
+      vim.cmd.colorscheme(M.colorscheme)
+    end
+  end, {
+    msg = "Could not load your colorscheme",
+    on_error = function(msg)
+      require("lazy.core.util").error(msg)
+      vim.cmd.colorscheme("habamax")
+    end,
+  })
+end
 
 ---@param name "autocmds" | "options" | "keymaps"
 function M.load(name)
