@@ -165,15 +165,44 @@ function M.toggle_diagnostics()
   end
 end
 
--- FIXME: create a togglable terminal
 -- Opens a floating terminal (interactive by default)
 ---@param cmd? string[]|string
----@param opts? LazyCmdOptions|{interactive?:boolean}
+---@param opts? LazyCmdOptions|{interactive?:boolean, esc_esc?:false}
 function M.float_term(cmd, opts)
   opts = vim.tbl_deep_extend("force", {
     size = { width = 0.9, height = 0.9 },
   }, opts or {})
-  require("lazy.util").float_term(cmd, opts)
+  local float = require("lazy.util").float_term(cmd, opts)
+  if opts.esc_esc == false then
+    vim.keymap.set("t", "<esc>", "<esc>", { buffer = float.buf, nowait = true })
+  end
+end
+
+---@param name string
+function M.opts(name)
+  local plugin = require("lazy.core.config").plugins[name]
+  if not plugin then
+    return {}
+  end
+  local Plugin = require("lazy.core.plugin")
+  return Plugin.values(plugin, "opts", false)
+end
+
+function M.lsp_get_config(server)
+  local configs = require("lspconfig.configs")
+  return rawget(configs, server)
+end
+
+---@param server string
+---@param cond fun( root_dir, config): boolean
+function M.lsp_disable(server, cond)
+  local util = require("lspconfig.util")
+  local def = M.lsp_get_config(server)
+  def.document_config.on_new_config = util.add_hook_before(def.document_config.on_new_config, function(config, root_dir)
+    if cond(root_dir, config) then
+      config.enabled = false
+    end
+  end)
 end
 
 return M
