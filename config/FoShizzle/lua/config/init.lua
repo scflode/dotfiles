@@ -65,7 +65,8 @@ M.renames = {
 }
 
 function M.setup()
-    require("config").load("keymaps")
+  require("config").load("keymaps")
+  require("config").load("autocmds")
   require("lazy.core.util").try(function()
     if type(M.colorscheme) == "function" then
       M.colorscheme()
