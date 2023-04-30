@@ -37,12 +37,21 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
+      "onsails/lspkind.nvim",
     },
     opts = function()
       local cmp = require("cmp")
       return {
+        window = {
+          completion = {
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+          },
+        },
         completion = {
           completeopt = "menu,menuone,noinsert",
+          auto_complete = false,
         },
         snippet = {
           expand = function(args)
@@ -65,12 +74,14 @@ return {
           { name = "path" },
         }),
         formatting = {
-          format = function(_, item)
-            local icons = require("config").icons.kinds
-            if icons[item.kind] then
-              item.kind = icons[item.kind] .. item.kind
-            end
-            return item
+          fields = { "kind", "abbr", "menu" },
+          format = function(entry, vim_item)
+            local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = " " .. (strings[1] or "") .. " "
+            kind.menu = "    " .. (strings[2] or "")
+
+            return kind
           end,
         },
         experimental = {
