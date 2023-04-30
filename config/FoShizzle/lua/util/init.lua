@@ -5,6 +5,12 @@ function M.has(plugin)
   return require("lazy.core.config").plugins[plugin] ~= nil
 end
 
+function M.add_to_table(src, new)
+  if type(src) == "table" then
+    vim.list_extend(src, new)
+  end
+end
+
 -- delay notifications till vim.notify was replaced or after 500ms
 function M.lazy_notify()
   local notifs = {}
