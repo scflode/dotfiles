@@ -15,7 +15,7 @@ return {
       },
     },
     opts = {
-      timeout = 3000,
+      render = "compact",
       max_height = function()
         return math.floor(vim.o.lines * 0.75)
       end,
@@ -24,6 +24,22 @@ return {
       end,
     },
     init = function()
+      local stages = require("notify.stages.slide")("top_down")
+      local notify = require("notify")
+
+      notify.setup({
+        timeout = 3000,
+        stages = {
+          function(...)
+            local opts = stages[1](...)
+            if opts then
+              opts.border = "none"
+            end
+            return opts
+          end,
+          unpack(stages, 2),
+        },
+      })
       -- when noice is not enabled, install notify on VeryLazy
       local Util = require("util")
       if not Util.has("noice.nvim") then
