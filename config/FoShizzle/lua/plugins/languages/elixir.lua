@@ -20,9 +20,12 @@ return {
       local elixirls = require("elixir.elixirls")
 
       elixir.setup({
+        credo = {
+          enable = true,
+        },
         elixirls = {
           tag = "v0.14.3",
-          enabled = true,
+          enable = true,
           settings = elixirls.settings({
             dialyzerEnabled = true,
             fetchDeps = false,
