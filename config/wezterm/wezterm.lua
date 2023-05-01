@@ -13,7 +13,7 @@ local function scheme_for_appearance(appearance)
 end
 
 return {
-  window_decorations = "NONE",
+  -- window_decorations = "NONE",
   color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
   font = wezterm.font({
     family = "VictorMono Nerd Font",
