@@ -14,6 +14,7 @@ end
 
 return {
   -- window_decorations = "NONE",
+  -- window_decorations = "INTEGRATED_BUTTONS|RESIZE",
   color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
   font = wezterm.font({
     family = "VictorMono Nerd Font",
@@ -24,8 +25,8 @@ return {
   line_height = 1.4,
   enable_tab_bar = false,
   window_padding = {
-    left = 5,
-    right = 5,
+    left = 0,
+    right = 0,
     top = 0,
     bottom = 0,
   },
