@@ -227,4 +227,9 @@ return {
       end
     end,
   },
+
+  -- jump to alternate files
+  {
+    "tpope/vim-projectionist",
+  },
 }
