@@ -25,25 +25,12 @@ function load_antidote {
   source $zsh_plugins
 }
 
-#export ZSH=${HOME}/.oh-my-zsh
-
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 
 load_antidote
-
-#COMPLETION_WAITING_DOTS="true"
-#ZSH_THEME="spaceship"
-#HIST_STAMPS="mm/dd/yyyy"
-#plugins=(asdf git docker docker-compose zsh-autosuggestions)
-
-#SPACESHIP_NODE_SYMBOL="Node "
-#SPACESHIP_ELIXIR_SYMBOL="Elixir "
-#SPACESHIP_DOCKER_SYMBOL="Docker "
-
-#source ${ZSH}/oh-my-zsh.sh
 
 fpath+=(~/.config/hcloud/completion/zsh)
 
@@ -55,9 +42,9 @@ zstyle ':completion:*:hosts' hosts $hosts
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
+# kubectl
 source <(kubectl completion zsh)
 
+# 1Password
 eval "$(op completion zsh)"; compdef _op op
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
