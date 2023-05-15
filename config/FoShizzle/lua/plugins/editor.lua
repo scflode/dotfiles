@@ -292,7 +292,9 @@ return {
       wk.register(opts.defaults)
     end,
   },
-
+  {
+    "tpope/vim-fugitive",
+  },
   -- git signs
   {
     "lewis6991/gitsigns.nvim",
