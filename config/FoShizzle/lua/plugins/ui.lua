@@ -106,11 +106,6 @@ return {
               },
             },
             { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
-            -- stylua: ignore
-            {
-              function() return require("nvim-navic").get_location() end,
-              cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
-            },
           },
           lualine_x = {
             -- stylua: ignore
@@ -147,6 +142,34 @@ return {
           lualine_z = {
             { "location" },
           },
+        },
+        winbar = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = {
+            -- stylua: ignore
+            {
+              function() return require("nvim-navic").get_location() end,
+              cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+            },
+          },
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = {},
+        },
+        inactive_winbar = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = {
+            -- stylua: ignore
+            {
+              function() return require("nvim-navic").get_location() end,
+              cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+            },
+          },
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = {},
         },
         extensions = { "neo-tree", "lazy" },
       }
