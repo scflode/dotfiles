@@ -105,15 +105,15 @@ return {
                 right = 0,
               },
             },
-            { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+            { "filename", path = 0, symbols = { modified = "  ", readonly = "", unnamed = "" } },
           },
           lualine_x = {
-            -- stylua: ignore
-            {
-              function() return require("noice").api.status.command.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-              color = Util.fg("Statement"),
-            },
+            -- -- stylua: ignore
+            -- {
+            --   function() return require("noice").api.status.command.get() end,
+            --   cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+            --   color = Util.fg("Statement"),
+            -- },
             -- stylua: ignore
             {
               function() return require("noice").api.status.mode.get() end,
