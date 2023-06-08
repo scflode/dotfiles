@@ -45,6 +45,9 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 # kubectl
 source <(kubectl completion zsh)
 
+# doctl
+source <(doctl completion zsh)
+
 # 1Password
 eval "$(op completion zsh)"; compdef _op op
 
