@@ -7,7 +7,7 @@
 #
 
 # Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
+if ls --color >/dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
 else # OS X `ls`
 	colorflag="-G"
@@ -40,7 +40,7 @@ alias map="xargs -n1"
 alias reload="exec $SHELL -l"
 
 # VIM
-alias v='nvim'
+alias v='NVIM_APPNAME=FoShizzle nvim'
 
 # tmux
 alias tls='tmux list-sessions'
@@ -62,6 +62,5 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
 # dotfiles aliases
-alias update="${HOME}/.dotfiles/update" 
+alias update="${HOME}/.dotfiles/update"
 alias dotfiles='cd ~/.dotfiles && v .; -'
-
