@@ -15,6 +15,7 @@ end
 return {
   -- window_decorations = "NONE",
   -- window_decorations = "INTEGRATED_BUTTONS|RESIZE",
+  window_decorations = "RESIZE",
   color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
   font = wezterm.font({
     family = "VictorMono Nerd Font",
@@ -22,7 +23,7 @@ return {
     harfbuzz_features = { "calt=1", "clig=1", "liga=1" },
   }),
   font_size = 15.0,
-  line_height = 1.4,
+  line_height = 1.3,
   enable_tab_bar = false,
   window_padding = {
     left = 4,
