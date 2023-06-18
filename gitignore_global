@@ -32,6 +32,7 @@ GTAGS
 .projectile
 .tern-port
 .dir-locals.el
+.elixir-tools/
 
 # asdf
 .tool-versions
