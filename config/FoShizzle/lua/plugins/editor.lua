@@ -192,6 +192,9 @@ return {
         selection_caret = " ",
         mappings = {
           i = {
+            ["<C-h>"] = function(...)
+              return require("telescope.actions.layout").toggle_preview(...)
+            end,
             ["<c-t>"] = function(...)
               return require("trouble.providers.telescope").open_with_trouble(...)
             end,
@@ -218,6 +221,9 @@ return {
             end,
           },
           n = {
+            ["<C-h>"] = function(...)
+              return require("telescope.actions.layout").toggle_preview(...)
+            end,
             ["q"] = function(...)
               return require("telescope.actions").close(...)
             end,
