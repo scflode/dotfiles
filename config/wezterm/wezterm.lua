@@ -6,9 +6,11 @@ end
 
 local function scheme_for_appearance(appearance)
   if appearance:find("Dark") then
-    return "zenbones_dark"
+    -- return "zenbones_dark"
+    return "Catppuccin Mocha"
   else
-    return "zenbones"
+    -- return "zenbones"
+    return "Catppuccin Latte"
   end
 end
 
