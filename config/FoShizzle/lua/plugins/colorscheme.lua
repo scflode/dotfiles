@@ -6,6 +6,7 @@ return {
       "rktjmp/lush.nvim",
     },
   },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "f-person/auto-dark-mode.nvim",
     init = function()
