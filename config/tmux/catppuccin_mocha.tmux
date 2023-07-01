@@ -15,3 +15,5 @@ thm_yellow="#f9e2af"
 thm_blue="#89b4fa"
 thm_orange="#fab387"
 thm_black4="#585b70"
+
+source-file $HOME/.config/tmux/theme.tmux
