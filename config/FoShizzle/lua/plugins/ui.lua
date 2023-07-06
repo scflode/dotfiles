@@ -105,7 +105,7 @@ return {
                 right = 0,
               },
             },
-            { "filename", path = 0, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+            { "filename", path = 4, symbols = { modified = "  ", readonly = "", unnamed = "" } },
           },
           lualine_x = {
             -- -- stylua: ignore
