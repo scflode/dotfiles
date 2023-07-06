@@ -25,7 +25,7 @@ set -g message-command-style "fg=${thm_fg},bg=${thm_bg},align=centre"
 
 # panes
 set -g pane-border-style "fg=${thm_fg}"
-set -g pane-active-border-style "fg=${thm_bg}"
+set -g pane-active-border-style "fg=${thm_yellow}"
 
 # windows
 setw -g window-status-activity-style "fg=${thm_fg},bg=${thm_bg},none"
