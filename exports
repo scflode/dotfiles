@@ -3,8 +3,8 @@
 dot_dir="$( cd "$( dirname "$0" )" && pwd )"
 
 # Make nvim the default editor.
-export EDITOR='nvim';
-export GIT_EDITOR='nvim'
+export EDITOR='NVIM_APPNAME=FoShizzle nvim';
+export GIT_EDITOR='NVIM_APPNAME=FoShizzle nvim'
 
 # Set the shell.
 export SHELL='/bin/zsh'
