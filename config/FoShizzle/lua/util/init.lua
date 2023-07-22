@@ -136,13 +136,21 @@ end
 ---@param values? {[1]:any, [2]:any}
 function M.toggle(option, silent, values)
   if values then
-    if vim.opt_local[option]:get() == values[1] then
+    local is = vim.opt_local[option]:get()
+    local should = values[1]
+    if type(vim.opt_local[option]:get()) == "table" then
+      is = table.concat(vim.opt_local[option]:get())
+      should = table.concat(values[1])
+    end
+
+    if is == should then
       vim.opt_local[option] = values[2]
     else
       vim.opt_local[option] = values[1]
     end
-    return Util.info("Set " .. option .. " to " .. vim.opt_local[option]:get(), { title = "Option" })
+    return Util.info("Set " .. option .. " to " .. M.normalize(vim.opt_local[option]:get()), { title = "Option" })
   end
+
   vim.opt_local[option] = not vim.opt_local[option]:get()
   if not silent then
     if vim.opt_local[option]:get() then
@@ -205,4 +213,18 @@ function M.lsp_disable(server, cond)
   end)
 end
 
+function M.normalize(o)
+  if type(o) == "table" then
+    local s = "{ "
+    for k, v in pairs(o) do
+      if type(k) ~= "number" then
+        k = '"' .. k .. '"'
+      end
+      s = s .. "[" .. k .. "] = " .. M.normalize(v) .. ","
+    end
+    return s .. "} "
+  else
+    return tostring(o)
+  end
+end
 return M
