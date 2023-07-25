@@ -51,7 +51,7 @@ return {
         },
         completion = {
           completeopt = "menu,menuone,noinsert",
-          keyword_length = 6,
+          keyword_length = 3,
         },
         snippet = {
           expand = function(args)
