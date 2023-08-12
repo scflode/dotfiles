@@ -11,6 +11,7 @@
 # Vim
 .phpcd
 .phpactor.yml
+.phpactor.json
 .phpactor/
 .phpcd.vim
 .projections.json
