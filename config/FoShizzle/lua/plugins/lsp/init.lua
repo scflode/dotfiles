@@ -165,6 +165,7 @@ return {
 
   -- formatters
   {
+    -- This plugin is archived and might no longer exist; look for a replacement
     "jose-elias-alvarez/null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "mason.nvim" },
