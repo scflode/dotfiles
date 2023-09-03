@@ -77,6 +77,7 @@ return {
       "MunifTanjim/nui.nvim",
       {
         "s1n7ax/nvim-window-picker",
+        tag = "v2.0.1",
         init = function()
           require("window-picker").setup({
             autoselect_one = true,
