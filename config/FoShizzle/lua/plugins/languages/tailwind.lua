@@ -72,6 +72,7 @@ return {
                   [[class="([^"]*)]],
                   [[class: "([^"]*)]],
                   '~H""".*class="([^"]*)".*"""',
+                  [[icon name="([^"]*)]],
                 },
               },
               validate = true,
