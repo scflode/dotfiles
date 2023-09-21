@@ -24,7 +24,7 @@ return {
           enable = true,
         },
         elixirls = {
-          tag = "v0.15.1",
+          tag = "v0.16.0",
           enable = true,
           settings = elixirls.settings({
             dialyzerEnabled = true,
