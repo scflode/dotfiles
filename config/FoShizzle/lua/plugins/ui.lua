@@ -180,6 +180,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
+    version = "2.20.8",
     opts = {
       -- char = "▏",
       char = "│",
