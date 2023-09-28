@@ -1,6 +1,6 @@
 local M = {}
 
-M.colorscheme = "rose-pine"
+M.colorscheme = "zenbones"
 
 M.icons = {
   dap = {

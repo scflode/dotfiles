@@ -1,17 +1,22 @@
-set -g status-left ' #[fg=#88507D,bold]#{s/root//:client_key_table} '
-set -g status-right '#[fg=#88507D,bold] [#S]#[fg=#88507D,bold] [%d/%m] #[fg=#88507D,bold][%I:%M%p] '
-set -g status-style fg='#88507D',bg='#2C363C'
+# NOTE: you can use vars with $<var> and ${<var>} as long as the str is double quoted: ""
+# WARNING: hex colors can't contain capital letters
 
-set -g window-status-current-style fg='#88507D',bg='#2C363C',bold
+# --> zenbones light
+thm_bg="#f0edec"
+thm_fg="#2c363c"
+thm_cyan="#66a5ad"
+thm_black="#888f94"
+thm_gray="#b4bdc3"
+thm_magenta="#b279a7"
+thm_pink="#e8838f"
+thm_red="#de6e7c"
+thm_green="#819b69"
+thm_yellow="#d68c67"
+thm_blue="#61abda"
+thm_orange="#b77e64"
+thm_black4="#1c1917"
 
-set -g pane-border-style fg='#88507D'
-set -g pane-active-border-style fg='#88507D'
+source-file $HOME/.config/tmux/theme.tmux
 
-set -g message-style fg='#F0EDEC',bg='#CBD9E3'
-
-set -g display-panes-active-colour '#88507D'
-set -g display-panes-colour '#88507D'
-
-set -g clock-mode-colour '#88507D'
-
-set -g mode-style fg='#F0EDEC',bg='#CBD9E3'
+# Overrides
+setw -g window-status-format "#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] #I #[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] #W "

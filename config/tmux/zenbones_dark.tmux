@@ -1,17 +1,20 @@
-set -g status-left ' #[fg=#B279A7,bold]#{s/root//:client_key_table} '
-set -g status-right '#[fg=#B279A7,bold] [#S]#[fg=#B279A7,bold] [%d/%m] #[fg=#B279A7,bold][%I:%M%p] '
-set -g status-style fg='#B279A7',bg='#B4BDC3'
+# NOTE: you can use vars with $<var> and ${<var>} as long as the str is double quoted: ""
+# WARNING: hex colors can't contain capital letters
 
-set -g window-status-current-style fg='#B279A7',bg='#B4BDC3',bold
+# --> zenbones dark
+thm_bg="#1c1917"
+thm_fg="#b4bdc3"
+thm_cyan="#31748f"
+thm_black="#1f1d2e"
+thm_gray="#403d52"
+thm_magenta="#c4a7e7"
+thm_pink="#ebbcba"
+thm_red="#eb6f92"
+thm_green="#9ccfd8"
+thm_yellow="#f6c177"
+thm_blue="#908caa"
+thm_orange="#acb0be"
+thm_black4="#524f67"
 
-set -g pane-border-style fg='#B279A7'
-set -g pane-active-border-style fg='#B279A7'
+source-file $HOME/.config/tmux/theme.tmux
 
-set -g message-style fg='#1C1917',bg='#3D4042'
-
-set -g display-panes-active-colour '#B279A7'
-set -g display-panes-colour '#B279A7'
-
-set -g clock-mode-colour '#B279A7'
-
-set -g mode-style fg='#1C1917',bg='#3D4042'
