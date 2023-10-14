@@ -3,11 +3,20 @@ local Util = require("util")
 local function map(mode, lhs, rhs, opts)
   local keys = require("lazy.core.handler").handlers.keys
   ---@cast keys LazyKeysHandler
+  local modes = type(mode) == "string" and { mode } or mode
+
+  modes = vim.tbl_filter(function(mode)
+    return not (keys.have and keys:have(lhs, mode))
+  end, modes)
+
   -- do not create the keymap if a lazy keys handler exists
-  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
+  if #modes > 0 then
     opts = opts or {}
     opts.silent = opts.silent ~= false
-    vim.keymap.set(mode, lhs, rhs, opts)
+    if opts.remap and not vim.g.vscode then
+      opts.remap = nil
+    end
+    vim.keymap.set(modes, lhs, rhs, opts)
   end
 end
 
@@ -54,6 +63,11 @@ map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
+
+-- formatting
+map({ "n", "v" }, "<leader>cf", function()
+  require("plugins.lsp.format").format({ force = true })
+end, { desc = "Format" })
 
 -- Toggles
 map("n", "<leader>uf", require("plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
