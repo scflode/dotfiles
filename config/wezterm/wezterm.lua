@@ -36,7 +36,7 @@ return {
     harfbuzz_features = { "calt=1", "clig=1", "liga=1" },
   }),
   font_size = 16.0,
-  line_height = 1.5,
+  line_height = 1.7,
   enable_tab_bar = false,
   window_padding = {
     left = 4,
