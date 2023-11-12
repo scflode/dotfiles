@@ -12,9 +12,9 @@ return {
     "williamboman/mason.nvim",
     opts = function(_, opts)
       require("util").add_to_table(opts.ensure_installed, {
-        "intelephense",
-        "php-cs-fixer",
-        -- "phpactor",
+        -- "intelephense",
+        -- "php-cs-fixer",
+        "phpactor",
         "psalm",
         "twigcs",
       })
