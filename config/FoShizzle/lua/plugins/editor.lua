@@ -189,7 +189,7 @@ return {
     },
     opts = {
       defaults = {
-        path_display = { "shorten" },
+        path_display = { "truncate" },
         prompt_prefix = " ",
         selection_caret = " ",
         mappings = {
