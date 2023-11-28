@@ -31,7 +31,7 @@ return {
   color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
   -- colors = colors_for_appearance(wezterm.gui.get_appearance()),
   font = wezterm.font({
-    family = "VictorMono Nerd Font",
+    family = "VictorMono NFM",
     weight = "Bold",
     harfbuzz_features = { "calt=1", "clig=1", "liga=1" },
   }),
