@@ -4,17 +4,17 @@ if not status_ok then
   print("wezterm not found!")
 end
 
---local colors = require("lua/rose-pine").colors()
+local colors = require("lua/rose-pine").colors()
 
-local function scheme_for_appearance(appearance)
-  if appearance:find("Dark") then
-    return "zenbones_dark"
-    --return "Catppuccin Mocha"
-  else
-    return "zenbones"
-    --return "Catppuccin Latte"
-  end
-end
+-- local function scheme_for_appearance(appearance)
+--   if appearance:find("Dark") then
+--     return "zenbones_dark"
+--     --return "Catppuccin Mocha"
+--   else
+--     return "zenbones"
+--     --return "Catppuccin Latte"
+--   end
+-- end
 
 local function colors_for_appearance(appearance)
   if appearance:find("Dark") then
@@ -28,8 +28,8 @@ return {
   -- window_decorations = "NONE",
   -- window_decorations = "INTEGRATED_BUTTONS|RESIZE",
   window_decorations = "RESIZE",
-  color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
-  -- colors = colors_for_appearance(wezterm.gui.get_appearance()),
+  -- color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
+  colors = colors_for_appearance(wezterm.gui.get_appearance()),
   font = wezterm.font({
     family = "VictorMono NFM",
     weight = "Bold",
