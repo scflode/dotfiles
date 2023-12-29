@@ -15,15 +15,15 @@ return {
     },
     -- stylua: ignore
     keys = {
-      -- {
-      --   "<tab>",
-      --   function()
-      --     return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-      --   end,
-      --   expr = true, silent = true, mode = "i",
-      -- },
-      -- { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-      -- { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+      {
+        "<tab>",
+        function()
+          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+        end,
+        expr = true, silent = true, mode = "i",
+      },
+      { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
+      { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
   },
 
@@ -70,13 +70,19 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },
+          { name = "codeium" },
           { name = "buffer" },
           { name = "path" },
         }),
         formatting = {
           fields = { "kind", "abbr", "menu" },
           format = function(entry, vim_item)
-            local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+            local kind = require("lspkind").cmp_format({
+              mode = "symbol_text",
+              maxwidth = 50,
+              ellipsis_char = "...",
+              symbol_map = { Codeium = "" },
+            })(entry, vim_item)
             local strings = vim.split(kind.kind, "%s", { trimempty = true })
             kind.kind = " " .. (strings[1] or "") .. " "
             kind.menu = "    " .. (strings[2] or "")
