@@ -9,6 +9,7 @@ return {
         "erlang",
         "eex",
         "heex",
+        "svelte",
       })
     end,
   },
@@ -24,7 +25,7 @@ return {
           enable = true,
         },
         elixirls = {
-          tag = "v0.19.0",
+          tag = "v0.20.0",
           enable = true,
           settings = elixirls.settings({
             dialyzerEnabled = true,
