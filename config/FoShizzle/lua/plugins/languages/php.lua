@@ -1,8 +1,10 @@
+local Util = require("util")
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      require("util").add_to_table(opts.ensure_installed, {
+      Util.add_to_table(opts.ensure_installed, {
         "php",
         "twig",
       })
@@ -11,7 +13,7 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
-      require("util").add_to_table(opts.ensure_installed, {
+      Util.add_to_table(opts.ensure_installed, {
         -- "intelephense",
         -- "php-cs-fixer",
         "phpactor",

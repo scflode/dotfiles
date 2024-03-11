@@ -1,14 +1,17 @@
+local Util = require("util")
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      require("util").add_to_table(opts.ensure_installed, {
+      Util.add_to_table(opts.ensure_installed, {
         "javascript",
         "typescript",
         "tsx",
         "json",
         "html",
         "css",
+        "svelte",
       })
     end,
   },
@@ -45,7 +48,7 @@ return {
       },
       setup = {
         tsserver = function(_, opts)
-          require("util").on_attach(function(client, buffer)
+          Util.on_attach(function(client, buffer)
             if client.name == "tsserver" then
               -- stylua: ignore
               vim.keymap.set("n", "<leader>co", "<cmd>TypescriptOrganizeImports<CR>", { buffer = buffer, desc = "Organize Imports" })
@@ -60,7 +63,17 @@ return {
     },
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      Util.add_to_table(opts.ensure_installed, {
+        "typescript-language-server",
+        "svelte-language-server",
+        "prettierd",
+      })
+    end,
+  },
+  {
+    "nvimtools/none-ls.nvim",
     opts = function(_, opts)
       table.insert(opts.sources, require("typescript.extensions.null-ls.code-actions"))
     end,
