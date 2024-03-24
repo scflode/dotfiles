@@ -194,13 +194,13 @@ return {
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
-          timeout_ms = 500,
+          timeout_ms = 5000,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
-      log_level = vim.log.levels.DEBUG,
+      log_level = vim.log.levels.INFO,
       formatters = {
-        prettierd = {
+        prettier = {
           require_cwd = true,
         },
       },
@@ -211,8 +211,8 @@ return {
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        javascript = { { "prettierd", "prettier" } },
-        svelte = { { "prettierd", "prettier" } },
+        javascript = { { "prettier" } },
+        svelte = { { "prettier" } },
       },
     },
   },
