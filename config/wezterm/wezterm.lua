@@ -26,6 +26,7 @@ end
 
 return {
   -- window_decorations = "NONE",
+  -- window_decorations = "TITLE|INTEGRATED_BUTTONS|RESIZE",
   -- window_decorations = "INTEGRATED_BUTTONS|RESIZE",
   window_decorations = "RESIZE",
   -- color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
