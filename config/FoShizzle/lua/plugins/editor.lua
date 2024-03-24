@@ -104,7 +104,7 @@ return {
     "nvim-pack/nvim-spectre",
     -- stylua: ignore
     keys = {
-      { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+      { "<leader>sR", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
     },
   },
 
@@ -142,7 +142,7 @@ return {
       { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
       { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
       { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-      { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
+      { "<leader>sr", "<cmd>Telescope resume<cr>", desc = "Resume" },
       { "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
       { "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
       {
