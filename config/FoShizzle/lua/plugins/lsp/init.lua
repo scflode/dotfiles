@@ -45,6 +45,7 @@ return {
       },
       -- LSP Server Settings
       servers = {
+        cssls = { settings = { css = { lint = { unknownAtRules = "ignore" } } } },
         jsonls = {},
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
