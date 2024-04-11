@@ -68,7 +68,7 @@ return {
       Util.add_to_table(opts.ensure_installed, {
         "typescript-language-server",
         "svelte-language-server",
-        "prettierd",
+        "prettier",
       })
     end,
   },
