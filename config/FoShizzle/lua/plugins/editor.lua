@@ -23,6 +23,13 @@ return {
       },
       { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
       { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+      {
+        "<leader>n",
+        function()
+          require("neo-tree.command").execute({ toggle = false, dir = require("util").get_root(), reveal = true })
+        end,
+        desc = "Reveal file in NeoTree (root dir)",
+      },
     },
     deactivate = function()
       vim.cmd([[Neotree close]])

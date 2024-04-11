@@ -58,6 +58,10 @@ return {
           node_decremental = "<bs>",
         },
       },
+      -- matchup = {
+      --   enable = true,
+      --   include_match_words = true,
+      -- },
     },
     config = function(_, opts)
       if type(opts.ensure_installed) == "table" then
@@ -74,4 +78,13 @@ return {
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
+  -- improved matching
+  -- {
+  --   "andymass/vim-matchup",
+  --   dependencies = { "nvim-treesitter/nvim-treesitter" },
+  --   config = function()
+  --     -- may set any options here
+  --     vim.g.matchup_matchparen_offscreen = { method = "popup" }
+  --   end,
+  -- },
 }

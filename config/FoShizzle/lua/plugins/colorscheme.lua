@@ -1,12 +1,12 @@
 return {
-  -- {
-  --   "mcchrish/zenbones.nvim",
-  --   lazy = true,
-  --   dependencies = {
-  --     "rktjmp/lush.nvim",
-  --   },
-  -- },
-  { "rose-pine/neovim", name = "rose-pine", priority = 1000 },
+  {
+    "mcchrish/zenbones.nvim",
+    lazy = true,
+    dependencies = {
+      "rktjmp/lush.nvim",
+    },
+  },
+  -- { "rose-pine/neovim", name = "rose-pine", priority = 1000 },
   -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "f-person/auto-dark-mode.nvim",
