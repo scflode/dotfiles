@@ -29,11 +29,10 @@ return {
     },
     opts = function()
       local cmp = require("cmp")
-      local lspkind = require("lspkind")
       return {
         window = {
           completion = {
-            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            -- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
             col_offset = -3,
             side_padding = 1,
           },
