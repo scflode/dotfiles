@@ -64,3 +64,6 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 # dotfiles aliases
 alias update="${HOME}/.dotfiles/update"
 alias dotfiles='cd ~/.dotfiles && v .; -'
+
+# Neovim
+alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
