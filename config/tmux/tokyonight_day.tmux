@@ -13,7 +13,7 @@ thm_red=""
 thm_green=""
 thm_yellow="#2e7de9"
 thm_blue="#2e7de9"
-thm_orange="#a8aecb"
+thm_orange="#ff9e64"
 thm_black4="#d4d6e4"
 
 source-file $HOME/.config/tmux/theme.tmux
