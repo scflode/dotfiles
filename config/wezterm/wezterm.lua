@@ -14,7 +14,8 @@ local function scheme_for_appearance(appearance)
   else
     -- return "zenbones"
     -- return "Catppuccin Latte"
-    return "Tokyo Night Day"
+    -- return "Tokyo Night Day"
+    return "Tokyo Night Storm"
   end
 end
 
@@ -42,8 +43,8 @@ return {
   line_height = 1.3,
   enable_tab_bar = false,
   window_padding = {
-    left = 4,
-    right = 4,
+    left = 14,
+    right = 14,
     top = 0,
     bottom = 0,
   },
