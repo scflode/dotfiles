@@ -44,8 +44,8 @@ return {
   line_height = 1.3,
   enable_tab_bar = false,
   window_padding = {
-    left = 14,
-    right = 14,
+    left = 2,
+    right = 2,
     top = 0,
     bottom = 0,
   },
