@@ -1,3 +1,7 @@
+local function overwrite_colorscheme()
+  vim.api.nvim_set_hl(0, "Function", { fg = "#FFFAA0" })
+end
+
 return {
   {
     "mcchrish/zenbones.nvim",
@@ -17,10 +21,12 @@ return {
         update_interval = 1000,
         set_dark_mode = function()
           vim.api.nvim_set_option("background", "dark")
+          overwrite_colorscheme()
         end,
         set_light_mode = function()
           -- vim.api.nvim_set_option("background", "light")
           vim.api.nvim_set_option("background", "dark")
+          overwrite_colorscheme()
         end,
       })
       adm.init()
