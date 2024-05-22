@@ -197,11 +197,11 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       draw = {
+        -- Disable animation
         animation = function()
           return 0
         end,
       },
-      -- symbol = "▏",
       symbol = "│",
       options = { try_as_border = true },
     },
