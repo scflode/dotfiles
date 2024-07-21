@@ -57,6 +57,7 @@ return {
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
+          -- { name = "supermaven" },
           { name = "codeium" },
           { name = "buffer" },
           { name = "luasnip" },
@@ -95,6 +96,7 @@ return {
                 Operator = "󰆕",
                 TypeParameter = "",
                 Codeium = "",
+                Supermaven = "",
               },
             })(entry, vim_item)
             local strings = vim.split(kind.kind, "%s", { trimempty = true })

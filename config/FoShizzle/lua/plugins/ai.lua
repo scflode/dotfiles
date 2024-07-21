@@ -10,6 +10,12 @@ return {
     end,
   },
   {
+    "supermaven-inc/supermaven-nvim",
+    config = function()
+      require("supermaven-nvim").setup({})
+    end,
+  },
+  {
     "David-Kunz/gen.nvim",
     opts = {
       model = "llama3:latest",

@@ -362,4 +362,5 @@ return {
       require("mini.animate").setup(opts)
     end,
   },
+  { "echasnovski/mini.icons", version = false },
 }

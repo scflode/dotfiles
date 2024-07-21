@@ -215,6 +215,7 @@ return {
         javascript = { { "prettier" } },
         typescript = { { "prettier" } },
         svelte = { { "prettier" } },
+        vue = { { "prettier" } },
       },
     },
   },

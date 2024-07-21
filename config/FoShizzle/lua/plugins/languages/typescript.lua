@@ -12,6 +12,7 @@ return {
         "html",
         "css",
         "svelte",
+        "vue",
       })
     end,
   },
@@ -45,6 +46,14 @@ return {
             },
           },
         },
+        volar = {
+          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+          init_options = {
+            vue = {
+              hybridMode = false,
+            },
+          },
+        },
       },
       setup = {
         tsserver = function(_, opts)
@@ -69,6 +78,7 @@ return {
         "typescript-language-server",
         "svelte-language-server",
         "prettier",
+        "vue-language-server",
       })
     end,
   },
