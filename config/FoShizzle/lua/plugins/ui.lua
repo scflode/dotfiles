@@ -226,9 +226,9 @@ return {
       -- which key integration
       {
         "folke/which-key.nvim",
-        opts = function(_, opts)
+        opts = function(_, _)
           if require("util").has("noice.nvim") then
-            opts.defaults["<leader>sn"] = { name = "+noice" }
+            require("which-key").add({ { "<leader>sn", group = "noice" } })
           end
         end,
       },
