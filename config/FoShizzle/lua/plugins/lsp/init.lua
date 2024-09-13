@@ -35,7 +35,7 @@ return {
       -- add any global capabilities here
       capabilities = {},
       -- Automatically format on save
-      autoformat = true,
+      autoformat = false,
       -- options for vim.lsp.buf.format
       -- `bufnr` and `filter` is handled by the formatter,
       -- but can be also overridden when specified
@@ -162,6 +162,14 @@ return {
           return not is_deno(root_dir)
         end)
       end
+
+      -- if Util.lsp_get_config("angularls") and Util.lsp_get_config("tsserver") then
+      --   local is_angular = require("lspconfig.util").root_pattern("angular.json")
+      --   Util.lsp_disable("tsserver", is_angular)
+      --   Util.lsp_disable("angularls", function(root_dir)
+      --     return not is_angular(root_dir)
+      --   end)
+      -- end
     end,
   },
 
@@ -185,39 +193,39 @@ return {
       }
     end,
   },
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      notify_on_error = true,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        return {
-          timeout_ms = 5000,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-        }
-      end,
-      log_level = vim.log.levels.INFO,
-      formatters = {
-        prettier = {
-          require_cwd = true,
-        },
-      },
-      formatters_by_ft = {
-        lua = { "stylua" },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        javascript = { { "prettier" } },
-        typescript = { { "prettier" } },
-        svelte = { { "prettier" } },
-      },
-    },
-  },
+  -- {
+  --   "stevearc/conform.nvim",
+  --   opts = {
+  --     notify_on_error = true,
+  --     format_on_save = function(bufnr)
+  --       -- Disable "format_on_save lsp_fallback" for languages that don't
+  --       -- have a well standardized coding style. You can add additional
+  --       -- languages here or re-enable it for the disabled ones.
+  --       local disable_filetypes = { c = true, cpp = true }
+  --       return {
+  --         timeout_ms = 5000,
+  --         lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+  --       }
+  --     end,
+  --     log_level = vim.log.levels.INFO,
+  --     formatters = {
+  --       prettier = {
+  --         require_cwd = true,
+  --       },
+  --     },
+  --     formatters_by_ft = {
+  --       lua = { "stylua" },
+  --       -- Conform can also run multiple formatters sequentially
+  --       -- python = { "isort", "black" },
+  --       --
+  --       -- You can use a sub-list to tell conform to run *until* a formatter
+  --       -- is found.
+  --       javascript = { { "prettier" } },
+  --       typescript = { { "prettier" } },
+  --       svelte = { { "prettier" } },
+  --     },
+  --   },
+  -- },
 
   -- cmdline tools and lsp servers
   {
