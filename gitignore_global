@@ -43,5 +43,7 @@ GTAGS
 .project
 
 # Python
-
 .venv/
+
+# Nginx
+vhost.local.conf
