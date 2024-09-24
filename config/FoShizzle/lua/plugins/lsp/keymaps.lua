@@ -20,7 +20,13 @@ function M.get()
         desc = "Goto Definition",
         has = "definition",
       },
-      { "gr", "<cmd>Telescope lsp_references show_line=false<cr>", desc = "References" },
+      {
+        "gr",
+        function()
+          require("telescope.builtin").lsp_references({ show_line = false })
+        end,
+        desc = "References",
+      },
       { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
       {
         "gI",

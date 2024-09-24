@@ -7,7 +7,7 @@ return {
     "stevearc/oil.nvim",
     opts = {
       float = {
-        max_width = 80,
+        max_width = 140,
         max_height = 40,
       },
       keymaps = {

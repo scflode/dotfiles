@@ -163,13 +163,13 @@ return {
         end)
       end
 
-      -- if Util.lsp_get_config("angularls") and Util.lsp_get_config("tsserver") then
-      --   local is_angular = require("lspconfig.util").root_pattern("angular.json")
-      --   Util.lsp_disable("tsserver", is_angular)
-      --   Util.lsp_disable("angularls", function(root_dir)
-      --     return not is_angular(root_dir)
-      --   end)
-      -- end
+      if Util.lsp_get_config("angularls") and Util.lsp_get_config("tsserver") then
+        local is_angular = require("lspconfig.util").root_pattern("angular.json")
+        -- Util.lsp_disable("tsserver", is_angular)
+        Util.lsp_disable("angularls", function(root_dir)
+          return not is_angular(root_dir)
+        end)
+      end
     end,
   },
 
