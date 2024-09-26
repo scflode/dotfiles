@@ -2,37 +2,22 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
--- https://gist.github.com/mactep/430449fd4f6365474bfa15df5c02d27b
-local namespace = vim.api.nvim_create_namespace("class_conceal")
-local group = vim.api.nvim_create_augroup("class_conceal", { clear = true })
-local conceal_html_class = function(bufnr)
-  local language_tree = vim.treesitter.get_parser(bufnr, "html")
-  local syntax_tree = language_tree:parse()
-  local root = syntax_tree[1]:root()
+-- Start angularls if in an Angular project
+local function detect_angularls()
+  local is_angular = require("lspconfig.util").root_pattern("angular.json")
+  LazyVim.lsp.disable("angularls", function(root_dir)
+    local angular_detected = is_angular(root_dir)
+    if angular_detected then
+      vim.notify("Detected an Angular project", vim.log.levels.INFO, { title = "lspconfig" })
+    end
 
-  local query = vim.treesitter.parse_query(
-    "html",
-    [[
-    ((attribute
-        (attribute_name) @att_name (#eq? @att_name "class")
-        (quoted_attribute_value (attribute_value) @class_value) (#set! @class_value conceal "…")))
-    ]]
-  ) -- using single character for conceal thanks to u/Rafat913
-
-  for _, captures, metadata in query:iter_matches(root, bufnr, root:start(), root:end_()) do
-    local start_row, start_col, end_row, end_col = captures[2]:range()
-    vim.api.nvim_buf_set_extmark(bufnr, namespace, start_row, start_col, {
-      end_line = end_row,
-      end_col = end_col,
-      conceal = metadata[2].conceal,
-    })
-  end
+    return not angular_detected
+  end)
 end
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "TextChanged", "InsertLeave" }, {
-  group = group,
-  pattern = { "*.html" }, -- , "*.ts", "*.js", "*.tsx", "*.jsx" },
-  callback = function(_match)
-    -- print("pattern: " .. vim.inspect(pattern))
-    conceal_html_class(vim.api.nvim_get_current_buf())
-  end,
+
+-- Auto command to start angularls on buffer enter
+vim.api.nvim_create_augroup("Angular", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = "Angular",
+  callback = detect_angularls,
 })

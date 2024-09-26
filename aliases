@@ -40,7 +40,7 @@ alias map="xargs -n1"
 alias reload="exec $SHELL -l"
 
 # VIM
-alias v='NVIM_APPNAME=FoShizzle nvim'
+alias v='NVIM_APPNAME=LazyVim nvim'
 
 # tmux
 alias tls='tmux list-sessions'
