@@ -6,3 +6,9 @@ local map = vim.keymap.set
 map("n", "<leader>gg", function()
   require("neogit").open({ kind = "tab" })
 end, { desc = "Neogit (cwd)" })
+
+map("n", "<leader>H", function()
+  local current_file = vim.fn.expand("%:t")
+  vim.notify("Added file: " .. current_file, vim.log.levels.INFO, { title = "Harpoon" })
+  require("harpoon"):list():add()
+end, { desc = "Add file to harpoon" })

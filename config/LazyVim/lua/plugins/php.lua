@@ -7,9 +7,51 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        intelephense = {
+          init_options = {
+            licenceKey = vim.env.INTELEPHENSE_LICENCE_KEY,
+          },
+        },
         phpactor = {},
       },
+      setup = {
+        phpactor = function()
+          LazyVim.lsp.on_attach(function(client)
+            client.server_capabilities.renameProvider = false
+          end, "phpactor")
+        end,
+        intelephense = function()
+          LazyVim.lsp.on_attach(function(client)
+            client.server_capabilities.definitionProvider = false
+            client.server_capabilities.referencesProvider = false
+            client.server_capabilities.inlineCompletionProvider = false
+            client.server_capabilities.documentSymbolProvider = false
+            client.server_capabilities.workspaceSymbolProvider = false
+          end, "intelephense")
+        end,
+      },
     },
+  },
+  {
+    "mfussenegger/nvim-dap",
+    optional = true,
+    opts = function()
+      local dap = require("dap")
+      local path = require("mason-registry").get_package("php-debug-adapter"):get_install_path()
+      dap.adapters.php = {
+        type = "executable",
+        command = "node",
+        args = { path .. "/extension/out/phpDebug.js" },
+      }
+      dap.configurations.php = {
+        {
+          type = "php",
+          request = "launch",
+          name = "Listen for Xdebug",
+          port = 9003,
+        },
+      }
+    end,
   },
   {
     "williamboman/mason.nvim",

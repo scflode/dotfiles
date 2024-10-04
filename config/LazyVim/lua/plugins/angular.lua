@@ -25,9 +25,15 @@ return {
           -- Disable
           return true
         end,
-        angularls = function()
-          print("Setting up AngularLS")
+        vtsls = function()
           LazyVim.lsp.on_attach(function(client)
+            -- Remove formatting as already done in angularls
+            client.server_capabilities.documentFormattingProvider = false
+          end, "vtsls")
+        end,
+        angularls = function()
+          LazyVim.lsp.on_attach(function(client)
+            vim.notify("Setting up Angular", vim.log.levels.INFO, { title = "lspconfig" })
             --HACK: disable angular renaming capability due to duplicate rename popping up
             client.server_capabilities.renameProvider = false
             client.server_capabilities.referencesProvider = false

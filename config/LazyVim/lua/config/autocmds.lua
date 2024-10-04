@@ -6,12 +6,7 @@
 local function detect_angularls()
   local is_angular = require("lspconfig.util").root_pattern("angular.json")
   LazyVim.lsp.disable("angularls", function(root_dir)
-    local angular_detected = is_angular(root_dir)
-    if angular_detected then
-      vim.notify("Detected an Angular project", vim.log.levels.INFO, { title = "lspconfig" })
-    end
-
-    return not angular_detected
+    return not is_angular(root_dir)
   end)
 end
 
