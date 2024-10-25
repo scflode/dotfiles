@@ -18,16 +18,18 @@ return {
         phpactor = function()
           LazyVim.lsp.on_attach(function(client)
             client.server_capabilities.renameProvider = false
-          end, "phpactor")
-        end,
-        intelephense = function()
-          LazyVim.lsp.on_attach(function(client)
             client.server_capabilities.definitionProvider = false
             client.server_capabilities.referencesProvider = false
             client.server_capabilities.inlineCompletionProvider = false
             client.server_capabilities.documentSymbolProvider = false
             client.server_capabilities.workspaceSymbolProvider = false
-          end, "intelephense")
+            client.server_capabilities.diagnosticProvider = nil
+            client.server_capabilities.hoverProvider = false
+            client.server_capabilities.inlayHintProvider = false
+          end, "phpactor")
+        end,
+        intelephense = function()
+          LazyVim.lsp.on_attach(function(client) end, "intelephense")
         end,
       },
     },
@@ -76,7 +78,7 @@ return {
     optional = true,
     opts = {
       formatters_by_ft = {
-        php = { "php_cs_fixer" },
+        php = { "php_cs_fixer", timeout_ms = 30000 },
       },
     },
   },
