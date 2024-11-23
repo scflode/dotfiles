@@ -47,3 +47,6 @@ GTAGS
 
 # Nginx
 vhost.local.conf
+
+# Prettier
+.prettierignore
