@@ -12,7 +12,7 @@ return {
             licenceKey = vim.env.INTELEPHENSE_LICENCE_KEY,
           },
         },
-        phpactor = {},
+        phpactor = { enabled = false },
       },
       setup = {
         phpactor = function()
