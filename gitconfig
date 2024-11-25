@@ -30,7 +30,14 @@
 [core]
   excludesfile = ~/.gitignore_global
   autocrlf = input
-  editor = v
+  editor = NVIM_APPNAME=LazyVim nvim
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+[merge]
+  conflictStyle = zdiff3
 [push]
   default = simple
 [filter "lfs"]
