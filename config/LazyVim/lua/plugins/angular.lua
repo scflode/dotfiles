@@ -29,13 +29,12 @@ return {
           LazyVim.lsp.on_attach(function(client)
             -- Remove formatting as already done in angularls
             client.server_capabilities.documentFormattingProvider = false
-            -- client.server_capabilities.renameProvider = false
             client.server_capabilities.referencesProvider = false
           end, "vtsls")
         end,
         angularls = function()
           LazyVim.lsp.on_attach(function(client)
-            --     --HACK: disable angular renaming capability due to duplicate rename popping up
+            --HACK: disable angular renaming capability due to duplicate rename popping up
             client.server_capabilities.renameProvider = false
             --     client.server_capabilities.referencesProvider = false
           end, "angularls")
