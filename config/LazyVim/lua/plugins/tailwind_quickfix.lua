@@ -34,6 +34,7 @@ return {
                 eelixir = "html-eex",
                 heex = "html-eex",
               },
+              classAttributes = { "class", "className", "class:list", "ngClass", "modifiersClassNames" },
             },
           }
 
