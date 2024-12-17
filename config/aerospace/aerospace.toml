@@ -151,3 +151,18 @@ alt-shift-l = ['join-with right', 'mode main']
 [[on-window-detected]]
 if.app-id = 'ai.perplexity.mac'
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iCal'
+check-further-callbacks = true
+run = ['move-node-to-workspace c']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+check-further-callbacks = true
+run = ['move-node-to-workspace c']
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+check-further-callbacks = true
+run = ['move-node-to-workspace c']
