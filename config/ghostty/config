@@ -1,0 +1,10 @@
+theme = rose-pine
+
+# Font config
+
+font-family = "VictorMono NFM"
+font-thicken = true
+font-size = 15
+
+title = " "
+
