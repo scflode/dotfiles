@@ -3,6 +3,16 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        cssls = {
+          settings = {
+            css = {
+              validate = true,
+              lint = {
+                unknownAtRules = "ignore",
+              },
+            },
+          },
+        },
         tailwindcss = {
           -- exclude a filetype from the default_config
           filetypes_exclude = { "markdown" },
