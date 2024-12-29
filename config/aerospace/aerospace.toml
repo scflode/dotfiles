@@ -148,10 +148,16 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+# Always floating apps
 [[on-window-detected]]
 if.app-id = 'ai.perplexity.mac'
 run = ['layout floating']
 
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = ['layout floating']
+
+# Apps to move to specific workspaces
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
 check-further-callbacks = true
