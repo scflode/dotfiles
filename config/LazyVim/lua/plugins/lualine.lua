@@ -26,6 +26,8 @@ return {
           theme = "auto",
           globalstatus = vim.o.laststatus == 3,
           disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
+          section_separators = "",
+          component_separators = "",
         },
         sections = {
           lualine_a = { "mode" },
@@ -34,11 +36,10 @@ return {
           lualine_c = {
             LazyVim.lualine.root_dir(),
             { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-            { LazyVim.lualine.pretty_path() },
+            { LazyVim.lualine.pretty_path({ length = 5 }) },
           },
           lualine_x = {
             Snacks.profiler.status(),
-          -- stylua: ignore
             {
               "diagnostics",
               symbols = {
@@ -48,19 +49,28 @@ return {
                 hint = icons.diagnostics.Hint,
               },
             },
-          -- stylua: ignore
-          {
-            function() return require("noice").api.status.mode.get() end,
-            cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-            color = function() return { fg = Snacks.util.color("Constant") } end,
-          },
-          -- stylua: ignore
-          {
-            function() return "  " .. require("dap").status() end,
-            cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-            color = function() return { fg = Snacks.util.color("Debug") } end,
-          },
-          -- stylua: ignore
+            {
+              function()
+                return require("noice").api.status.mode.get()
+              end,
+              cond = function()
+                return package.loaded["noice"] and require("noice").api.status.mode.has()
+              end,
+              color = function()
+                return { fg = Snacks.util.color("Constant") }
+              end,
+            },
+            {
+              function()
+                return "  " .. require("dap").status()
+              end,
+              cond = function()
+                return package.loaded["dap"] and require("dap").status() ~= ""
+              end,
+              color = function()
+                return { fg = Snacks.util.color("Debug") }
+              end,
+            },
             {
               "diff",
               symbols = {
@@ -81,37 +91,14 @@ return {
             },
           },
           lualine_y = {
-            { "progress", separator = " ", padding = { left = 1, right = 0 } },
-            { "location", padding = { left = 0, right = 1 } },
+            { "progress", separator = " ", padding = { left = 1, right = 1 } },
           },
           lualine_z = {
-            function()
-              return " " .. os.date("%R")
-            end,
+            { "location", padding = { left = 1, right = 1 } },
           },
         },
         extensions = { "neo-tree", "lazy", "fzf" },
       }
-
-      -- -- do not add trouble symbols if aerial is enabled
-      -- -- And allow it to be overriden for some buffer types (see autocmds)
-      -- if vim.g.trouble_lualine and LazyVim.has("trouble.nvim") then
-      --   local trouble = require("trouble")
-      --   local symbols = trouble.statusline({
-      --     mode = "symbols",
-      --     groups = {},
-      --     title = false,
-      --     filter = { range = true },
-      --     format = "{kind_icon}{symbol.name:Normal}",
-      --     hl_group = "lualine_c_normal",
-      --   })
-      --   table.insert(opts.sections.lualine_c, {
-      --     symbols and symbols.get,
-      --     cond = function()
-      --       return vim.b.trouble_lualine ~= false and symbols.has()
-      --     end,
-      --   })
-      -- end
 
       return opts
     end,
