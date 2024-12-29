@@ -8,30 +8,31 @@ return {
     opts = {
       servers = {
         intelephense = {
+          enabled = false,
           init_options = {
             licenceKey = vim.env.INTELEPHENSE_LICENCE_KEY,
           },
         },
-        phpactor = { enabled = false },
+        phpactor = { enabled = true },
       },
-      setup = {
-        phpactor = function()
-          LazyVim.lsp.on_attach(function(client)
-            client.server_capabilities.renameProvider = false
-            client.server_capabilities.definitionProvider = false
-            client.server_capabilities.referencesProvider = false
-            client.server_capabilities.inlineCompletionProvider = false
-            client.server_capabilities.documentSymbolProvider = false
-            client.server_capabilities.workspaceSymbolProvider = false
-            client.server_capabilities.diagnosticProvider = nil
-            client.server_capabilities.hoverProvider = false
-            client.server_capabilities.inlayHintProvider = false
-          end, "phpactor")
-        end,
-        intelephense = function()
-          LazyVim.lsp.on_attach(function(client) end, "intelephense")
-        end,
-      },
+      -- setup = {
+      --   phpactor = function()
+      --     LazyVim.lsp.on_attach(function(client)
+      --       client.server_capabilities.renameProvider = false
+      --       client.server_capabilities.definitionProvider = false
+      --       client.server_capabilities.referencesProvider = false
+      --       client.server_capabilities.inlineCompletionProvider = false
+      --       client.server_capabilities.documentSymbolProvider = false
+      --       client.server_capabilities.workspaceSymbolProvider = false
+      --       client.server_capabilities.diagnosticProvider = nil
+      --       client.server_capabilities.hoverProvider = false
+      --       client.server_capabilities.inlayHintProvider = false
+      --     end, "phpactor")
+      --   end,
+      --   intelephense = function()
+      --     LazyVim.lsp.on_attach(function(client) end, "intelephense")
+      --   end,
+      -- },
     },
   },
   {
