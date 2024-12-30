@@ -3,16 +3,16 @@ local function overwrite_colorscheme()
 end
 
 return {
-  -- {
-  --   "mcchrish/zenbones.nvim",
-  --   lazy = true,
-  --   dependencies = {
-  --     "rktjmp/lush.nvim",
-  --   },
-  -- },
+  {
+    "mcchrish/zenbones.nvim",
+    lazy = true,
+    dependencies = {
+      "rktjmp/lush.nvim",
+    },
+  },
   { "rose-pine/neovim", name = "rose-pine", priority = 1000 },
-  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  -- { "folke/tokyonight.nvim", priority = 1000 },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "folke/tokyonight.nvim", priority = 1000 },
   {
     "f-person/auto-dark-mode.nvim",
     init = function()
@@ -35,7 +35,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine",
+      -- colorscheme = "rose-pine",
+      colorscheme = "zenbones",
     },
   },
 }

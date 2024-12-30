@@ -2,9 +2,13 @@ theme = rose-pine
 
 # Font config
 
-font-family = "VictorMono NFM"
-font-thicken = true
+font-family = VictorMono NFM
+font-family-bold = VictorMono NFM Bold
+font-family-italic = VictorMono NFM Italic
+font-family-bold-italic = VictorMono NFM Bold Italic
+font-variation = wght=700
 font-size = 15
+adjust-cell-height = 20%
 
 title = " "
 
