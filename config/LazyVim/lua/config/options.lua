@@ -16,3 +16,6 @@ opt.undolevels = 10000
 opt.updatetime = 200 -- Save swap file and trigger CursorHold
 
 opt.clipboard = ""
+
+-- Require a config file or disable
+vim.g.lazyvim_prettier_needs_config = true
