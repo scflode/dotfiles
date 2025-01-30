@@ -28,15 +28,15 @@
   purr = pull --rebase
   tree = log --all --graph --decorate --oneline
 [core]
+	editor = lvim
   excludesfile = ~/.gitignore_global
   autocrlf = input
-  editor = NVIM_APPNAME=LazyVim nvim
 [push]
   default = simple
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-  required = true
+	required = true
 	process = git-lfs filter-process
 
 [user]
@@ -46,10 +46,11 @@
 [init]
 	defaultBranch = main
 [gitbutler]
-	aiModelProvider = anthropic
+	aiModelProvider = openai
 	aiOpenAIKeyOption = butlerAPI
 	aiOpenAIModelName = gpt-3.5-turbo
 	aiAnthropicKeyOption = butlerAPI
 	aiAnthropicModelName = claude-3-haiku-20240307
 	aiOllamaModelName = llama3
 	aiOllamaEndpoint = http://127.0.0.1:11434/api
+	diffLengthLimit = 10000

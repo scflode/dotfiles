@@ -67,3 +67,4 @@ alias dotfiles='cd ~/.dotfiles && v .; -'
 
 # Neovim
 alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+alias lvim='NVIM_APPNAME="LazyVim" nvim'
