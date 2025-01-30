@@ -4,7 +4,7 @@ end
 
 return {
   {
-    "mcchrish/zenbones.nvim",
+    "zenbones-theme/zenbones.nvim",
     lazy = true,
     dependencies = {
       "rktjmp/lush.nvim",
@@ -16,8 +16,8 @@ return {
   {
     "f-person/auto-dark-mode.nvim",
     init = function()
-      local adm = require("auto-dark-mode")
-      adm.setup({
+      local auto_dark_mode = require("auto-dark-mode")
+      auto_dark_mode.setup({
         update_interval = 1000,
         set_dark_mode = function()
           vim.api.nvim_set_option_value("background", "dark", {})
@@ -29,7 +29,7 @@ return {
           overwrite_colorscheme()
         end,
       })
-      adm.init()
+      auto_dark_mode.init()
     end,
   },
   {
