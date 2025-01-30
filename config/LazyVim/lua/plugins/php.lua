@@ -8,12 +8,12 @@ return {
     opts = {
       servers = {
         intelephense = {
-          enabled = false,
+          enabled = true,
           init_options = {
             licenceKey = vim.env.INTELEPHENSE_LICENCE_KEY,
           },
         },
-        phpactor = { enabled = true },
+        phpactor = { enabled = false },
       },
       -- setup = {
       --   phpactor = function()
