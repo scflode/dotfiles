@@ -1,0 +1,3 @@
+[tools]
+neovim = "stable"
+node = "22"
