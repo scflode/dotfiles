@@ -8,11 +8,11 @@ end
 
 local function scheme_for_appearance(appearance)
   if appearance:find("Dark") then
-    return "Catppuccin Macchiato"
+    return "Catppuccin Mocha"
     -- return "zenbones_dark"
     -- return "Tokyo Night Storm"
   else
-    return "Catppuccin Macchiato"
+    return "Catppuccin Mocha"
     -- return "zenbones"
     -- return "zenbones_dark"
     -- return "Catppuccin Latte"
