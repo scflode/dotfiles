@@ -46,7 +46,7 @@
 [init]
 	defaultBranch = main
 [gitbutler]
-	aiModelProvider = openai
+	aiModelProvider = anthropic
 	aiOpenAIKeyOption = butlerAPI
 	aiOpenAIModelName = gpt-3.5-turbo
 	aiAnthropicKeyOption = butlerAPI

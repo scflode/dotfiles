@@ -4,6 +4,7 @@
 
 # Jetbrains
 .idea
+.php-cs-fixer-wrapper
 
 # ant
 .ant-targets-build.xml

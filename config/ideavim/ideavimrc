@@ -58,8 +58,12 @@ map <leader>ca <Action>(Refactorings.QuickListPopupAction)
 
 map <leader>z <Action>(ToggleDistractionFreeMode)
 
-map [e <Action>(GotoNextError)
-map ]e <Action>(GotoPreviousError)
+map ]e <Action>(GotoNextError)
+map [e <Action>(GotoPreviousError)
+
+map ]h <Action>(VcsShowNextChangeMarker)
+map [h <Action>(VcsShowPrevChangeMarker)
 
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>o <Action>(FileStructurePopup)
+map <leader>fm <Action>(Tool_External Tools_PHP CS Fixer)
