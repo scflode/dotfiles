@@ -3,16 +3,16 @@
 -- Add any additional autocmds here
 
 -- Disable angularls if in not an Angular project
-local function detect_angularls()
-  local is_angular = require("lspconfig.util").root_pattern("angular.json")
-  LazyVim.lsp.disable("angularls", function(root_dir)
-    return not is_angular(root_dir)
-  end)
-end
+-- local function detect_angularls()
+--   local is_angular = require("lspconfig.util").root_pattern("angular.json")
+--   LazyVim.lsp.disable("angularls", function(root_dir)
+--     return not is_angular(root_dir)
+--   end)
+-- end
 
 -- Auto command to start angularls on buffer enter
-vim.api.nvim_create_augroup("Angular", { clear = true })
-vim.api.nvim_create_autocmd("BufEnter", {
-  group = "Angular",
-  callback = detect_angularls,
-})
+-- vim.api.nvim_create_augroup("Angular", { clear = true })
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   group = "Angular",
+--   callback = detect_angularls,
+-- })

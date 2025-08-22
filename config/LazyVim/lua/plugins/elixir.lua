@@ -3,8 +3,8 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        elixirls = { enabled = false },
-        lexical = {},
+        elixirls = { enabled = true },
+        lexical = { enabled = false },
       },
     },
   },

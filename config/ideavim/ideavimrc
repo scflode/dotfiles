@@ -5,6 +5,7 @@ set argtextobj
 set textobj-entire
 set which-key
 set easymotion
+set surround
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"

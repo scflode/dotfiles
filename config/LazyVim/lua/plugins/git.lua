@@ -1,20 +1,28 @@
 return {
+  -- {
+  --   "NeogitOrg/neogit",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "sindrets/diffview.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  --   config = true,
+  --   opts = {
+  --     process_spinner = false,
+  --   },
+  -- },
   {
-    "NeogitOrg/neogit",
+    "ldelossa/gh.nvim",
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-      "nvim-telescope/telescope.nvim",
+      {
+        "ldelossa/litee.nvim",
+        config = function()
+          require("litee.lib").setup()
+        end,
+      },
     },
-    config = true,
-    opts = {
-      process_spinner = false,
-    },
-  },
-  {
-    "pwntester/octo.nvim",
-    opts = {
-      use_local_fs = true,
-    },
+    config = function()
+      require("litee.gh").setup()
+    end,
   },
 }

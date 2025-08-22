@@ -2,6 +2,9 @@
 .DS_Store
 ._.DS_Store
 
+# Zed editor
+.zed
+
 # Jetbrains
 .idea
 .php-cs-fixer-wrapper
@@ -19,6 +22,9 @@
 .undo/
 .vim/
 .null-ls-root
+
+# LazyVim
+.lazy.lua
 
 # vscode
 .vscode/

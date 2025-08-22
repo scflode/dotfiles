@@ -44,7 +44,15 @@ return {
                 eelixir = "html-eex",
                 heex = "html-eex",
               },
-              classAttributes = { "class", "className", "class:list", "ngClass", "modifiersClassNames" },
+              classAttributes = {
+                "class",
+                "className",
+                "class:list",
+                "ngClass",
+                "modifiersClassNames",
+                "defaultClassName",
+                "activeClassName",
+              },
             },
           }
 
