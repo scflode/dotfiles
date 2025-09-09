@@ -39,6 +39,21 @@ return {
             { LazyVim.lualine.pretty_path({ length = 5 }) },
           },
           lualine_x = {
+            {
+              function()
+                local bufnr = vim.api.nvim_get_current_buf()
+                local clients = vim.lsp.get_clients({ bufnr = bufnr })
+                if next(clients) == nil then
+                  return ""
+                end
+                local names = {}
+                for _, client in ipairs(clients) do
+                  table.insert(names, client.name)
+                end
+                return table.concat(names, ", ")
+              end,
+              icon = "",
+            },
             Snacks.profiler.status(),
             {
               "diagnostics",

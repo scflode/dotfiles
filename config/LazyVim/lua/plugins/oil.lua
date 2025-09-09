@@ -2,6 +2,9 @@ return {
   {
     "stevearc/oil.nvim",
     opts = {
+      win_options = {
+        signcolumn = "auto",
+      },
       float = {
         max_width = 140,
         max_height = 40,
@@ -15,5 +18,14 @@ return {
     },
     -- dependencies = { "nvim-tree/nvim-web-devicons" },
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  },
+  {
+    "refractalize/oil-git-status.nvim",
+
+    dependencies = {
+      "stevearc/oil.nvim",
+    },
+
+    config = true,
   },
 }
