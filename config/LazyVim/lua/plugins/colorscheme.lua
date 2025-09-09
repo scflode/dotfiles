@@ -1,5 +1,9 @@
-local function overwrite_colorscheme()
-  vim.api.nvim_set_hl(0, "Function", { fg = "#FFFAA0" })
+local function overwrite_colorscheme(type)
+  -- if type == "dark" then
+  --   vim.api.nvim_set_hl(0, "Function", { fg = "#FFFAA0" })
+  -- else
+  --   vim.api.nvim_set_hl(0, "Function", { fg = "#FFFA8A" })
+  -- end
 end
 
 return {
@@ -21,12 +25,12 @@ return {
         update_interval = 1000,
         set_dark_mode = function()
           vim.api.nvim_set_option_value("background", "dark", {})
-          overwrite_colorscheme()
+          overwrite_colorscheme("dark")
         end,
         set_light_mode = function()
-          -- vim.api.nvim_set_option("background", "light")
-          vim.api.nvim_set_option_value("background", "dark", {})
-          overwrite_colorscheme()
+          vim.api.nvim_set_option_value("background", "light", {})
+          -- vim.api.nvim_set_option_value("background", "dark", {})
+          overwrite_colorscheme("light")
         end,
       })
       auto_dark_mode.init()
@@ -37,8 +41,8 @@ return {
     opts = {
       -- colorscheme = "rose-pine",
       -- colorscheme = "zenbones",
-      -- colorscheme = "catppuccin-mocha",
-      colorscheme = "tokyobones",
+      colorscheme = "catppuccin-mocha",
+      -- colorscheme = "tokyobones",
     },
   },
 }
