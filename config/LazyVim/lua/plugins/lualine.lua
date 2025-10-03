@@ -104,20 +104,6 @@ return {
                 end
               end,
             },
-            {
-              function()
-                local ok, status = pcall(function()
-                  return vim.fn['CodeCompanionStatus']()
-                end)
-                if ok and status and status ~= '' and status ~= 'CC[none]' then
-                  return '󰚩  ' .. status
-                end
-                return ''
-              end,
-              color = function()
-                return { fg = Snacks.util.color("Type") }
-              end,
-            },
           },
           lualine_y = {
             { "progress", separator = " ", padding = { left = 1, right = 1 } },
