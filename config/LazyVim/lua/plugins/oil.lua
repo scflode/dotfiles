@@ -17,7 +17,7 @@ return {
       { "-", "<CMD>Oil --float<CR>", desc = "Open parent directory" },
     },
     -- dependencies = { "nvim-tree/nvim-web-devicons" },
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
   },
   {
     "refractalize/oil-git-status.nvim",

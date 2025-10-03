@@ -53,4 +53,5 @@ return {
     top = 0,
     bottom = 0,
   },
+  enable_kitty_graphics = false,
 }

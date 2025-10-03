@@ -12,3 +12,9 @@ map("n", "<leader>H", function()
   vim.notify("Added file: " .. current_file, vim.log.levels.INFO, { title = "Harpoon" })
   require("harpoon"):list():add()
 end, { desc = "Add file to harpoon" })
+
+-- CodeCompanion
+vim.keymap.set("n", "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", {
+  desc = "Chat with AI",
+  silent = true,
+})
