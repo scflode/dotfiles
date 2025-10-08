@@ -18,3 +18,12 @@ vim.keymap.set("n", "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", {
   desc = "Chat with AI",
   silent = true,
 })
+
+-- Color column
+vim.keymap.set("n", "<leader>ue", function()
+  if vim.wo.colorcolumn == "" then
+    vim.wo.colorcolumn = "80"
+  else
+    vim.wo.colorcolumn = ""
+  end
+end, { desc = "Toggle colorcolumn" })
