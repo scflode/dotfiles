@@ -1,0 +1,5 @@
+[tools]
+elixir = "1.19.2-otp-28"
+erlang = "28.1.1"
+neovim = "latest"
+node = "lts"
