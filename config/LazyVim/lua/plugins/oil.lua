@@ -8,6 +8,7 @@ return {
       float = {
         max_width = 140,
         max_height = 40,
+        border = "rounded",
       },
       keymaps = {
         ["q"] = "actions.close",
