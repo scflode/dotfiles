@@ -43,7 +43,7 @@ GTAGS
 .elixir-tools/
 
 # asdf
-.tool-versions
+# .tool-versions
 
 # Java
 .classpath
