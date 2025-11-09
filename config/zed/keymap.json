@@ -1,0 +1,29 @@
+[
+  {
+    "context": "Dock || Terminal || Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "bindings": {
+      ", f f": "file_finder::Toggle",
+      ", ,": "tab_switcher::Toggle"
+    }
+  },
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "g r": "editor::FindAllReferences"
+    }
+  },
+  {
+    "context": "(vim_mode == helix_normal && !menu)",
+    "bindings": {
+      "g r": null
+    }
+  }
+]
