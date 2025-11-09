@@ -14,10 +14,10 @@ map("n", "<leader>H", function()
 end, { desc = "Add file to harpoon" })
 
 -- CodeCompanion
-vim.keymap.set("n", "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", {
-  desc = "Chat with AI",
-  silent = true,
-})
+-- vim.keymap.set("n", "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", {
+--   desc = "Chat with AI",
+--   silent = true,
+-- })
 
 -- Color column
 vim.keymap.set("n", "<leader>ue", function()
