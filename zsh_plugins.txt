@@ -5,6 +5,8 @@ ohmyzsh/ohmyzsh path:lib
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/git
 
+unixorn/fzf-zsh-plugin
+
 # theme
 sindresorhus/pure
 

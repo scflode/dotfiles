@@ -11,7 +11,6 @@ _exports="${dot_dir}/exports"
 _aliases="${dot_dir}/aliases"
 _aliases_macos="${dot_dir}/aliases_macos"
 _aliases_personal="${dot_dir}/aliases_personal"
-_fzf="${dot_dir}/fzf"
 _zsh="${dot_dir}/zsh"
 _nvims="${dot_dir}/nvims"
 
