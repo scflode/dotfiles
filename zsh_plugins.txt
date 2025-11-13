@@ -6,9 +6,7 @@ ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/git
 
 # theme
-#romkatv/powerlevel10k
 sindresorhus/pure
-#spaceship-prompt/spaceship-prompt
 
 # popular fish-like plugins
 mattmc3/zfunctions
