@@ -57,3 +57,6 @@ vhost.local.conf
 
 # Prettier
 .prettierignore
+
+# Claude Code
+.claude/
