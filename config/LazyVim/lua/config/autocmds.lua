@@ -16,3 +16,12 @@
 --   group = "Angular",
 --   callback = detect_angularls,
 -- })
+
+vim.api.nvim_create_autocmd("DirChanged", {
+  callback = function()
+    if vim.fn.filereadable(".lazy.lua") then
+      dofile(".lazy.lua")
+      vim.cmd("LspRestart")
+    end
+  end,
+})
