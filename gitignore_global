@@ -60,3 +60,6 @@ vhost.local.conf
 
 # Claude Code
 .claude/
+
+# opencode
+.opencode/
