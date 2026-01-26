@@ -2,9 +2,6 @@
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": "notify",
   "theme": "catppuccin",
-  "keybinds": {
-    "input_newline": "shift+enter"
-  },
   "plugin": [
     "@tarquinen/opencode-dcp@latest",
     "opencode-copilot-usage-toast@latest"
