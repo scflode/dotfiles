@@ -38,7 +38,10 @@ export GREP_OPTIONS='--color=auto';
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin:/usr/local/MacGPG2/bin:/opt/local/bin"
 export MANPATH="/usr/local/man:$MANPATH"
 
-if [ -f "${dot_dir}/exports_personal" ]; then
-  source "${dot_dir}/exports_personal"
-fi
+setopt null_glob
 
+for file in "${dot_dir}"/exports_*; do
+  source "$file"
+done
+
+unsetopt null_glob

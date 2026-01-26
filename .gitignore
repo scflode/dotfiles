@@ -1,5 +1,6 @@
 aliases_personal
 exports_personal
+exports_sec_*
 *.lock.json
 *.log
 
