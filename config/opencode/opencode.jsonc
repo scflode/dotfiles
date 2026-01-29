@@ -6,6 +6,12 @@
     "@tarquinen/opencode-dcp@latest",
     "opencode-copilot-usage-toast@latest"
   ],
+  "small_model": "github-copilot/gpt-5-mini",
+  "agent": {
+    "compaction": {
+      "model": "github-copilot/gpt-5-mini"
+    }
+  },
   "mcp": {
     "linear": {
       "type": "local",
