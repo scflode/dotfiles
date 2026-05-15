@@ -41,6 +41,7 @@ GTAGS
 .tern-port
 .dir-locals.el
 .elixir-tools/
+.expert/
 
 # asdf
 # .tool-versions
@@ -63,3 +64,12 @@ vhost.local.conf
 
 # opencode
 .opencode/
+opencode.json
+opencode-quota/
+tui.json
+
+# cocoindex MCP
+.cocoindex_code/
+
+# Copilot
+.copilot/

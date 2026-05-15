@@ -6,6 +6,29 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "git_panel": {
+    "dock": "right"
+  },
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry"
+    },
+    "opencode": {
+      "favorite_models": [
+        "github-copilot/claude-opus-4.6"
+      ],
+      "type": "registry"
+    }
+  },
+  "edit_predictions": {
+    "provider": "zed"
+  },
   "icon_theme": "Catppuccin Macchiato",
   "scrollbar": {
     "show": "system"
@@ -24,15 +47,22 @@
       "api_url": "http://localhost:11434/v1"
     }
   },
-  "features": {
-    "edit_prediction_provider": "supermaven"
-  },
   "agent": {
+    "dock": "left",
+    "favorite_models": [
+      {
+        "provider": "copilot_chat",
+        "model": "claude-sonnet-4.6",
+        "enable_thinking": false
+      }
+    ],
+    "tool_permissions": {
+      "default": "allow"
+    },
     "default_profile": "write",
-    "always_allow_tool_actions": true,
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4"
+      "model": "claude-sonnet-4.6"
     }
   },
   "telemetry": {
