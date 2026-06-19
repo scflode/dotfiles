@@ -73,3 +73,9 @@ tui.json
 
 # Copilot
 .copilot/
+
+# Mise
+.mise.toml
+
+# headroom
+.serena/

@@ -4,30 +4,7 @@
   "disabled_providers": [
     "amazon-bedrock"
   ],
-  "plugin": [
-    // "@tarquinen/opencode-dcp@latest"
-  ],
-  "small_model": "github-copilot/gpt-5-mini",
-  "agent": {
-    "compaction": {
-      "model": "github-copilot/gpt-5-mini"
-    },
-    "title": {
-      "model": "github-copilot/gpt-5-mini"
-    }
-  },
   "mcp": {
-    "linear": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "mcp-remote",
-        "https://mcp.linear.app/sse"
-      ],
-      "environment": {},
-      "enabled": true
-    },
     "context7": {
       "type": "local",
       "command": [

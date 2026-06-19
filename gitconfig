@@ -42,7 +42,7 @@
 [user]
 	signingkey = 636DA8D8D7B0EAA7
 	name = Flo Schuessel
-	email = mail@florian-schuessel.de
+	email = scflode@users.noreply.github.com
 [init]
 	defaultBranch = main
 [gitbutler]

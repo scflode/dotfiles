@@ -47,6 +47,10 @@ return {
   font_size = 15.0,
   line_height = 1.4,
   enable_tab_bar = false,
+  keys = {
+    { key = "Enter", mods = "SHIFT", action = wezterm.action.SendString("\x1b[13;2u") },
+    { key = "Enter", mods = "CTRL", action = wezterm.action.SendString("\x1b[13;5u") },
+  },
   window_padding = {
     left = 2,
     right = 2,
