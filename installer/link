@@ -13,8 +13,18 @@ rcup config/nvim/lua
 echo -e "\tLinking Kitty config"
 rcup config/kitty/kitty.conf
 
+echo -e "\tLinking Ghostty config"
+mkdir -p ~/.config/ghostty
+rcup config/ghostty/config
+
 echo -e "\tLinking tmux config"
 rcup tmux.conf
+
+
+echo -e "\tLinking Zellij config"
+mkdir -p ~/.config/zellij
+rcup config/zellij/config.kdl
+rcup config/zellij/layouts
 
 echo -e "\tLinking Git config"
 rcup gitconfig

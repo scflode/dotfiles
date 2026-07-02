@@ -1,4 +1,4 @@
-theme = Catppuccin Latte
+theme = light:Catppuccin Latte,dark:Catppuccin Mocha
 
 # Font config
 
@@ -8,7 +8,18 @@ font-family-italic = VictorMono NFM Italic
 font-family-bold-italic = VictorMono NFM Bold Italic
 font-variation = wght=700
 font-size = 15
-adjust-cell-height = 20%
+font-feature = calt
+font-feature = clig
+font-feature = liga
+adjust-cell-height = 40%
+
+window-padding-x = 2
+window-padding-y = 0
+macos-titlebar-style = hidden
+
+keybind = shift+enter=text:\x1b[13;2u
+keybind = ctrl+enter=text:\x1b[13;5u
+
+macos-option-as-alt = right
 
 title = " "
-

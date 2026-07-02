@@ -110,6 +110,7 @@ brew "kubeseal"
 
 cask "android-studio"
 cask "figma"
+cask "ghostty"
 cask "wezterm"
 cask "tableplus"
 cask "zed"
@@ -138,4 +139,3 @@ mas "Vimari", id: 1480933944
 mas "virtualOS", id: 1614659226
 mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
-

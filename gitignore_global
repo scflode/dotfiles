@@ -79,3 +79,6 @@ tui.json
 
 # headroom
 .serena/
+
+# pi
+.pi/
