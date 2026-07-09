@@ -15,9 +15,8 @@ set -g status-left-style NONE
 set -g status-right-style NONE
 
 set -g status-left "#[fg=${thm_fg},bg=${thm_bg},bold] #S #[fg=${thm_fg},bg=${thm_bg},nobold,nounderscore,noitalics]"
-set -g status-right "#[fg=${thm_black4},bg=${thm_gray},nobold,nounderscore,noitalics]#[fg=${thm_fg},bg=${thm_bg}] #{prefix_highlight} #(${HOME}/.dotfiles/scripts/ifstat.sh) | #(${HOME}/.dotfiles/scripts/load.sh) | #(${HOME}/.dotfiles/scripts/battery.sh) | #{continuum_status} #[fg=${thm_gray},bg=${thm_black},nobold,nounderscore,noitalics]#[fg=${thm_fg},bg=${thm_gray}] %Y-%m-%d #[fg=${thm_black},bg=${thm_fg},bold] %I:%M %p #[fg=${thm_fg},bg=${thm_black},nobold,nounderscore,noitalics]"
+set -g status-right "#[fg=${thm_black4},bg=${thm_gray},nobold,nounderscore,noitalics]#[fg=${thm_fg},bg=${thm_bg}] #(${HOME}/.dotfiles/scripts/ifstat.sh) | #(${HOME}/.dotfiles/scripts/load.sh) | #(${HOME}/.dotfiles/scripts/battery.sh) | #{continuum_status} #[fg=${thm_gray},bg=${thm_black},nobold,nounderscore,noitalics]#[fg=${thm_fg},bg=${thm_gray}] %Y-%m-%d #[fg=${thm_black},bg=${thm_fg},bold] %I:%M %p #[fg=${thm_fg},bg=${thm_black},nobold,nounderscore,noitalics]"
 
-set -g mode-style "fg=${thm_fg},bg=${thm_bg}"
 set -g mode-style 'reverse'
 
 # messages
