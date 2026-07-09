@@ -16,6 +16,9 @@
     "dock": "right"
   },
   "agent_servers": {
+    "pi-acp": {
+      "type": "registry"
+    },
     "codex-acp": {
       "type": "registry"
     },
