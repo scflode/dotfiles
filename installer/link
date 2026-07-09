@@ -30,5 +30,13 @@ echo -e "\tLinking Git config"
 rcup gitconfig
 rcup gitignore_global
 
-echo -e "\tCreating asdf config"
-mkdir -p ~/.asdf
+echo -e "\tLinking Pi custom extensions"
+mkdir -p ~/.pi/agent/extensions/pi-rtk-optimizer
+ln -sfn "${dot_dir}/pi/agent/extensions/danger-guard.ts" ~/.pi/agent/extensions/danger-guard.ts
+ln -sfn "${dot_dir}/pi/agent/extensions/ghostty-context-notify.ts" ~/.pi/agent/extensions/ghostty-context-notify.ts
+ln -sfn "${dot_dir}/pi/agent/extensions/session-name-status.ts" ~/.pi/agent/extensions/session-name-status.ts
+ln -sfn "${dot_dir}/pi/agent/extensions/pi-rtk-optimizer/config.json" ~/.pi/agent/extensions/pi-rtk-optimizer/config.json
+
+echo -e "\tLinking Mise config"
+mkdir -p ~/.config/mise
+rcup config/mise/config.toml
