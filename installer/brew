@@ -27,8 +27,14 @@ function check_or_install_brew {
   brew update
 }
 
+function trust_tap_packages {
+  echo -e "Trusting selected Homebrew tap packages"
+  brew trust --cask munichmade/tap/devproxy 2>/dev/null || true
+}
+
 function install {
   source "${self}/helpers/sudo"
+  trust_tap_packages
   echo -e "Installing or updating tools and apps via Homebrew..."
   brew bundle install --file ${dotfiles}/Brewfile
 
