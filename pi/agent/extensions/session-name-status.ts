@@ -1,6 +1,5 @@
 import { complete } from "@earendil-works/pi-ai/compat";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import { truncateToWidth } from "@earendil-works/pi-tui";
 
 const PROVIDER = process.env.PI_SESSION_NAME_PROVIDER ?? "openai-codex";
 const MODEL = process.env.PI_SESSION_NAME_MODEL ?? "gpt-5.4-mini";
@@ -63,11 +62,6 @@ export default function (pi: ExtensionAPI) {
   let pendingPrompt: string | undefined;
   let naming = false;
 
-  const update = (ctx: any, name = pi.getSessionName()) => {
-    const title = name?.trim() || firstPrompt(ctx) || pendingPrompt || "unnamed";
-    ctx.ui.setStatus("session-name", ctx.ui.theme.fg("accent", `session: ${truncateToWidth(title, 48)}`));
-  };
-
   const maybeName = async (ctx: any) => {
     if (naming || pi.getSessionName()) return;
     naming = true;
@@ -77,17 +71,11 @@ export default function (pi: ExtensionAPI) {
       ctx.ui.notify(`session-name: ${err instanceof Error ? err.message : String(err)}`, "warning");
     } finally {
       naming = false;
-      update(ctx);
     }
   };
 
-  pi.on("session_start", async (_event, ctx) => update(ctx));
-  pi.on("session_info_changed", async (event, ctx) => update(ctx, event.name));
-  pi.on("input", async (event, ctx) => {
-    if (!pi.getSessionName()) {
-      pendingPrompt = event.text;
-      update(ctx);
-    }
+  pi.on("input", async (event) => {
+    if (!pi.getSessionName()) pendingPrompt = event.text;
   });
   pi.on("agent_end", async (_event, ctx) => maybeName(ctx));
 
