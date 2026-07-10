@@ -40,7 +40,7 @@
 	process = git-lfs filter-process
 
 [user]
-	signingkey = 636DA8D8D7B0EAA7
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF5e+q+iGOOoPaz0Rf0j64CzzWHnifbLUcYYNQWev1+x
 	name = Flo Schuessel
 	email = scflode@users.noreply.github.com
 [init]
@@ -54,3 +54,9 @@
 	aiOllamaModelName = llama3
 	aiOllamaEndpoint = http://127.0.0.1:11434/api
 	diffLengthLimit = 10000
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
