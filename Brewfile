@@ -145,3 +145,5 @@ mas "Tyme", id: 1461456897
 mas "Vimari", id: 1480933944
 mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
+# CLI tool for analyzing Claude Code usage from local JSONL files
+brew "ccusage"
