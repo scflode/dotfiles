@@ -12,6 +12,12 @@ case $stage in
   *) echo "Usage: ./setup [bootstrap|apps|store]" >&2; exit 1 ;;
 esac
 
+install_rosetta() {
+  [[ $(uname -m) == arm64 ]] || return
+  pkgutil --pkg-info com.apple.pkg.RosettaUpdateAuto >/dev/null 2>&1 || \
+    sudo softwareupdate --install-rosetta --agree-to-license
+}
+
 activate_brew() {
   local brew_bin
   brew_bin=$(command -v brew || true)
@@ -58,6 +64,7 @@ EOF
     echo "Apps installed. Sign into the App Store, then run ./setup store."
     ;;
   store)
+    install_rosetta
     "$root_dir/installer/brew" store
     echo "App Store apps installed."
     ;;
