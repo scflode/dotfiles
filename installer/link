@@ -17,6 +17,16 @@ link gitignore_global
 link zsh_plugins.txt
 link config/mise/config.toml
 
+mkdir -p "$HOME/.agents/skills"
+for skill in "$root_dir"/.agents/skills/*; do
+  target="$HOME/.agents/skills/${skill##*/}"
+  if [[ -e $target && ! -L $target ]]; then
+    echo "Keeping existing skill: ${target##*/}" >&2
+  else
+    ln -sfn "$skill" "$target"
+  fi
+done
+
 mkdir -p "$HOME/.pi/agent/extensions/pi-rtk-optimizer"
 ln -sfn "$root_dir/pi/agent/extensions/danger-guard.ts" "$HOME/.pi/agent/extensions/danger-guard.ts"
 ln -sfn "$root_dir/pi/agent/extensions/ghostty-context-notify.ts" "$HOME/.pi/agent/extensions/ghostty-context-notify.ts"
