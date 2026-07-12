@@ -1,0 +1,8 @@
+pi install git:github.com/DietrichGebert/ponytail
+pi install npm:pi-web-access
+pi install npm:pi-mcp-adapter
+pi install npm:pi-caveman
+pi install npm:@mjfuertesf/pi-quota-status
+pi install npm:@narumitw/pi-chrome-devtools
+pi install npm:pi-rtk-optimizer
+
