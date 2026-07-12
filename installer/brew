@@ -5,13 +5,15 @@ set -euo pipefail
 stage=${1:-bootstrap}
 root_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)
 
-if ! command -v brew >/dev/null 2>&1; then
-  [[ $stage == bootstrap ]] || { echo "Run ./setup bootstrap first." >&2; exit 1; }
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-
 brew_bin=$(command -v brew || true)
 if [[ -z $brew_bin ]]; then
+  for candidate in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+    [[ -x $candidate ]] && brew_bin=$candidate && break
+  done
+fi
+if [[ -z $brew_bin ]]; then
+  [[ $stage == bootstrap ]] || { echo "Run ./setup bootstrap first." >&2; exit 1; }
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   for candidate in /opt/homebrew/bin/brew /usr/local/bin/brew; do
     [[ -x $candidate ]] && brew_bin=$candidate && break
   done
