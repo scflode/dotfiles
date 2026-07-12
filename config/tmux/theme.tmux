@@ -20,8 +20,8 @@ set -g status-right "#(${HOME}/.tmux/plugins/tmux-continuum/scripts/continuum_sa
 set -g mode-style 'reverse'
 
 # messages
-set -g message-style "fg=${thm_fg},bg=${thm_bg},align=centre"
-set -g message-command-style "fg=${thm_fg},bg=${thm_bg},align=centre"
+set -g message-style "fg=${thm_fg},bg=${thm_bg},align=centre,width=70%"
+set -g message-command-style "fg=${thm_fg},bg=${thm_bg},align=centre,width=70%"
 
 # panes
 set -g pane-border-style "fg=${thm_fg}"
