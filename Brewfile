@@ -1,3 +1,5 @@
+tap "munichmade/tap"
+
 # core utils
 brew "coreutils"
 brew "moreutils"
@@ -34,13 +36,12 @@ brew "zoxide"
 
 # development tools
 brew "act"
-brew "apfel"
+brew "antidote"
 brew "mise"
 cask "1password-cli"
 brew "git"
 brew "git-lfs"
 brew "gh"
-brew "vim"
 brew "ffmpeg"
 brew "imagemagick"
 brew "dmg2img"
@@ -54,13 +55,11 @@ brew "mkcert"
 brew "ollama"
 
 # vendor specific tools
-brew "doctl"
 brew "hcloud"
 
 # documentation tools
 brew "markdown"
 brew "graphviz"
-brew "pandoc"
 
 # terminal tools
 brew "screen"
@@ -100,9 +99,7 @@ cask "helium-browser"
 
 # Communication
 cask "discord"
-cask "microsoft-teams"
 cask "slack"
-cask "whatsapp"
 
 # Development
 cask "android-commandlinetools"
@@ -111,17 +108,11 @@ cask "devproxy"
 cask "gitbutler"
 cask "ngrok"
 cask "orbstack"
-cask "livebook"
-
-# kubernetes
-brew "kustomize"
-brew "kubeseal"
 
 cask "android-studio"
 cask "figma"
 cask "inkscape"
 cask "ghostty"
-cask "wezterm"
 cask "tableplus"
 cask "zed"
 cask "yaak"
@@ -129,7 +120,6 @@ cask "yaak"
 # Misc
 cask "calibre"
 cask "fliqlo"
-cask "sonos"
 
 # App Store apps
 mas "1Password for Safari", id: 1569813296
@@ -145,5 +135,6 @@ mas "Tyme", id: 1461456897
 mas "Vimari", id: 1480933944
 mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
+
 # CLI tool for analyzing Claude Code usage from local JSONL files
 brew "ccusage"

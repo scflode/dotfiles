@@ -43,9 +43,6 @@ GTAGS
 .elixir-tools/
 .expert/
 
-# asdf
-# .tool-versions
-
 # Java
 .classpath
 .project

@@ -69,5 +69,3 @@ alias dotfiles='cd ~/.dotfiles && v .; -'
 alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 alias lvim='NVIM_APPNAME="LazyVim" nvim'
 
-# Pi
-alias pi="${HOME}/.local/share/mise/installs/node/24.18.0/bin/pi"

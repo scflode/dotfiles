@@ -1,41 +1,18 @@
 #!/usr/bin/env bash
 
-echo -e "Installing additional zsh tools"
+set -euo pipefail
 
-if [ ! -f "${HOME}/.zshrc" ]; then
-  echo -e "\tBuilding RC file"
-  cat <<-"EOF" > ${HOME}/.zshrc
-dot_dir="${HOME}/.dotfiles"
-_functions="${dot_dir}/functions"
-_exports="${dot_dir}/exports"
-_aliases="${dot_dir}/aliases"
-_aliases_macos="${dot_dir}/aliases_macos"
-_aliases_personal="${dot_dir}/aliases_personal"
-_zsh="${dot_dir}/zsh"
-_nvims="${dot_dir}/nvims"
+root_dir=${DOTFILES_DIR:-$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)}
 
-for file in \
-  ${_functions} \
-  ${_exports} \
-  ${_aliases} \
-  ${_aliases_macos} \
-  ${_aliases_personal} \
-  ${_fzf} \
-  ${_zsh} \
-  ${_nvims} ; do
-  if [ -f "${file}" ]; then
-    source ${file}
-  fi
+if [[ ! -e $HOME/.zshrc ]]; then
+  printf 'dot_dir=%q\n' "$root_dir" > "$HOME/.zshrc"
+  cat >> "$HOME/.zshrc" <<'EOF'
+for file in functions exports aliases aliases_macos aliases_personal zsh nvims; do
+  [[ -f "$dot_dir/$file" ]] && source "$dot_dir/$file"
 done
 EOF
 fi
 
-cat << EOF
-  
-******************************************************************************
-* You need to relaunch to shell session: 'exec $SHELL -l'.                   *
-* Also likely when running this on a fresh macOS install you need to fix     *
-* permissions for autocomplete: 'compautit | xargs chmod g-w,o-w'            *
-******************************************************************************
-
-EOF
+if ! dscl . -read "/Users/$USER" UserShell 2>/dev/null | grep -qx 'UserShell: /bin/zsh'; then
+  chsh -s /bin/zsh
+fi

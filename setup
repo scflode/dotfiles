@@ -1,123 +1,32 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-set -o pipefail
+set -euo pipefail
 
-# Set the containing directory for later use
-dot_dir="${HOME}/.dotfiles"
+root_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
+export DOTFILES_DIR="$root_dir"
 
-# Detect and normalize the OS type
-function detect_os {
-  case "${OSTYPE}" in
-    linux-gnu) echo "linux"; break;;
-    darwin*) echo "macos"; break;;
-    freebsd*) echo "freebsd"; break;;
-    cygwin|msys|win32) echo "windows"; break;;
-    *) echo "unkown"; break;;
-  esac
-}
+if [[ $(uname -s) != Darwin ]]; then
+  echo "macOS is required."
+  exit 1
+fi
 
-function display_info_macos {
-  cat << EOF
+if ! xcode-select -p >/dev/null 2>&1; then
+  xcode-select --install || true
+  echo "Install Xcode Command Line Tools, then run setup again."
+  exit 1
+fi
 
-******************************************************************************
-*                                                                            *
-* The following things will be done for macOS:                               *
-*                                                                            *
-* - set the computer name                                                    *
-* - tweak macOS settings                                                     *
-* - install xcode CLI if not already done                                    *
-* - install Homebrew                                                         *
-* - install Homebrew based tools                                             *
-* - linking dotfiles                                                         *
-* - set zsh as default shell                                                 *
-* - install brew casks                                                       *
-*                                                                            *
-* You need to authorize via your administrator password for some actions     *
-* to take place.                                                             *
-*                                                                            *
-******************************************************************************
+computer_name=$(scutil --get LocalHostName 2>/dev/null || hostname -s)
+read -r -p "Computer name [$computer_name]: " choice
+computer_name=${choice:-$computer_name}
 
-EOF
-  # Ask for the administrator password upfront
-  sudo -v
-}
+read -r -p "Run setup for $computer_name? [y/N] " choice
+[[ $choice =~ ^[Yy]$ ]] || exit 0
 
-function display_info {
-  os=${1}
-  case "${os}" in
-    macos) display_info_macos; break;;
-    *) echo "Nothing as of now"; break;;
-  esac
-}
+sudo -v
 
-# Ask for the computer name to set
-function prompt_for_computer_name {
-  read -p "Computer name: " computer_name
+for installer in macos brew link zsh tmux mise; do
+  "$root_dir/installer/$installer" "$computer_name"
+done
 
-  echo ${computer_name}
-}
-
-function setup_macos {
-  sudo xcodebuild -license accept
-  local installer="${dot_dir}/installer"
-  "${installer}/common" ${computer_name}
-  "${installer}/macos" ${computer_name}
-  "${installer}/safari"
-  "${installer}/apple_mail"
-  "${installer}/apple_terminal"
-  "${installer}/brew"
-  "${installer}/zsh"
-  "${installer}/link"
-  "${installer}/tmux"
-  "${installer}/mise"
-}
-
-os=$(detect_os)
-
-case ${os} in
-  unknown) echo "OS detection failed."; exit 1; break;;
-  linux|windows) echo "${os} is not supported by these dotfiles ATM."; exit 1; break;;
-  *) break;;
-esac
-
-cat << EOF
-
-We detected ${os} is running on this machine
-
-Starting setup for ${computer_name}
-
-EOF
-display_info ${os}
-
-computer_name=$(hostname -s)
-
-read -r -p "Do you want to change the computer name currently set to ${computer_name}? " choice
-case "${choice}" in
-  y|Y) computer_name=$(prompt_for_computer_name); break;;
-  n|N) break;;
-esac
-
-echo
-
-read -r -p "We are ready. Run the setup for ${computer_name} now? " choice
-case "${choice}" in
-  y|Y) break;;
-  n|N) echo "Aborting"; exit 1; break;;
-esac
-
-case ${os} in
-  macos) setup_macos; break;;
-  *) echo "Not yet implemented"; break;;
-esac
-
-cat << EOF
-
-******************************************************************************
-*                                                                            *
-* Setup done. Your system should be prepared from the installation side.     *
-*                                                                            *
-* It's recommended to restart the computer for all changes to take effect.   *
-*                                                                            *
-******************************************************************************
-
-EOF
+echo "Setup complete. Restart apps or log out for macOS preference changes."

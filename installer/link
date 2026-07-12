@@ -1,42 +1,24 @@
 #!/usr/bin/env bash
 
-dot_dir="${HOME}/.dotfiles"
+set -euo pipefail
 
-echo -e "Linking dotfiles"
+root_dir=${DOTFILES_DIR:-$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)}
+command -v rcup >/dev/null || { echo "rcm missing; Homebrew phase failed." >&2; exit 1; }
+link() { rcup -d "$root_dir" "$1"; }
 
-echo -e "\tLinking Vim config"
-mkdir -p ~/.vim
-mkdir -p ~/.config/nvim
-rcup config/nvim/init.lua
-rcup config/nvim/lua
+echo "Linking dotfiles"
 
-echo -e "\tLinking Kitty config"
-rcup config/kitty/kitty.conf
+link config/LazyVim
+link config/ghostty/config
+link config/tmux
+link tmux.conf
+link gitconfig
+link gitignore_global
+link zsh_plugins.txt
+link config/mise/config.toml
 
-echo -e "\tLinking Ghostty config"
-mkdir -p ~/.config/ghostty
-rcup config/ghostty/config
-
-echo -e "\tLinking tmux config"
-rcup tmux.conf
-
-
-echo -e "\tLinking Zellij config"
-mkdir -p ~/.config/zellij
-rcup config/zellij/config.kdl
-rcup config/zellij/layouts
-
-echo -e "\tLinking Git config"
-rcup gitconfig
-rcup gitignore_global
-
-echo -e "\tLinking Pi custom extensions"
-mkdir -p ~/.pi/agent/extensions/pi-rtk-optimizer
-ln -sfn "${dot_dir}/pi/agent/extensions/danger-guard.ts" ~/.pi/agent/extensions/danger-guard.ts
-ln -sfn "${dot_dir}/pi/agent/extensions/ghostty-context-notify.ts" ~/.pi/agent/extensions/ghostty-context-notify.ts
-ln -sfn "${dot_dir}/pi/agent/extensions/session-name-status.ts" ~/.pi/agent/extensions/session-name-status.ts
-ln -sfn "${dot_dir}/pi/agent/extensions/pi-rtk-optimizer/config.json" ~/.pi/agent/extensions/pi-rtk-optimizer/config.json
-
-echo -e "\tLinking Mise config"
-mkdir -p ~/.config/mise
-rcup config/mise/config.toml
+mkdir -p "$HOME/.pi/agent/extensions/pi-rtk-optimizer"
+ln -sfn "$root_dir/pi/agent/extensions/danger-guard.ts" "$HOME/.pi/agent/extensions/danger-guard.ts"
+ln -sfn "$root_dir/pi/agent/extensions/ghostty-context-notify.ts" "$HOME/.pi/agent/extensions/ghostty-context-notify.ts"
+ln -sfn "$root_dir/pi/agent/extensions/session-name-status.ts" "$HOME/.pi/agent/extensions/session-name-status.ts"
+ln -sfn "$root_dir/pi/agent/extensions/pi-rtk-optimizer/config.json" "$HOME/.pi/agent/extensions/pi-rtk-optimizer/config.json"
