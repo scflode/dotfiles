@@ -1,3 +1,5 @@
+tap "cormacrelf/tap"
+
 # core utils
 brew "coreutils"
 brew "moreutils"
@@ -63,6 +65,7 @@ brew "graphviz"
 brew "screen"
 brew "tmux"
 brew "reattach-to-user-namespace"
+brew "cormacrelf/tap/dark-notify"
 
 # CLI tool for analyzing Claude Code usage from local JSONL files
 brew "ccusage"

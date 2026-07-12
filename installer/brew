@@ -24,7 +24,10 @@ shellenv="eval \"\$($brew_bin shellenv)\""
 grep -qxF "$shellenv" "$HOME/.zprofile" 2>/dev/null || echo "$shellenv" >> "$HOME/.zprofile"
 
 case $stage in
-  bootstrap) brew bundle install --file "$root_dir/Brewfile" ;;
+  bootstrap)
+    brew trust --tap cormacrelf/tap
+    brew bundle install --file "$root_dir/Brewfile"
+    ;;
   apps)
     brew tap munichmade/tap
     brew tap nikitabobko/tap
