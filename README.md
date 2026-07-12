@@ -14,7 +14,7 @@ cd ~/.dotfiles
 
 Bootstrap installs command-line tools plus Nextcloud, 1Password, and Ghostty. Continue in this order:
 
-1. Sign into Nextcloud and wait until `~/Nextcloud/Private/ssh` is synced.
+1. Sign into Nextcloud and setup `.ssh` sync.
 2. Sign into 1Password, enable its SSH agent, then start a new shell (`exec zsh -l`).
 3. Run `./link_ssh`. It links SSH configuration and public keys; private keys remain in 1Password. It refuses to replace an existing `~/.ssh` directory.
 4. Run `./setup apps` for remaining casks.
