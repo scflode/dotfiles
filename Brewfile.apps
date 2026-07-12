@@ -1,4 +1,5 @@
 tap "munichmade/tap"
+tap "nikitabobko/tap"
 
 # Fonts
 cask "font-inter"

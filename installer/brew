@@ -27,7 +27,9 @@ case $stage in
   bootstrap) brew bundle install --file "$root_dir/Brewfile" ;;
   apps)
     brew tap munichmade/tap
+    brew tap nikitabobko/tap
     brew trust --cask munichmade/tap/devproxy
+    brew trust --cask nikitabobko/tap/aerospace
     # brew bundle 6 fetches mixed casks as formulae; install its parsed cask list directly.
     while IFS= read -r cask; do
       brew install --cask "$cask"
