@@ -4,23 +4,23 @@ Personal macOS setup and dotfiles.
 
 ## Install
 
+Bootstrap from macOS Terminal. Initial clone uses HTTPS, so SSH/Nextcloud is not a prerequisite.
+
 ```sh
 git clone https://github.com/scflode/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-./setup
+./setup bootstrap
 ```
 
-`setup` is safe to re-run: it installs missing tools, keeps existing links, and reapplies preferences.
+Bootstrap installs command-line tools plus Nextcloud, 1Password, and Ghostty. Continue in this order:
 
-### SSH
+1. Sign into Nextcloud and wait until `~/Nextcloud/Private/ssh` is synced.
+2. Sign into 1Password and enable its SSH agent.
+3. Run `./link_ssh`. It links SSH configuration and public keys; private keys remain in 1Password. It refuses to replace an existing `~/.ssh` directory.
+4. Run `./setup apps` for remaining casks.
+5. Sign into App Store, then run `./setup store` for MAS apps.
 
-`setup` does not install secrets. After Nextcloud syncs `~/Nextcloud/Private/ssh`, run:
-
-```sh
-./link_ssh
-```
-
-This links SSH configuration and public keys; private keys remain in 1Password.
+`setup` stages are safe to re-run. Brew packages may upgrade on rerun.
 
 ## Included
 
@@ -28,4 +28,4 @@ This links SSH configuration and public keys; private keys remain in 1Password.
 - mise-managed tools
 - LazyVim, tmux, Ghostty, zsh, Git, and Pi configuration
 
-Review `Brewfile` and `installer/macos` before first use; both contain personal choices.
+Review Brewfiles and `installer/macos` before first use; both contain personal choices.

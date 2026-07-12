@@ -1,7 +1,20 @@
 #!/usr/bin/env bash
 
-ln -nfs ~/Nextcloud/Private/ssh ~/.ssh
-find ~/.ssh/ -type f -exec chmod 600 {} \;
-find ~/.ssh/ -type d -exec chmod 700 {} \;
-find ~/.ssh/ -type f -name "*.pub" -exec chmod 644 {} \;
+set -euo pipefail
 
+source_dir="$HOME/Nextcloud/Private/ssh"
+target="$HOME/.ssh"
+
+[[ -d $source_dir ]] || { echo "Nextcloud SSH directory is not synced: $source_dir" >&2; exit 1; }
+if [[ -e $target || -L $target ]]; then
+  [[ -L $target && $(readlink "$target") == "$source_dir" ]] || {
+    echo "Refusing to replace existing $target; back it up or migrate it first." >&2
+    exit 1
+  }
+else
+  ln -s "$source_dir" "$target"
+fi
+
+find "$source_dir" -type d -exec chmod 700 {} +
+find "$source_dir" -type f -name '*.pub' -exec chmod 644 {} +
+find "$source_dir" -type f ! -name '*.pub' -exec chmod 600 {} +

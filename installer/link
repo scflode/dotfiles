@@ -9,8 +9,10 @@ link() { rcup -d "$root_dir" "$1"; }
 echo "Linking dotfiles"
 
 link config/LazyVim
+link config/aerospace
 link config/ghostty/config
 link config/tmux
+link config/zed
 link tmux.conf
 link gitconfig
 link gitignore_global

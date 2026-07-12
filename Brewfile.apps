@@ -1,0 +1,50 @@
+tap "munichmade/tap"
+
+# Fonts
+cask "font-inter"
+cask "font-jetbrains-mono"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-pacifico"
+cask "font-victor-mono-nerd-font"
+
+# Essentials
+cask "aerospace"
+cask "appcleaner"
+cask "bartender"
+cask "daisydisk"
+cask "istat-menus"
+cask "raycast"
+cask "tunnelblick"
+
+# Office
+cask "microsoft-excel"
+cask "microsoft-word"
+cask "microsoft-powerpoint"
+
+# Browsers
+cask "firefox"
+cask "google-chrome"
+cask "zen"
+cask "helium-browser"
+
+# Communication
+cask "discord"
+cask "slack"
+
+# Development
+cask "android-commandlinetools"
+cask "codex"
+cask "devproxy"
+cask "gitbutler"
+cask "ngrok"
+cask "orbstack"
+cask "android-studio"
+cask "figma"
+cask "inkscape"
+cask "tableplus"
+cask "zed"
+cask "yaak"
+
+# Misc
+cask "calibre"
+cask "fliqlo"

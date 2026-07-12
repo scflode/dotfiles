@@ -4,11 +4,13 @@ set -euo pipefail
 
 root_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
 export DOTFILES_DIR="$root_dir"
+stage=${1:-bootstrap}
 
-if [[ $(uname -s) != Darwin ]]; then
-  echo "macOS is required."
-  exit 1
-fi
+[[ $(uname -s) == Darwin ]] || { echo "macOS is required."; exit 1; }
+case $stage in
+  bootstrap|apps|store) ;;
+  *) echo "Usage: ./setup [bootstrap|apps|store]" >&2; exit 1 ;;
+esac
 
 if ! xcode-select -p >/dev/null 2>&1; then
   xcode-select --install || true
@@ -16,17 +18,33 @@ if ! xcode-select -p >/dev/null 2>&1; then
   exit 1
 fi
 
-computer_name=$(scutil --get LocalHostName 2>/dev/null || hostname -s)
-read -r -p "Computer name [$computer_name]: " choice
-computer_name=${choice:-$computer_name}
+case $stage in
+  bootstrap)
+    computer_name=$(scutil --get LocalHostName 2>/dev/null || hostname -s)
+    read -r -p "Computer name [$computer_name]: " choice
+    computer_name=${choice:-$computer_name}
+    read -r -p "Run bootstrap setup for $computer_name? [y/N] " choice
+    [[ $choice =~ ^[Yy]$ ]] || exit 0
 
-read -r -p "Run setup for $computer_name? [y/N] " choice
-[[ $choice =~ ^[Yy]$ ]] || exit 0
-
-sudo -v
-
-for installer in macos brew link zsh tmux mise; do
-  "$root_dir/installer/$installer" "$computer_name"
-done
-
-echo "Setup complete. Restart apps or log out for macOS preference changes."
+    sudo -v
+    "$root_dir/installer/macos" "$computer_name"
+    "$root_dir/installer/brew" bootstrap
+    "$root_dir/installer/link"
+    "$root_dir/installer/zsh"
+    "$root_dir/installer/tmux"
+    "$root_dir/installer/mise"
+    cat <<'EOF'
+Bootstrap complete. In Nextcloud, sign in and wait for ~/Nextcloud/Private/ssh.
+Then configure 1Password SSH agent, run ./link_ssh, and continue with ./setup apps.
+EOF
+    ;;
+  apps)
+    "$root_dir/installer/brew" apps
+    "$root_dir/installer/link"
+    echo "Apps installed. Sign into the App Store, then run ./setup store."
+    ;;
+  store)
+    "$root_dir/installer/brew" store
+    echo "App Store apps installed."
+    ;;
+esac
