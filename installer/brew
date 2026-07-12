@@ -28,7 +28,10 @@ case $stage in
   apps)
     brew tap munichmade/tap
     brew trust --cask munichmade/tap/devproxy
-    brew bundle install --file "$root_dir/Brewfile.apps"
+    # brew bundle 6 fetches mixed casks as formulae; install its parsed cask list directly.
+    while IFS= read -r cask; do
+      brew install --cask "$cask"
+    done < <(brew bundle list --file "$root_dir/Brewfile.apps" --cask)
     ;;
   store) brew bundle install --file "$root_dir/Brewfile.mas" ;;
   *) echo "Unknown Homebrew stage: $stage" >&2; exit 1 ;;
