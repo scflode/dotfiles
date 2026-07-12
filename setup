@@ -6,66 +6,75 @@ root_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
 export DOTFILES_DIR="$root_dir"
 stage=${1:-bootstrap}
 
-[[ $(uname -s) == Darwin ]] || { echo "macOS is required."; exit 1; }
+[[ $(uname -s) == Darwin ]] || {
+	echo "macOS is required."
+	exit 1
+}
 case $stage in
-  bootstrap|apps|store) ;;
-  *) echo "Usage: ./setup [bootstrap|apps|store]" >&2; exit 1 ;;
+bootstrap | apps | store) ;;
+*)
+	echo "Usage: ./setup [bootstrap|apps|store]" >&2
+	exit 1
+	;;
 esac
 
 install_rosetta() {
-  [[ $(uname -m) == arm64 ]] || return
-  pkgutil --pkg-info com.apple.pkg.RosettaUpdateAuto >/dev/null 2>&1 || \
-    sudo softwareupdate --install-rosetta --agree-to-license
+	[[ $(uname -m) == arm64 ]] || return
+	pkgutil --pkg-info com.apple.pkg.RosettaUpdateAuto >/dev/null 2>&1 ||
+		sudo softwareupdate --install-rosetta --agree-to-license
 }
 
 activate_brew() {
-  local brew_bin
-  brew_bin=$(command -v brew || true)
-  if [[ -z $brew_bin ]]; then
-    for candidate in /opt/homebrew/bin/brew /usr/local/bin/brew; do
-      [[ -x $candidate ]] && brew_bin=$candidate && break
-    done
-  fi
-  [[ -n $brew_bin ]] || { echo "Homebrew installation failed." >&2; exit 1; }
-  eval "$("$brew_bin" shellenv)"
+	local brew_bin
+	brew_bin=$(command -v brew || true)
+	if [[ -z $brew_bin ]]; then
+		for candidate in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+			[[ -x $candidate ]] && brew_bin=$candidate && break
+		done
+	fi
+	[[ -n $brew_bin ]] || {
+		echo "Homebrew installation failed." >&2
+		exit 1
+	}
+	eval "$("$brew_bin" shellenv)"
 }
 
 if ! xcode-select -p >/dev/null 2>&1; then
-  xcode-select --install || true
-  echo "Install Xcode Command Line Tools, then run setup again."
-  exit 1
+	xcode-select --install || true
+	echo "Install Xcode Command Line Tools, then run setup again."
+	exit 1
 fi
 
 case $stage in
-  bootstrap)
-    computer_name=$(scutil --get LocalHostName 2>/dev/null || hostname -s)
-    read -r -p "Computer name [$computer_name]: " choice
-    computer_name=${choice:-$computer_name}
-    read -r -p "Run bootstrap setup for $computer_name? [y/N] " choice
-    [[ $choice =~ ^[Yy]$ ]] || exit 0
+bootstrap)
+	computer_name=$(scutil --get LocalHostName 2>/dev/null || hostname -s)
+	read -r -p "Computer name [$computer_name]: " choice
+	computer_name=${choice:-$computer_name}
+	read -r -p "Run bootstrap setup for $computer_name? [y/N] " choice
+	[[ $choice =~ ^[Yy]$ ]] || exit 0
 
-    sudo -v
-    "$root_dir/installer/macos" "$computer_name"
-    "$root_dir/installer/brew" bootstrap
-    activate_brew
-    "$root_dir/installer/link"
-    "$root_dir/installer/zsh"
-    "$root_dir/installer/tmux"
-    "$root_dir/installer/mise"
-    cat <<'EOF'
+	sudo -v
+	"$root_dir/installer/macos" "$computer_name"
+	"$root_dir/installer/brew" bootstrap
+	activate_brew
+	"$root_dir/installer/link"
+	"$root_dir/installer/zsh"
+	"$root_dir/installer/tmux"
+	"$root_dir/installer/mise"
+	cat <<'EOF'
 Bootstrap complete. In Nextcloud, sign in and wait for ~/Nextcloud/Private/ssh.
-Then configure 1Password SSH agent, run ./link_ssh, and continue with ./setup apps.
+Then configure 1Password SSH agent, setup the .ssh folder, and continue with ./setup apps.
 EOF
-    ;;
-  apps)
-    "$root_dir/installer/brew" apps
-    activate_brew
-    "$root_dir/installer/link"
-    echo "Apps installed. Sign into the App Store, then run ./setup store."
-    ;;
-  store)
-    install_rosetta
-    "$root_dir/installer/brew" store
-    echo "App Store apps installed."
-    ;;
+	;;
+apps)
+	"$root_dir/installer/brew" apps
+	activate_brew
+	"$root_dir/installer/link"
+	echo "Apps installed. Sign into the App Store, then run ./setup store."
+	;;
+store)
+	install_rosetta
+	"$root_dir/installer/brew" store
+	echo "App Store apps installed."
+	;;
 esac
