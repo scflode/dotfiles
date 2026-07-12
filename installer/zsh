@@ -3,6 +3,10 @@
 set -euo pipefail
 
 root_dir=${DOTFILES_DIR:-$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)}
+legacy_mise_activation='eval "$($(which mise) activate zsh)"'
+if [[ -f $HOME/.zshrc ]] && grep -qF "$legacy_mise_activation" "$HOME/.zshrc"; then
+  sed -i '' '/which mise) activate zsh/d' "$HOME/.zshrc"
+fi
 
 if [[ ! -e $HOME/.zshrc ]]; then
   printf 'dot_dir=%q\n' "$root_dir" > "$HOME/.zshrc"

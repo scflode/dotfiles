@@ -1,15 +1,21 @@
-if (( $+commands[brew] )); then
-  source "$(brew --prefix antidote)/share/antidote/antidote.zsh"
-
-  zsh_plugins="${ZDOTDIR:-$HOME}/.zsh_plugins.zsh"
-  if [[ ! -f $zsh_plugins || ${zsh_plugins:r}.txt -nt $zsh_plugins ]]; then
-    antidote bundle < "${zsh_plugins:r}.txt" > "$zsh_plugins"
-  fi
-  source "$zsh_plugins"
-fi
+for brew in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+  [[ -x $brew ]] && eval "$("$brew" shellenv)" && break
+done
 
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
+
+if (( $+commands[brew] )); then
+  antidote="$(brew --prefix antidote)/share/antidote/antidote.zsh"
+  if [[ -f $antidote ]]; then
+    source "$antidote"
+    zsh_plugins="${ZDOTDIR:-$HOME}/.zsh_plugins.zsh"
+    if [[ ! -f $zsh_plugins || ${zsh_plugins:r}.txt -nt $zsh_plugins ]]; then
+      antidote bundle < "${zsh_plugins:r}.txt" > "$zsh_plugins"
+    fi
+    source "$zsh_plugins"
+  fi
+fi
 
 fpath+=(~/.config/hcloud/completion/zsh)
 
