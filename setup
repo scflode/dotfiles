@@ -12,6 +12,18 @@ case $stage in
   *) echo "Usage: ./setup [bootstrap|apps|store]" >&2; exit 1 ;;
 esac
 
+activate_brew() {
+  local brew_bin
+  brew_bin=$(command -v brew || true)
+  if [[ -z $brew_bin ]]; then
+    for candidate in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+      [[ -x $candidate ]] && brew_bin=$candidate && break
+    done
+  fi
+  [[ -n $brew_bin ]] || { echo "Homebrew installation failed." >&2; exit 1; }
+  eval "$("$brew_bin" shellenv)"
+}
+
 if ! xcode-select -p >/dev/null 2>&1; then
   xcode-select --install || true
   echo "Install Xcode Command Line Tools, then run setup again."
@@ -29,6 +41,7 @@ case $stage in
     sudo -v
     "$root_dir/installer/macos" "$computer_name"
     "$root_dir/installer/brew" bootstrap
+    activate_brew
     "$root_dir/installer/link"
     "$root_dir/installer/zsh"
     "$root_dir/installer/tmux"
@@ -40,6 +53,7 @@ EOF
     ;;
   apps)
     "$root_dir/installer/brew" apps
+    activate_brew
     "$root_dir/installer/link"
     echo "Apps installed. Sign into the App Store, then run ./setup store."
     ;;
