@@ -31,3 +31,4 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 (( $+commands[doctl] )) && source <(doctl completion zsh)
 (( $+commands[op] )) && eval "$(op completion zsh)" && compdef _op op
 (( $+commands[mise] )) && eval "$(mise activate zsh)"
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh --cmd cd)"
