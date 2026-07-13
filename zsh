@@ -20,6 +20,19 @@ fi
 onepassword_agent="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 [[ -S $onepassword_agent ]] && export SSH_AUTH_SOCK="$onepassword_agent"
 
+ssh() {
+  if [[ ${SSH_AUTH_SOCK:-} == "$onepassword_agent" ]]; then
+    ssh-add -l >/dev/null 2>&1
+    if (( $? == 2 )); then
+      open -a '1Password'
+      print -u2 -- '1Password SSH agent unavailable. Unlock 1Password, then rerun SSH.'
+      return 255
+    fi
+  fi
+
+  command ssh "$@"
+}
+
 fpath+=(~/.config/hcloud/completion/zsh)
 
 hosts=$(awk '/^Host / {printf("%s ",$2)}' ~/.ssh/config 2>/dev/null)
