@@ -3,6 +3,6 @@
 set -euo pipefail
 
 mise install
-if ! mise exec node -- npm list --global --depth=0 @earendil-works/pi-coding-agent@0.80.6 >/dev/null 2>&1; then
-  mise exec node -- npm install --global @earendil-works/pi-coding-agent@0.80.6
+if ! mise exec node@lts -- npm list --global --depth=0 @earendil-works/pi-coding-agent@0.80.6 >/dev/null 2>&1; then
+  mise exec node@lts -- npm install --global @earendil-works/pi-coding-agent@0.80.6
 fi
