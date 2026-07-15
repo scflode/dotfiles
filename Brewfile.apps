@@ -26,6 +26,7 @@ cask "helium-browser"
 # Communication
 cask "discord"
 cask "slack"
+cask "zoom"
 
 # Development
 cask "android-commandlinetools"
@@ -36,6 +37,7 @@ cask "ngrok"
 cask "orbstack"
 cask "android-studio"
 cask "figma"
+cask "linear"
 cask "inkscape"
 cask "tableplus"
 cask "zed"

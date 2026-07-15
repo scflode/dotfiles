@@ -53,6 +53,7 @@ brew "just"
 brew "dnsmasq"
 brew "mkcert"
 brew "ollama"
+brew "ddev"
 
 # vendor specific tools
 brew "hcloud"
