@@ -10,5 +10,5 @@ pmset -g batt | \
     -e 's/ charging/ꜛ/' \
     -e 's/ finishing charge/ꜛ/' \
     -e 's/(no estimate)//' \
-    -e 's/ charged 0:00//'
-
+    -e 's/ charged 0:00//' \
+    -e 's/[[:space:]][(][^)]*[)][ ]*$//'
