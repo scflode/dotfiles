@@ -37,6 +37,7 @@ export GREP_OPTIONS='--color=auto';
 # User configuration
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin:/usr/local/MacGPG2/bin:/opt/local/bin"
 export MANPATH="/usr/local/man:$MANPATH"
+export PATH="/Users/fsc/.local/bin:$PATH"
 
 setopt null_glob
 
