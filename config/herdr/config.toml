@@ -189,6 +189,7 @@ prompt_new_tab_name = false
 
 # Background notification popup delivery
 show_agent_labels_on_pane_borders = false
+agent_panel_sort = "spaces"
 [ui.toast]
 # off = disable pop-up notifications
 # herdr = show in-app toasts
