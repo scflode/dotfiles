@@ -79,3 +79,6 @@ tui.json
 
 # pi
 .pi/
+
+# graphify
+graphify-out/
