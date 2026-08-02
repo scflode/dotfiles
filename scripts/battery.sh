@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 pmset -g batt | \
-  tail -n1 | \
+  sed -n '/[[:digit:]][[:digit:]]*%;/ { p; q; }' | \
   sed -e 's/.*(id=[[:digit:]]*)[[:space:]]*\(.*\) present: true/\1/' \
     -e 's/;//g' \
     -e 's/ discharging/ꜜ/' \
