@@ -64,9 +64,8 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 # dotfiles aliases
 alias update="${HOME}/.dotfiles/update"
 alias dotfiles='cd ~/.dotfiles && v .; -'
-alias pi='mise exec node@lts -- pi'
+alias pi='NODE_USE_SYSTEM_CA=1 mise exec node@lts -- pi'
 
 # Neovim
 alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 alias lvim='NVIM_APPNAME="LazyVim" nvim'
-
