@@ -1,0 +1,56 @@
+{
+  "name": "@mjfuertesf/pi-quota-status",
+  "version": "0.1.9",
+  "description": "Pi extension that shows quota usage in the footer for supported providers.",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/mjfuertesf/pi-quota-status.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/mjfuertesf/pi-quota-status/-/issues"
+  },
+  "homepage": "https://gitlab.com/mjfuertesf/pi-quota-status#readme",
+  "exports": {
+    ".": "./src/extension.ts"
+  },
+  "types": "./src/extension.ts",
+  "scripts": {
+    "test": "tsx --test $(find . -path ./node_modules -prune -o -name '*.test.ts' -print | sort)"
+  },
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "footer",
+    "quota",
+    "openai",
+    "codex",
+    "claude",
+    "claude-bridge",
+    "anthropic",
+    "opencode"
+  ],
+  "files": [
+    "src/",
+    "!src/**/*.test.ts",
+    "README.md",
+    "package.json",
+    "assets/screenshots"
+  ],
+  "pi": {
+    "extensions": [
+      "./src/extension.ts"
+    ],
+    "image": "https://gitlab.com/mjfuertesf/pi-quota-status/-/raw/main/assets/screenshots/quota-status-footer.png"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.74.1",
+    "tsx": "^4.21.0"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

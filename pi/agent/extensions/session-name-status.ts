@@ -2,7 +2,7 @@ import { complete } from "@earendil-works/pi-ai/compat";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 const PROVIDER = process.env.PI_SESSION_NAME_PROVIDER ?? "openai-codex";
-const MODEL = process.env.PI_SESSION_NAME_MODEL ?? "gpt-5.4-mini";
+const MODEL = process.env.PI_SESSION_NAME_MODEL ?? "gpt-5.6-luna";
 
 function text(content: unknown): string {
   if (typeof content === "string") return content;
@@ -51,7 +51,7 @@ async function nameSession(pi: ExtensionAPI, ctx: any, prompt = firstPrompt(ctx)
         },
       ],
     },
-    { apiKey: auth.apiKey, headers: auth.headers, env: auth.env, maxTokens: 32 },
+    { apiKey: auth.apiKey, headers: auth.headers, env: auth.env, maxTokens: 32, reasoningEffort: "medium" },
   );
 
   const title = cleanTitle(response.content.filter((c: any) => c.type === "text").map((c: any) => c.text).join(" "));

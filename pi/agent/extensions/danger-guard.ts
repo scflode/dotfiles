@@ -1,4 +1,5 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { notify } from "./ghostty-context-notify.ts";
 
 const dangerousBash = [
 	/\brm\s+(?:-[^\s]*[rR][^\s]*[fF]?|-[^\s]*[fF][^\s]*[rR]|--recursive|--force)/,
@@ -32,6 +33,7 @@ function touchesProtectedPath(input: unknown) {
 }
 
 async function confirm(ctx: any, title: string, detail: string) {
+	notify(title, detail);
 	if (!ctx.hasUI) return false;
 	return ctx.ui.confirm(title, detail.length > 1600 ? `${detail.slice(0, 1600)}…` : detail);
 }
