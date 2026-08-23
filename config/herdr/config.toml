@@ -10,7 +10,7 @@ onboarding = false
 # Built-in themes: catppuccin, terminal, tokyo-night, dracula, nord,
 #                  gruvbox, one-dark, solarized, kanagawa, rose-pine,
 #                  vesper
-name = "catppuccin-latte"
+name = "terminal"
 
 # Override individual color tokens on top of the base theme.
 # Accepts: hex (#rrggbb), named colors, rgb(r,g,b), or panel_bg = "reset"
@@ -139,7 +139,18 @@ zoom = "prefix+z"
 # directory = "~/.herdr/worktrees"
 
 [ui]
+sidebar_start_collapsed = true
+sidebar_collapsed_mode = "hidden"
 pane_gaps = false
+tab_bar_position = "bottom"
+tab_bar_right_separator = " | "
+tab_bar_right = [
+  { type = "command", command = "~/.dotfiles/scripts/ifstat.sh", interval_seconds = 5, timeout_seconds = 2 },
+  { type = "command", command = "~/.dotfiles/scripts/load.sh", interval_seconds = 5, timeout_seconds = 2 },
+  { type = "command", command = "~/.dotfiles/scripts/battery.sh", interval_seconds = 30, timeout_seconds = 2 },
+  { type = "datetime", format = "%Y-%m-%d" },
+  { type = "datetime", format = "%I:%M %p" },
+]
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
 # sidebar_width = 26
 
@@ -190,6 +201,7 @@ prompt_new_tab_name = false
 # Background notification popup delivery
 show_agent_labels_on_pane_borders = false
 agent_panel_sort = "spaces"
+status_indicators = "symbols"
 [ui.toast]
 # off = disable pop-up notifications
 # herdr = show in-app toasts
@@ -198,7 +210,7 @@ agent_panel_sort = "spaces"
 # delivery = "off"
 # delay_seconds = 1
 
-delivery = "system"
+delivery = "terminal"
 [ui.toast.herdr]
 # position = "bottom-right"
 
@@ -219,6 +231,7 @@ delivery = "system"
 # [ui.sound.agents]
 # droid = "off"
 
+enabled = false
 [session]
 # Resume supported AI-agent panes into their native conversation sessions after
 # a Herdr server restart. Requires official integrations that report session refs.
