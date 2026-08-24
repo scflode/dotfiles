@@ -2,7 +2,7 @@ import { complete } from "@earendil-works/pi-ai/compat";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 const PROVIDER = process.env.PI_SESSION_NAME_PROVIDER ?? "openai-codex";
-const MODEL = process.env.PI_SESSION_NAME_MODEL ?? "gpt-5.6-luna";
+const MODEL = process.env.PI_SESSION_NAME_MODEL;
 
 function text(content: unknown): string {
   if (typeof content === "string") return content;
@@ -28,15 +28,17 @@ function cleanTitle(s: string): string {
 async function nameSession(pi: ExtensionAPI, ctx: any, prompt = firstPrompt(ctx)) {
   if (pi.getSessionName() || !prompt) return;
 
-  const model = ctx.modelRegistry.find(PROVIDER, MODEL);
+  // Alias providers are registered per project; active model already has correct provider id.
+  const model = MODEL ? ctx.modelRegistry.find(PROVIDER, MODEL) : ctx.model;
+  const modelName = model ? `${model.provider}/${model.id}` : `${PROVIDER}/${MODEL ?? "active"}`;
   if (!model) {
-    ctx.ui.notify(`session-name: model not found: ${PROVIDER}/${MODEL}`, "warning");
+    ctx.ui.notify(`session-name: model not found: ${modelName}`, "warning");
     return;
   }
 
   const auth = await ctx.modelRegistry.getApiKeyAndHeaders(model);
   if (!auth.ok || !auth.apiKey) {
-    ctx.ui.notify(`session-name: auth failed for ${PROVIDER}/${MODEL}`, "warning");
+    ctx.ui.notify(`session-name: auth failed for ${modelName}`, "warning");
     return;
   }
 
@@ -80,7 +82,7 @@ export default function (pi: ExtensionAPI) {
   pi.on("agent_end", async (_event, ctx) => maybeName(ctx));
 
   pi.registerCommand("autoname", {
-    description: `Generate session name with ${PROVIDER}/${MODEL}`,
+    description: MODEL ? `Generate session name with ${PROVIDER}/${MODEL}` : "Generate session name with active session model",
     handler: async (_args, ctx) => maybeName(ctx),
   });
 }
