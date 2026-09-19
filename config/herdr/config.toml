@@ -109,7 +109,28 @@ focus_pane_right = "ctrl+l"
 split_vertical = "prefix+backslash"
 split_horizontal = "prefix+minus"
 close_pane = "prefix+x"
+last_pane = "prefix+l"
 zoom = "prefix+z"
+
+[[keys.command]]
+key = "ctrl+shift+h"
+type = "shell"
+command = "herdr pane swap --current --direction left"
+
+[[keys.command]]
+key = "ctrl+shift+j"
+type = "shell"
+command = "herdr pane swap --current --direction down"
+
+[[keys.command]]
+key = "ctrl+shift+k"
+type = "shell"
+command = "herdr pane swap --current --direction up"
+
+[[keys.command]]
+key = "ctrl+shift+l"
+type = "shell"
+command = "herdr pane swap --current --direction right"
 
 # Navigate-mode movement. These local shortcuts win while navigate mode is open.
 # They are independent from focus_pane_*. Do not include prefix+, esc, enter, tab, or 1..9 here.
@@ -145,6 +166,7 @@ pane_gaps = false
 tab_bar_position = "bottom"
 tab_bar_right_separator = " | "
 tab_bar_right = [
+  { type = "command", command = 'herdr workspace get "$HERDR_ACTIVE_WORKSPACE_ID" | jq -r ".result.workspace.label"', interval_seconds = 1, timeout_seconds = 2 },
   { type = "command", command = "~/.dotfiles/scripts/ifstat.sh", interval_seconds = 5, timeout_seconds = 2 },
   { type = "command", command = "~/.dotfiles/scripts/load.sh", interval_seconds = 5, timeout_seconds = 2 },
   { type = "command", command = "~/.dotfiles/scripts/battery.sh", interval_seconds = 30, timeout_seconds = 2 },
