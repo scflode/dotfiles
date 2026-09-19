@@ -82,3 +82,6 @@ tui.json
 
 # graphify
 graphify-out/
+
+# workmux
+.workmux.yaml
