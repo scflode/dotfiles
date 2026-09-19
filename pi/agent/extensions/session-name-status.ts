@@ -42,8 +42,13 @@ async function nameSession(pi: ExtensionAPI, ctx: any, prompt = firstPrompt(ctx)
     return;
   }
 
+  // pi-sub-aliases uses per-alias APIs only its stream wrapper registers.
+  // `complete()` needs built-in Codex API; keep alias credentials above.
+  const requestModel = model.provider.startsWith("openai-codex-")
+    ? { ...model, provider: "openai-codex", api: "openai-codex-responses" }
+    : model;
   const response = await complete(
-    model,
+    requestModel,
     {
       messages: [
         {
