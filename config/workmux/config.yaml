@@ -1,0 +1,7 @@
+nerdfont: true
+merge_strategy: rebase
+agent: pi
+panes:
+  - command: <agent>
+    focus: true
+  - split: horizontal
