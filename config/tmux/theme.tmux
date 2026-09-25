@@ -7,7 +7,6 @@ set -g status-position bottom
 set -g status-justify "left"
 set -g @dotfiles-status-format "#[align=left range=left #{E:status-left-style}]#[push-default]#{T;=/#{status-left-length}:status-left}#[pop-default]#[norange default]#[list=on align=#{status-justify}]#[list=left-marker]<#[list=right-marker]>#[list=on]#{W:#[range=window|#{window_index} #{E:window-status-style}#{?#{&&:#{window_last_flag},#{!=:#{E:window-status-last-style},default}}, #{E:window-status-last-style},}#{?#{&&:#{window_bell_flag},#{!=:#{E:window-status-bell-style},default}}, #{E:window-status-bell-style},#{?#{&&:#{||:#{window_activity_flag},#{window_silence_flag}},#{!=:#{E:window-status-activity-style},default}}, #{E:window-status-activity-style},}}]#[push-default]#{T:window-status-format}#[pop-default]#[norange default]#{?loop_last_flag,,#{E:window-status-separator}},#[range=window|#{window_index} list=focus #{?#{!=:#{E:window-status-current-style},default},#{E:window-status-current-style},#{E:window-status-style}}#{?#{&&:#{window_last_flag},#{!=:#{E:window-status-last-style},default}}, #{E:window-status-last-style},}#{?#{&&:#{window_bell_flag},#{!=:#{E:window-status-bell-style},default}}, #{E:window-status-bell-style},#{?#{&&:#{||:#{window_activity_flag},#{window_silence_flag}},#{!=:#{E:window-status-activity-style},default}}, #{E:window-status-activity-style},}}]#[push-default]#{T:window-status-current-format}#[pop-default]#[norange list=on default]#{?loop_last_flag,,#{E:window-status-separator}}}#[nolist align=right range=right #{E:status-right-style}]#[push-default]#{T;=/#{status-right-length}:status-right}#[pop-default]#[norange default]"
 set -g status-format[0] "#{E:@dotfiles-status-format}"
-set -g status-format[1] "#{E:@dotfiles-status-format}"
 set -g status-style "fg=${thm_fg},bg=${thm_bg}"
 set -g status-bg "${thm_bg}"
 
@@ -23,8 +22,10 @@ set -g status-right "#(${HOME}/.tmux/plugins/tmux-continuum/scripts/continuum_sa
 set -g mode-style 'reverse'
 
 # messages
-set -g message-style "fg=${thm_fg},bg=${thm_bg},align=left,width=100%"
-set -g message-command-style "fg=${thm_fg},bg=${thm_bg},align=left,width=100%"
+set -g message-style "fg=${thm_fg},bg=${thm_bg},fill=${thm_bg},align=centre,width=50%"
+set -g message-command-style "fg=${thm_fg},bg=${thm_bg},fill=${thm_bg},align=centre,width=50%"
+# tmux 3.7 otherwise centers ':' separately from its left-aligned input
+set -g message-format '#[#{?#{command_prompt},#{E:message-command-style},#{E:message-style}}]#[align=left]#{message}'
 
 # panes
 set -g pane-border-style "fg=${thm_fg}"
