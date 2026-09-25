@@ -17,3 +17,4 @@ thm_orange="#fe640b"
 thm_black4="#acb0be"
 
 source-file $HOME/.config/tmux/theme.tmux
+run-shell "$HOME/.dotfiles/scripts/workmux-theme.sh light"

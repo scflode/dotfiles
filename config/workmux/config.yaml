@@ -5,3 +5,22 @@ panes:
   - command: <agent>
     focus: true
   - split: horizontal
+sidebar:
+  position: top
+
+  # Top bar height in rows
+  height: 3
+
+  horizontal:
+    item_width: 28 # leave room for chip padding
+
+  templates:
+    horizontal:
+      - " {status_icon} {primary} {pane_suffix} {fill} {elapsed} "
+      - " {secondary} {fill} {git_stats} "
+      - " {pane_title}"
+
+status_icons:
+  working: "🤖 "
+  waiting: "💬 "
+  done: "✅ "

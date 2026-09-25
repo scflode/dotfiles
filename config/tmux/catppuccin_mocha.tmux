@@ -17,3 +17,4 @@ thm_orange="#fab387"
 thm_black4="#585b70"
 
 source-file $HOME/.config/tmux/theme.tmux
+run-shell "$HOME/.dotfiles/scripts/workmux-theme.sh dark"

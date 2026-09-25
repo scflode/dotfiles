@@ -3,8 +3,8 @@ set -euo pipefail
 
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
-mkdir -p "$tmp/bin" "$tmp/home/.config/workmux" "$tmp/home/.local/state/tmux"
-printf 'agent: pi\n' > "$tmp/home/.config/workmux/config.yaml"
+mkdir -p "$tmp/bin" "$tmp/home/.dotfiles/config/workmux" "$tmp/home/.local/state/tmux"
+printf 'agent: pi\n' > "$tmp/home/.dotfiles/config/workmux/config.yaml"
 cat > "$tmp/bin/workmux" <<'EOF'
 #!/usr/bin/env bash
 [ "$1" = dashboard ]

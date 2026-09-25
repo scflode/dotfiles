@@ -14,7 +14,7 @@ esac
 tmp=$(mktemp -d "${TMPDIR:-/tmp}/workmux.XXXXXX")
 trap 'rm -rf "$tmp"' EXIT
 mkdir -p "$tmp/workmux"
-cp "$HOME/.config/workmux/config.yaml" "$tmp/workmux/config.yaml"
+cp "$HOME/.dotfiles/config/workmux/config.yaml" "$tmp/workmux/config.yaml"
 printf '\ntheme:\n  mode: %s\n' "$mode" >> "$tmp/workmux/config.yaml"
 
 XDG_CONFIG_HOME=$tmp workmux dashboard
