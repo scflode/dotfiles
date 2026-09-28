@@ -2,6 +2,7 @@ import type { QuotaAdapter } from './adapters/types.ts';
 import { OpenAICodexAdapter } from './providers/openai-codex/adapter.ts';
 import { OpenCodeGoAdapter } from './providers/opencode-go/adapter.ts';
 import { AnthropicAdapter } from './providers/anthropic/adapter.ts';
+import { ClaudeCodeAdapter } from './providers/claude-code/adapter.ts';
 
 const anthropicAdapter = new AnthropicAdapter();
 
@@ -10,6 +11,7 @@ export const PROVIDER_ADAPTERS: Record<string, QuotaAdapter> = {
   'opencode-go': new OpenCodeGoAdapter(),
   'anthropic': anthropicAdapter,
   'claude-bridge': anthropicAdapter,
+  'pi-claude-code-provider': new ClaudeCodeAdapter(),
 };
 
 export function getQuotaAdapter(provider: string | undefined): QuotaAdapter | undefined {
