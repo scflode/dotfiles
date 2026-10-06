@@ -1,4 +1,3 @@
-import { complete } from "@earendil-works/pi-ai/compat";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 const PROVIDER = process.env.PI_SESSION_NAME_PROVIDER ?? "openai-codex";
@@ -36,19 +35,8 @@ async function nameSession(pi: ExtensionAPI, ctx: any, prompt = firstPrompt(ctx)
     return;
   }
 
-  const auth = await ctx.modelRegistry.getApiKeyAndHeaders(model);
-  if (!auth.ok || !auth.apiKey) {
-    ctx.ui.notify(`session-name: auth failed for ${modelName}`, "warning");
-    return;
-  }
-
-  // pi-sub-aliases uses per-alias APIs only its stream wrapper registers.
-  // `complete()` needs built-in Codex API; keep alias credentials above.
-  const requestModel = model.provider.startsWith("openai-codex-")
-    ? { ...model, provider: "openai-codex", api: "openai-codex-responses" }
-    : model;
-  const response = await complete(
-    requestModel,
+  const response = await ctx.modelRegistry.streamSimple(
+    model,
     {
       messages: [
         {
@@ -58,8 +46,8 @@ async function nameSession(pi: ExtensionAPI, ctx: any, prompt = firstPrompt(ctx)
         },
       ],
     },
-    { apiKey: auth.apiKey, headers: auth.headers, env: auth.env, maxTokens: 32, reasoningEffort: "medium" },
-  );
+    { maxTokens: 32, reasoningEffort: "medium" },
+  ).result();
 
   const title = cleanTitle(response.content.filter((c: any) => c.type === "text").map((c: any) => c.text).join(" "));
   if (title && !pi.getSessionName()) pi.setSessionName(title);

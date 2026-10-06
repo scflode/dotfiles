@@ -5,13 +5,14 @@ import { AnthropicAdapter } from './providers/anthropic/adapter.ts';
 import { ClaudeCodeAdapter } from './providers/claude-code/adapter.ts';
 
 const anthropicAdapter = new AnthropicAdapter();
+const claudeCodeAdapter = new ClaudeCodeAdapter();
 
 export const PROVIDER_ADAPTERS: Record<string, QuotaAdapter> = {
   'openai-codex': new OpenAICodexAdapter(),
   'opencode-go': new OpenCodeGoAdapter(),
   'anthropic': anthropicAdapter,
-  'claude-bridge': anthropicAdapter,
-  'pi-claude-code-provider': new ClaudeCodeAdapter(),
+  'claude-bridge': claudeCodeAdapter,
+  'pi-claude-code-provider': claudeCodeAdapter,
 };
 
 export function getQuotaAdapter(provider: string | undefined): QuotaAdapter | undefined {

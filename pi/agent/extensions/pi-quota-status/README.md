@@ -46,10 +46,10 @@ No root `index.ts` shim or build step is required.
 |---|---|---|
 | `openai-codex` | `5h(XX%, Yh) Wk(ZZ%, Wd)` | ChatGPT backend quota API |
 | `opencode-go` | `5h(XX%, Yh) Wk(ZZ%, Wd)` | opencode.ai dashboard scrape |
-| `claude-bridge` | `5h(XX%, Yh) Wk(ZZ%, Wd)` | Claude web usage API via the Anthropic quota adapter path |
+| `claude-bridge` | `5h(XX%, Yh) Wk(ZZ%, Wd)` | Claude Code OAuth usage API via macOS Keychain |
 | `anthropic` | `5h(XX%, Yh) Wk(ZZ%, Wd)` | Claude web usage API via the Anthropic quota adapter path |
 
-`claude-bridge` deliberately uses the same Anthropic quota adapter and `quota-status.anthropic-subscription` auth entry as `anthropic`.
+`claude-bridge` reads Claude Code credentials from macOS Keychain; `anthropic` uses the `quota-status.anthropic-subscription` auth entry.
 
 Unsupported provider or no active session renders `n/a`. Supported provider with unresolved quota data renders `unknown`.
 
