@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mcp": {
+      "url": "https://mcp.linear.app/mcp",
+      "directTools": "search",
+      "approveTools": true
+    }
+  }
+}

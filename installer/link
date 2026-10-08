@@ -35,3 +35,10 @@ ln -sfn "$root_dir/pi/agent/extensions/ghostty-context-notify.ts" "$HOME/.pi/age
 ln -sfn "$root_dir/pi/agent/extensions/session-name-status.ts" "$HOME/.pi/agent/extensions/session-name-status.ts"
 ln -sfn "$root_dir/pi/agent/extensions/provider-confirm.ts" "$HOME/.pi/agent/extensions/provider-confirm.ts"
 ln -sfn "$root_dir/pi/agent/extensions/pi-rtk-optimizer/config.json" "$HOME/.pi/agent/extensions/pi-rtk-optimizer/config.json"
+ln -sfn "$root_dir/pi/agent/extensions/pi-quota-status" "$HOME/.pi/agent/extensions/pi-quota-status"
+ln -sfn "$root_dir/pi/agent/extensions/workmux-status.ts" "$HOME/.pi/agent/extensions/workmux-status.ts"
+
+# Existing MCP definitions may contain personal servers or secrets; never replace them.
+if [[ ! -e "$HOME/.pi/agent/mcp-adapter.json" && ! -L "$HOME/.pi/agent/mcp-adapter.json" ]]; then
+  ln -s "$root_dir/pi/agent/mcp-adapter.json" "$HOME/.pi/agent/mcp-adapter.json"
+fi

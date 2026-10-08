@@ -1,8 +1,35 @@
-pi install git:github.com/DietrichGebert/ponytail
-pi install npm:pi-web-access
-pi install npm:pi-mcp-adapter
-pi install npm:pi-caveman
-pi install npm:@mjfuertesf/pi-quota-status
-pi install npm:@narumitw/pi-chrome-devtools
-pi install npm:pi-rtk-optimizer
+#!/usr/bin/env bash
 
+set -euo pipefail
+
+for source in \
+  git:github.com/DietrichGebert/ponytail \
+  npm:pi-web-access \
+  npm:pi-mcp-adapter \
+  npm:pi-caveman \
+  npm:@narumitw/pi-chrome-devtools \
+  npm:pi-rtk-optimizer \
+  npm:pi-sub-aliases \
+  https://github.com/gsanhueza/pi-token-speed \
+  npm:pi-claude-bridge; do
+  pi install "$source"
+done
+
+# Merge only dotfiles-managed defaults; keep model, account, and other settings.
+node --input-type=module <<'JS'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { homedir } from 'node:os';
+import { join } from 'node:path';
+
+const dir = process.env.PI_CODING_AGENT_DIR || join(homedir(), '.pi', 'agent');
+const path = join(dir, 'settings.json');
+const settings = existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) : {};
+settings.theme = 'system';
+settings.defaultTools = [...(settings.defaultTools ?? []).filter(entry => !/^[+-]?(codemode|tool_search)$/.test(entry)), '+codemode', '+tool_search'];
+settings.codemode = { ...settings.codemode, mode: 'on' };
+settings.extensions = [...(settings.extensions ?? []).filter(entry => !/^[+!-]?builtin:mcp$/.test(entry)), '-builtin:mcp'];
+settings.packages = (settings.packages ?? []).filter(pkg =>
+  !(typeof pkg === 'object' && pkg.source === 'npm:@mjfuertesf/pi-quota-status' && pkg.extensions?.length === 0));
+mkdirSync(dir, { recursive: true });
+writeFileSync(path, `${JSON.stringify(settings, null, 2)}\n`);
+JS

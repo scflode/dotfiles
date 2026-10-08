@@ -61,6 +61,7 @@ bootstrap)
 	"$root_dir/installer/zsh"
 	"$root_dir/installer/tmux"
 	"$root_dir/installer/mise"
+	mise exec node@lts -- bash "$root_dir/installer/pi"
 	cat <<'EOF'
 Bootstrap complete. In Nextcloud, sign in and wait for ~/Nextcloud/Private/ssh.
 Then configure 1Password SSH agent, setup the .ssh folder, and continue with ./setup apps.

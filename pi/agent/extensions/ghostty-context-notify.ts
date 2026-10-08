@@ -1,5 +1,5 @@
 /** macOS/Ghostty Pi notifications with tmux context. */
-import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { execFileSync } from "node:child_process";
 
 function clean(s: unknown): string {
@@ -23,7 +23,8 @@ function wrapForTmux(seq: string): string {
   return `\x1bPtmux;${seq.replaceAll("\x1b", "\x1b\x1b")}\x1b\\`;
 }
 
-export function notify(title: string, body: string): void {
+export function notify(title: string, body: string, ctx: Pick<ExtensionContext, "mode">): void {
+  if (ctx.mode !== "tui" || !process.stdout.isTTY) return;
   title = clean(title);
   body = clean(body);
   const seq = `\x1b]777;notify;${title};${body}\x07`;
@@ -36,11 +37,15 @@ function where(ctx: any): string {
 }
 
 export default function (pi: ExtensionAPI) {
-  pi.on("agent_settled", async (_event, ctx) => notify("Pi done", where(ctx)));
+  pi.on("agent_settled", async (_event, ctx) => {
+    if (ctx.mode === "tui") notify("Pi done", where(ctx), ctx);
+  });
 
-  pi.on("session_compact", async (_event, ctx) => notify("Pi compacted", where(ctx)));
+  pi.on("session_compact", async (_event, ctx) => {
+    if (ctx.mode === "tui") notify("Pi compacted", where(ctx), ctx);
+  });
 
   pi.on("session_shutdown", async (event, ctx) => {
-    if (event.reason === "quit") notify("Pi session ended", where(ctx));
+    if (ctx.mode === "tui" && event.reason === "quit") notify("Pi session ended", where(ctx), ctx);
   });
 }

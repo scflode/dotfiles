@@ -33,8 +33,8 @@ function touchesProtectedPath(input: unknown) {
 }
 
 async function confirm(ctx: any, title: string, detail: string) {
-	notify(title, detail);
 	if (!ctx.hasUI) return false;
+	notify(title, detail, ctx);
 	return ctx.ui.confirm(title, detail.length > 1600 ? `${detail.slice(0, 1600)}…` : detail);
 }
 
