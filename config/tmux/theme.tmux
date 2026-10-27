@@ -31,6 +31,13 @@ set -g message-format '#[#{?#{command_prompt},#{E:message-command-style},#{E:mes
 set -g pane-border-style "fg=${thm_fg}"
 set -g pane-active-border-style "fg=${thm_yellow}"
 
+# popups/menus (tmux 3.8 defaults to grey theme colours)
+set -g popup-style "default"
+set -g popup-border-style "fg=${thm_fg}"
+set -g menu-style "fg=${thm_fg},bg=${thm_bg}"
+set -g menu-border-style "fg=${thm_fg},bg=${thm_bg}"
+set -g menu-selected-style "fg=${thm_bg},bg=${thm_blue}"
+
 # windows
 setw -g window-status-activity-style "fg=${thm_fg},bg=${thm_bg},none"
 setw -g window-status-separator ""
