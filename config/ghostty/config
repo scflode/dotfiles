@@ -2,11 +2,10 @@ theme = light:Catppuccin Latte,dark:Catppuccin Mocha
 
 # Font config
 
-font-family = VictorMono NFM
+font-family = VictorMono NFM Medium
 font-family-bold = VictorMono NFM Bold
-font-family-italic = VictorMono NFM Italic
+font-family-italic = VictorMono NFM Medium Italic
 font-family-bold-italic = VictorMono NFM Bold Italic
-font-variation = wght=700
 font-size = 15
 font-feature = calt
 font-feature = clig
