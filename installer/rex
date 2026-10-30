@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+root_dir=${DOTFILES_DIR:-$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)}
+rex=${REX_BIN_DIR:+$REX_BIN_DIR/rex}
+[[ -x ${rex:-} ]] || rex="$HOME/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS/rex"
+[[ -x $rex ]] || rex=$(command -v rex || true)
+[[ -n $rex ]] || { echo "Rex CLI missing; launch Rex.app once, then rerun." >&2; exit 1; }
+
+"$root_dir/config/rex/defaults.sh"
+
+# Upstream has no license, so it's fetched at a pinned commit instead of vendored here.
+tab_numbers_rev=b083c766a9339959f73166c7ff0235db6f0ae24f
+tab_numbers_dir="${XDG_CONFIG_HOME:-$HOME/.config}/rex/extensions/tab-numbers"
+mkdir -p "$tab_numbers_dir"
+for file in init.lua watcher.lua README.md; do
+  curl -fsSL "https://raw.githubusercontent.com/manishprivet/.dotfiles/$tab_numbers_rev/.config/rex/extensions/tab-numbers/$file" \
+    -o "$tab_numbers_dir/$file"
+done
+
+# ~/.ssh/config is generated from config.d, so skip the ssh guard Rex would add there.
+"$rex" terminfo setup --entry-only
+"$rex" config check
+"$rex" config reload

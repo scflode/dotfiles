@@ -11,6 +11,7 @@ echo "Linking dotfiles"
 link config/LazyVim
 link config/aerospace
 link config/ghostty/config
+link config/rex
 link config/tmux
 link config/zed
 link tmux.conf
