@@ -7,6 +7,8 @@ font-family-bold = VictorMono NFM Bold
 font-family-italic = VictorMono NFM Medium Italic
 font-family-bold-italic = VictorMono NFM Bold Italic
 font-size = 15
+# Thin VictorMono strokes break up on 1x displays; matches Rex's terminalFontSmoothing.
+font-thicken = true
 font-feature = calt
 font-feature = clig
 font-feature = liga
