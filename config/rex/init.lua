@@ -1,5 +1,8 @@
 local terminal = "com.superlogical.terminal"
 
+-- Restore saved sessions after the Rex server starts.
+do local r = rex.exec({ [[/opt/homebrew/bin/rexurrect]], "auto-restore" }, { env = { REXURRECT_STATE_DIR = [[/Users/fsc/.local/state/rexurrect]], REXURRECT_CONFIG = [[/Users/fsc/.config/rexurrect/config.toml]] } }) if r then io.stderr:write(r.stderr) end end
+
 -- Numbers tab titles to match Ctrl-a 1-9; installed by installer/rex. Missing module must not break the config.
 local ok, err = pcall(require, "extensions.tab-numbers")
 if not ok then rex.log("warn", "tab-numbers: " .. tostring(err)) end
