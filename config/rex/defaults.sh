@@ -17,3 +17,5 @@ d terminalOptionKeyBehavior -string rightActsAsAlt
 d paneDensity -string compact
 # Default "extend" stretches the last row (nvim statusline with cmdheight=0) into the bottom padding.
 d terminalPaddingColor -string background
+# "both" fades padding and program-painted backgrounds differently, so nvim panes get a mismatched border when unfocused.
+d inactivePaneFadeMode -string text
