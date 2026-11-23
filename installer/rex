@@ -11,13 +11,15 @@ rex=${REX_BIN_DIR:+$REX_BIN_DIR/rex}
 "$root_dir/config/rex/defaults.sh"
 
 # Upstream has no license, so it's fetched at a pinned commit instead of vendored here.
-tab_numbers_rev=b083c766a9339959f73166c7ff0235db6f0ae24f
+tab_numbers_rev=99bf4aed82b4c7770179c5efc4c5cace5af08164
 tab_numbers_dir="${XDG_CONFIG_HOME:-$HOME/.config}/rex/extensions/tab-numbers"
 mkdir -p "$tab_numbers_dir"
 for file in init.lua watcher.lua README.md; do
   curl -fsSL "https://raw.githubusercontent.com/manishprivet/.dotfiles/$tab_numbers_rev/.config/rex/extensions/tab-numbers/$file" \
     -o "$tab_numbers_dir/$file"
 done
+# rexurrect restores onto new window IDs, which upstream's ownership check can't follow.
+patch -s -d "$tab_numbers_dir" -p1 < "$root_dir/installer/rex-tab-numbers.patch"
 
 # ~/.ssh/config is generated from config.d, so skip the ssh guard Rex would add there.
 "$rex" terminfo setup --entry-only

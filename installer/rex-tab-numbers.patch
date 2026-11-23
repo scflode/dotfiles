@@ -1,0 +1,15 @@
+--- a/watcher.lua	2026-11-19 09:53:14
++++ b/watcher.lua	2026-11-19 09:53:15
+@@ -207,6 +207,12 @@
+         local previous = records[id]
+         -- Never strip arbitrary numeric text or an unrecognized manual rename.
+         local original = original_title(session_id, id, label)
++        -- dotfiles patch: rexurrect restores numbered labels onto new window IDs,
++        -- so strip this tab's own prefix from windows without an ownership record.
++        if not previous then
++            local own = tostring(index) .. ": "
++            while original:sub(1, #own) == own do original = original:sub(#own + 1) end
++        end
+         local prefix = tostring(index) .. ": "
+         local desired = mode == "remove" and original or prefix .. shorten(original, 128 - #prefix)
+         -- Rex trims labels; record the exact value it will store, including
